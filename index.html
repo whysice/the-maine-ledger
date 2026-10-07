@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Jails, prisons and courts, by the record. An independent weekly brief on Maine’s county jails, state prisons and criminal courts." />
+<meta name="theme-color" content="#161513" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Maine Ledger" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Maine Ledger — jails, prisons and courts, by the record</title>
+<link rel="stylesheet" href="ledger.css" />
+<style>
+/* masthead */
+.top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+.name { font-weight:700; font-size:clamp(34px,5vw,56px); line-height:.95; letter-spacing:-.02em; margin:0; color:var(--ink); text-decoration:none; display:block; }
+.name small { display:block; white-space:nowrap; font-weight:400; font-style:italic; font-size:clamp(15px,1.6vw,19px); letter-spacing:0; margin-top:8px; color:var(--ink2); }
+.tools { display:flex; gap:22px; align-items:center; }
+.tools a { color:var(--ink); text-decoration:none; font-size:15px; }
+.tools a:hover, .tools a[aria-current] { text-decoration:underline; }
+@media (max-width:560px){ .tools a:not(.sub-btn) { display:none; } }
+
+.strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule); }
+.strip > div { padding:12px 16px 12px 0; border-right:1px solid var(--rule2); }
+.strip > div + div { padding-left:16px; }
+.strip > div:last-child { border-right:0; }
+.strip .k { color:var(--ink2); }
+.strip .v { font-weight:600; font-size:15px; margin-top:2px; font-family:Spectral,Georgia,serif; letter-spacing:0; }
+@media (max-width:760px){ .strip { grid-template-columns:1fr 1fr; } .strip > div:nth-child(2){border-right:0} .strip > div:nth-child(3){padding-left:0;border-top:1px solid var(--rule2)} .strip > div:nth-child(4){border-top:1px solid var(--rule2)} }
+
+.lead { display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:48px; padding:40px 0 28px; }
+@media (max-width:860px){ .lead { grid-template-columns:1fr; gap:28px; } }
+.lead h2 { font-size:clamp(26px,3.2vw,40px); line-height:1.12; letter-spacing:-.015em; margin:0 0 14px; font-weight:600; }
+.lead p { margin:0; color:var(--ink2); max-width:58ch; }
+.changed h3 { margin:0 0 8px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
+.changed h3::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+.changed ul { list-style:none; margin:0; padding:0; }
+.changed li { display:grid; grid-template-columns:84px 1fr; gap:12px; padding:8px 0; border-bottom:1px solid var(--rule2); font-size:15px; }
+.changed li:last-child { border-bottom:0; }
+.changed .d { color:var(--ink2); padding-top:4px; }
+.delta { color:var(--acc); font-weight:600; }
+
+/* the ledger */
+.ledger { margin:12px 0 0; border-top:2px solid var(--rule); }
+.lhead { display:grid; grid-template-columns:120px 150px minmax(0,1fr) 230px; gap:20px; padding:10px 0; color:var(--ink2); border-bottom:1px solid var(--rule); }
+.row { display:grid; grid-template-columns:120px 150px minmax(0,1fr) 230px; gap:20px; padding:22px 0; border-bottom:1px solid var(--rule2); }
+.row .d { padding-top:6px; color:var(--ink2); }
+.row .pl { font-weight:600; font-size:15px; padding-top:3px; }
+.row h3 { margin:0 0 8px; font-size:22px; line-height:1.25; letter-spacing:-.01em; font-weight:600; }
+.row p { margin:0; color:var(--ink2); font-size:16px; max-width:62ch; }
+@media (max-width:980px){ .lhead { display:none; } .row { grid-template-columns:1fr; gap:10px; } .row .d, .row .pl { padding-top:0; } .doc { max-width:420px; } }
+
+.nums { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px; padding:40px 0 10px; border-bottom:1px solid var(--rule); }
+@media (max-width:760px){ .nums { grid-template-columns:1fr; gap:20px; } }
+.num .n { font-size:clamp(48px,6vw,76px); line-height:1; font-weight:700; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+.num .n span { color:var(--acc); }
+.num p { margin:8px 0 0; color:var(--ink2); max-width:40ch; }
+
+.two { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; padding:40px 0; }
+@media (max-width:860px){ .two { grid-template-columns:1fr; } }
+.two h3 { margin:0 0 12px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
+.two h3::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+.counties { columns:2; column-gap:24px; margin:0; padding:0; list-style:none; font-size:15px; }
+.counties li { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px dotted var(--rule2); break-inside:avoid; }
+.counties li a { color:var(--ink); text-decoration:none; } .counties li a:hover { color:var(--acc); }
+.counties li .c { color:var(--ink2); }
+.arch { list-style:none; margin:0; padding:0; }
+.arch li { display:grid; grid-template-columns:56px 1fr 60px; gap:12px; padding:8px 0; border-bottom:1px dotted var(--rule2); font-size:15px; }
+.arch a { color:var(--ink); text-decoration:none; } .arch a:hover { color:var(--acc); }
+.arch .c { color:var(--ink2); text-align:right; }
+
+.close { padding:8px 0 40px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:center; }
+@media (max-width:860px){ .close { grid-template-columns:1fr; gap:16px; } }
+.close h3 { margin:0 0 6px; font-size:24px; font-weight:600; letter-spacing:-.01em; }
+.close p { margin:0; color:var(--ink2); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
+    <nav class="tools"><a href="#ledger" aria-current="location">This week</a><a href="#counties">By county</a><a href="archive.html">Archive</a><a class="sub-btn" href="#subscribe">Subscribe</a></nav>
+  </header>
+  <div class="strip mono">
+    <div><div class="k">ISSUE</div><div class="v">№ 12</div></div>
+    <div><div class="k">WEEK OF</div><div class="v">Oct 5, 2026</div></div>
+    <div><div class="k">RECORDS CITED</div><div class="v">4 documents</div></div>
+    <div><div class="k">READ TIME</div><div class="v">4 min</div></div>
+  </div>
+
+  <section class="lead">
+    <div>
+      <h2>Aroostook stops looking for a jail site, the sanctions rule stands, and the first jail-funding increase in six years.</h2>
+      <p>Four items this week. Each row below is one entry in the record: where it happened, what the document says, and the document itself.</p>
+    </div>
+    <aside class="changed">
+      <h3>What changed since № 11</h3>
+      <ul>
+        <li><span class="d mono">LD 1962</span><span>Pending → <span class="delta">Enacted</span></span></li>
+        <li><span class="d mono">JAIL $</span><span>No increase since 2021 → <span class="delta">+$4M for 2027</span></span></li>
+        <li><span class="d mono">AROOSTOOK</span><span>Site search open → <span class="delta">Closed</span></span></li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="ledger" id="ledger">
+    <div class="lhead mono"><span>DATE</span><span>PLACE</span><span>ENTRY</span><span>RECORD</span></div>
+    <article class="row">
+      <span class="d mono">OCT 01</span><span class="pl">Aroostook County</span>
+      <div><h3>County closes its site search for a new jail</h3><p>Commissioners have ended the search for a site to replace the county jail. Construction estimates run $85 to 120 million, and a bond question could go to voters next year. The county has not yet published a preferred-site recommendation.</p></div>
+      <div class="doc"><div class="t mono">MINUTES · PDF</div><a href="#">Aroostook County Commissioners, regular meeting</a><div class="pg mono">OCT 01 2026 · P. 3, ITEM 7</div></div>
+    </article>
+    <article class="row">
+      <span class="d mono">SEP 30</span><span class="pl">Statewide</span>
+      <div><h3>Corrections keeps rule allowing sanctions before a hearing ends</h3><p>The Department of Corrections has retained a disciplinary rule that permits sanctions to be imposed before a disciplinary hearing concludes — or after a finding of not guilty. The rule stands as adopted; the department has not announced a revision.</p></div>
+      <div class="doc"><div class="t mono">RULE · ADOPTED</div><a href="#">MDOC rulemaking record, prisoner discipline</a><div class="pg mono">SEP 30 2026</div></div>
+    </article>
+    <article class="row">
+      <span class="d mono">OCT 02</span><span class="pl">State House</span>
+      <div><h3>LD 1962, on access to facilities, is now law</h3><p>The bill addresses legislator access to correctional facilities and vacancies on county Boards of Visitors. It has been enacted and signed. The Boards, required by statute, have carried unfilled seats in several counties.</p></div>
+      <div class="doc"><div class="t mono">STATUTE · ENACTED</div><a href="#">LD 1962, as enacted</a><div class="pg mono">OCT 02 2026 · 132ND LEGISLATURE</div></div>
+    </article>
+    <article class="row">
+      <span class="d mono">OCT 01</span><span class="pl">Counties</span>
+      <div><h3>Jails to get $4 million more in state funding for 2027</h3><p>County jails will receive an additional $4 million in state support for 2027. It is the first increase in the state’s share since 2021, over which period counties have carried rising costs through property taxes.</p></div>
+      <div class="doc"><div class="t mono">BUDGET · ENACTED</div><a href="#">Enacted budget language, county jail operations</a><div class="pg mono">OCT 01 2026</div></div>
+    </article>
+  </section>
+
+  <section class="nums" aria-label="By the numbers">
+    <div class="num"><div class="n">2,100</div><p>people in state prisons on an average day in August. Source: MDOC monthly report.</p></div>
+    <div class="num"><div class="n"><span>215</span></div><p>of them women. Same report, same month.</p></div>
+  </section>
+
+  <section class="two" id="counties">
+    <div>
+      <h3>By county <span class="mono" style="font-weight:400;color:var(--ink2)">ENTRIES THIS YEAR</span></h3>
+      <ul class="counties">
+        <li><a href="#">Androscoggin</a><span class="c mono">6</span></li><li><a href="#">Aroostook</a><span class="c mono">9</span></li><li><a href="#">Cumberland</a><span class="c mono">14</span></li><li><a href="#">Franklin</a><span class="c mono">2</span></li><li><a href="#">Hancock</a><span class="c mono">3</span></li><li><a href="#">Kennebec</a><span class="c mono">11</span></li><li><a href="#">Knox</a><span class="c mono">4</span></li><li><a href="#">Lincoln</a><span class="c mono">1</span></li><li><a href="#">Oxford</a><span class="c mono">3</span></li><li><a href="#">Penobscot</a><span class="c mono">8</span></li><li><a href="#">Piscataquis</a><span class="c mono">1</span></li><li><a href="#">Sagadahoc</a><span class="c mono">2</span></li><li><a href="#">Somerset</a><span class="c mono">5</span></li><li><a href="#">Waldo</a><span class="c mono">2</span></li><li><a href="#">Washington</a><span class="c mono">3</span></li><li><a href="#">York</a><span class="c mono">7</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Archive <a class="mono" href="archive.html" style="font-weight:400">ALL 12 ISSUES</a></h3>
+      <ul class="arch">
+        <li><span class="mono" style="color:var(--acc)">REPORT</span><a href="petersburg.html">FCC Petersburg: transgender people in federal custody</a><span class="c mono">OCT 6</span></li>
+        <li><span class="mono" style="color:var(--acc)">REPORT</span><a href="story.html">Aroostook County Jail: perfect scores, unsafe building</a><span class="c mono">OCT 6</span></li>
+        <li><span class="mono" style="color:var(--ink2)">№ 11</span><a href="archive.html">Board of Visitors vacancies, counted by county</a><span class="c mono">SEP 28</span></li>
+        <li><span class="mono" style="color:var(--ink2)">№ 10</span><a href="archive.html">What the jails spent, 2021–2025</a><span class="c mono">SEP 21</span></li>
+        <li><span class="mono" style="color:var(--ink2)">№ 9</span><a href="archive.html">Court backlog figures, by region</a><span class="c mono">SEP 14</span></li>
+        <li><span class="mono" style="color:var(--ink2)">№ 8</span><a href="archive.html">Per-diem rates and boarding between counties</a><span class="c mono">SEP 7</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="close" id="subscribe">
+    <div><h3>One brief, once a week</h3><p>Four to six entries, each with its document. No commentary, no asks, no fundraising. Mondays by email; archived here the same day.</p></div>
+    <form class="form" name="subscribe" method="POST" action="thanks.html" data-netlify="true" netlify-honeypot="company"><input type="hidden" name="form-name" value="subscribe" /><p style="display:none"><label>Company <input name="company" /></label></p><input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="Email address" /><button type="submit" class="sub-btn">Subscribe</button></form>
+  </section>
+
+  <footer>
+    <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
+    <p>Corrections run at the top of the next issue, set at the same size as the error. Write <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>.</p>
+    <p>Send records or tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>. Documents are preferred over characterizations.</p>
+    <p><a href="#">Unsubscribe</a> · <a href="archive.html">Archive</a> · <a href="identity.html">About the mark</a></p>
+  </footer>
+</div>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body>
+</html>

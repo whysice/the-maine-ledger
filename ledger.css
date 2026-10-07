@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Maine Ledger — shared tokens and base. Option A accent: moss. */
+:root { --paper:#f6f4ee; --card:#fffdf8; --ink:#161513; --ink2:#5a574f; --rule:#161513; --rule2:rgba(22,21,19,.18); --acc:#2e5a3c; --acc-soft:#e3ebe3; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Spectral, Georgia, serif; font-size:17px; line-height:1.55; text-wrap:pretty; -webkit-font-smoothing:antialiased; }
+a { color:var(--acc); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
+a:hover { color:var(--ink); }
+:focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
+.mono { font-family:"JetBrains Mono", monospace; font-size:12px; letter-spacing:.02em; }
+.wrap { max-width:1180px; margin:0 auto; padding:0 clamp(18px,4vw,56px); }
+.sub-btn { background:var(--ink); color:var(--paper); padding:9px 14px; border-radius:2px; text-decoration:none; font:inherit; font-size:14px; border:0; cursor:pointer; white-space:nowrap; }
+.sub-btn:hover { background:var(--acc); color:var(--paper); }
+.tools .sub-btn, .tools .sub-btn:hover, a.sub-btn, a.sub-btn:hover { color:var(--paper); text-decoration:none; }
+.form { display:flex; gap:8px; max-width:460px; }
+.form input { flex:1; min-width:0; height:40px; border:1px solid var(--rule2); border-radius:2px; background:#fff; padding:0 12px; font:inherit; font-size:15px; }
+.form input::placeholder { color:var(--ink2); }
+.form .sub-btn { height:40px; }
+.doc { border:1px solid var(--rule2); border-radius:2px; padding:12px 14px; background:var(--card); font-size:14px; line-height:1.4; align-self:start; }
+.doc .t { color:var(--ink2); margin-bottom:6px; }
+.doc a { display:block; font-weight:600; text-decoration:none; color:var(--ink); }
+.doc a:hover { color:var(--acc); }
+.doc .pg { margin-top:6px; color:var(--ink2); }
+footer { border-top:2px solid var(--rule); padding:24px 0 48px; font-size:14px; color:var(--ink2); }
+footer p { margin:0 0 6px; max-width:80ch; }
+footer a { color:var(--ink2); }

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Maine Ledger print edition: Aroostook County Jail report." />
+<meta name="theme-color" content="#161513" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Maine Ledger" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Maine Ledger — print: Aroostook County Jail</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+doc-page:not(:defined){visibility:hidden}
+/* One-page print digest of the Aroostook report. US Letter, one ink. Body Times New Roman 11pt black. */
+.page { font-family:"Times New Roman", Times, serif; font-size:11pt; line-height:14pt; color:#000; background:#fff;
+  padding:0.5in 0.6in 0.45in; box-sizing:border-box; display:flex; flex-direction:column; }
+.page p { font-size:11pt; line-height:14pt; color:#000; margin:0 0 6pt; }
+.mono { font-family:"JetBrains Mono", monospace; font-size:7.5pt; letter-spacing:.04em; }
+.top { border-bottom:2pt solid #000; padding-bottom:6pt; display:flex; justify-content:space-between; align-items:flex-end; gap:12pt; }
+.name { font-family:Spectral, serif; font-weight:700; font-size:22pt; line-height:20pt; letter-spacing:-.02em; margin:0; }
+.name small { display:block; font-family:"Times New Roman", serif; font-weight:400; font-style:italic; font-size:9.5pt; letter-spacing:0; margin-top:3pt; }
+.top .mono { text-align:right; line-height:10.5pt; }
+.hed { padding:10pt 0 8pt; border-bottom:0.75pt solid #000; }
+.hed h1 { font-family:Spectral, serif; font-weight:700; font-size:24pt; line-height:25pt; letter-spacing:-.02em; margin:0 0 6pt; }
+.hed .dek { font-style:italic; font-size:11pt; line-height:14pt; margin:0; }
+.cols { display:grid; grid-template-columns:1fr 1fr 1fr; column-gap:0.25in; margin-top:8pt; flex:1; min-height:0; overflow:hidden; }
+.col p { text-align:justify; hyphens:auto; }
+.col p.first::first-letter { float:left; font-family:Spectral, serif; font-size:31pt; line-height:24pt; padding:2pt 4pt 0 0; font-weight:700; }
+h2 { font-family:Spectral, serif; font-size:11.5pt; line-height:13pt; font-weight:600; margin:8pt 0 3pt; letter-spacing:-.01em; display:flex; gap:6pt; align-items:baseline; }
+h2 .mono { font-weight:400; color:#444; }
+.q { border-left:1.5pt solid #000; padding-left:7pt; margin:5pt 0 7pt; font-size:10.5pt; line-height:13pt; }
+.q small { display:block; font-size:8.5pt; font-style:italic; margin-top:2pt; }
+.tbl { width:100%; border-collapse:collapse; font-size:9pt; line-height:11pt; margin:4pt 0 8pt; border-top:1pt solid #000; }
+.tbl caption { text-align:left; padding:0 0 3pt; color:#444; }
+.tbl th { text-align:left; font-weight:400; color:#444; padding:3pt 4pt 3pt 0; border-bottom:0.5pt solid #000; }
+.tbl td { padding:3pt 4pt 3pt 0; border-bottom:0.5pt solid #999; vertical-align:top; }
+.tbl .r { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.tbl .pick td { background:#eee; }
+.facts { border-top:1.5pt solid #000; margin:6pt 0 8pt; font-size:9.5pt; }
+.facts div { display:flex; justify-content:space-between; gap:6pt; padding:3pt 0; border-bottom:0.5pt solid #999; }
+.facts b { font-weight:700; text-align:right; white-space:nowrap; }
+.open { font-size:9.5pt; line-height:11.5pt; }
+.open li { margin:0 0 3pt; }
+.open ul { margin:0; padding-left:10pt; }
+.foot { font-size:8.5pt; line-height:11pt; padding-top:5pt; border-top:2pt solid #000; margin-top:8pt; display:grid; grid-template-columns:1fr 1fr; gap:0.25in; }
+.foot p { font-size:8.5pt; line-height:11pt; margin:0; }
+.foot { grid-template-columns:1fr; }
+</style>
+</head>
+<body>
+<doc-page>
+  <section class="page" id="p1" data-screen-label="Print · Aroostook report">
+    <div class="top">
+      <h1 class="name">Maine Ledger<small>Jails, prisons and courts, by the record.</small></h1>
+      <p class="mono">SPECIAL REPORT · PRINT<br />OCT 06 2026 · AUGUSTA<br />maineledger.org/aroostook</p>
+    </div>
+    <div class="hed">
+      <h1>Aroostook County Jail: perfect scores, unsafe building</h1>
+      <p class="dek">Five straight 100 percent state inspections. No fire suppression. A capacity that rose as the jail filled, a deficit that tripled, a death the record barely notes, and a design firm the county’s own interview team did not pick.</p>
+    </div>
+
+    <div class="cols">
+      <div class="col">
+        <p class="first">The Aroostook County Jail has scored 100 percent on five straight state inspections. In 2024, federal consultants walked the same building in Houlton and found it has no fire suppression system and no way to clear smoke.</p>
+        <p>Both findings are on the public record. A perfect score, the consultants wrote, “is not atypical when establishing minimum standards and working with agencies to find operational means to overcome physical plant deficiencies.”</p>
+        <h2><span class="mono">01</span>Perfect scores, unsafe building</h2>
+        <p>The NIC consultants, July 2024: “numerous fire and life safety issues that simply cannot be addressed … in a building of this vintage.” The exam room is “woefully too small”; visitation is not ADA accessible. They did not fault the staff. “To expect a jail … to function for 50 years, let alone 135 years is unrealistic.”</p>
+        <h2><span class="mono">02</span>A capacity number that kept moving</h2>
+        <p>Rated capacity nearly doubled since 1991; the building did not. After a 2013 overcrowding citation, the number rose from 72 to 123. The NIC put functional capacity at 94.</p>
+      </div>
+      <div class="col">
+        <h2><span class="mono">03</span>A death the record barely notes</h2>
+        <p>The MDOC 2021 Report on Jails lists a death review for “Aroostook County Jail,” dated 05/25/21. That is all it says. Searches of five Maine news outlets found no story. The review has not been published.</p>
+        <h2><span class="mono">04</span>Where the jail sits</h2>
+        <p>Houlton is an hour from Presque Isle; consultants found northern arrests “regularly not made” to avoid the trip. In 2024 a justice found “no rostered attorneys available” in the county.</p>
+        <h2><span class="mono">05</span>The price tag and the design firm</h2>
+        <p>Estimates run $85 to $120 million. The interview team polled 9–0 for WBRC. Thirteen days later, commissioners hired SMRT, citing “lower pre-referendum costs.” Eight sites were offered; a bond vote could come in 2027.</p>
+        <table class="tbl">
+          <caption class="mono">DESIGN PROPOSAL SCORING · OUT OF 500</caption>
+          <tbody>
+            <tr><td>WBRC + STV + CGL</td><td class="r">405</td></tr>
+            <tr class="pick"><td>SMRT — hired</td><td class="r">400</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <h2><span class="mono">06</span>A growing deficit</h2>
+        <p>The jail fund has ended in the red in six of seven audited years. The auditor did not audit the Inmate Benefit Fund for five years.</p>
+        <table class="tbl">
+          <caption class="mono">JAIL FUND BALANCE · FY ENDING JUNE 30</caption>
+          <tbody>
+            <tr><td>2023</td><td class="r">($152,682)</td></tr>
+            <tr><td>2024</td><td class="r">($270,961)</td></tr>
+            <tr><td>2025</td><td class="r">($590,134)</td></tr>
+          </tbody>
+        </table>
+        <div class="open">
+          <h2 style="margin-top:6pt"><span class="mono">—</span>What remains open</h2>
+          <ul>
+            <li>The 2021 death: name, cause and findings.</li>
+            <li>No published PREA audit was found.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question. Corrections run at the top of the next issue, at the same size as the error: whysice937@gmail.com · Records and tips: whysice937@gmail.com · Full report, 39 sources: maineledger.org/aroostook</p>
+    </div>
+  </section>
+</doc-page>
+<script src="doc-page.js"></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body>
+</html>

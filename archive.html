@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Every issue of Maine Ledger, as sent." />
+<meta name="theme-color" content="#161513" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Maine Ledger" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Maine Ledger — archive</title>
+<link rel="stylesheet" href="ledger.css" />
+<style>
+.top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+.name { font-weight:700; font-size:34px; line-height:.95; letter-spacing:-.02em; margin:0; color:var(--ink); text-decoration:none; display:block; }
+.name small { display:block; white-space:nowrap; font-weight:400; font-style:italic; font-size:15px; letter-spacing:0; margin-top:8px; color:var(--ink2); }
+.tools { display:flex; gap:22px; align-items:center; }
+.tools a { color:var(--ink); text-decoration:none; font-size:15px; }
+.tools a:hover, .tools a[aria-current] { text-decoration:underline; }
+@media (max-width:560px){ .tools a:not(.sub-btn) { display:none; } }
+
+.head { padding:40px 0 24px; display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:40px; align-items:end; }
+@media (max-width:860px){ .head { grid-template-columns:1fr; gap:20px; } }
+.head h1 { font-size:clamp(30px,3.6vw,44px); line-height:1.08; letter-spacing:-.02em; margin:0 0 10px; font-weight:600; }
+.head p { margin:0; color:var(--ink2); max-width:58ch; }
+.tot { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--rule2); border-radius:2px; background:var(--card); }
+.tot div { padding:12px 14px; } .tot div + div { border-left:1px solid var(--rule2); }
+.tot .k { color:var(--ink2); } .tot .v { font-weight:600; font-size:15px; margin-top:2px; }
+
+.ledger { border-top:2px solid var(--rule); }
+.lhead { display:grid; grid-template-columns:72px 110px minmax(0,1fr) 140px; gap:20px; padding:10px 0; color:var(--ink2); border-bottom:1px solid var(--rule); }
+.row { display:grid; grid-template-columns:72px 110px minmax(0,1fr) 140px; gap:20px; padding:14px 0; border-bottom:1px solid var(--rule2); align-items:baseline; }
+.row:hover { background:linear-gradient(90deg, transparent, var(--acc-soft) 50%, transparent); }
+.row .no { font-weight:600; }
+.row .d { color:var(--ink2); }
+.row a { color:var(--ink); text-decoration:none; font-size:18px; }
+.row a:hover { color:var(--acc); text-decoration:underline; }
+.row .c { color:var(--ink2); text-align:right; }
+.row .cur { color:var(--acc); }
+@media (max-width:760px){ .lhead { display:none; } .row { grid-template-columns:72px minmax(0,1fr); row-gap:4px; } .row .c { grid-column:2; text-align:left; } }
+.yr { padding:28px 0 6px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
+.yr::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
+    <nav class="tools"><a href="index.html">This week</a><a href="index.html#counties">By county</a><a href="archive.html" aria-current="page">Archive</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav>
+  </header>
+
+  <section class="head">
+    <div>
+      <h1>The archive: every issue, as sent.</h1>
+      <p>Issues are not edited after publication. Corrections run in the following issue and are noted on the original entry.</p>
+    </div>
+    <div class="tot mono">
+      <div><div class="k">ISSUES</div><div class="v">12</div></div>
+      <div><div class="k">RECORDS CITED</div><div class="v">61 documents</div></div>
+    </div>
+  </section>
+
+  <div class="yr">2026</div>
+  <section class="ledger">
+    <div class="lhead mono"><span>№</span><span>DATE</span><span>ISSUE</span><span>RECORDS</span></div>
+    <article class="row"><span class="no mono" style="color:var(--acc)">RPT</span><span class="d mono">OCT 06</span><a href="petersburg.html">FCC Petersburg: transgender people in federal custody</a><span class="c mono">42 DOCS</span></article>
+    <article class="row"><span class="no mono" style="color:var(--acc)">RPT</span><span class="d mono">OCT 06</span><a href="story.html">Aroostook County Jail: perfect scores, unsafe building</a><span class="c mono">39 DOCS</span></article>
+    <article class="row"><span class="no mono">12</span><span class="d mono">OCT 05</span><a href="email.html">A new jail in Aroostook; sanctions rule stands; LD 1962 enacted <span class="cur mono">· LATEST</span></a><span class="c mono">4 DOCS</span></article>
+    <article class="row"><span class="no mono">11</span><span class="d mono">SEP 28</span><a href="#">Board of Visitors vacancies, counted by county</a><span class="c mono">16 DOCS</span></article>
+    <article class="row"><span class="no mono">10</span><span class="d mono">SEP 21</span><a href="#">What the jails spent, 2021–2025</a><span class="c mono">5 DOCS</span></article>
+    <article class="row"><span class="no mono">09</span><span class="d mono">SEP 14</span><a href="#">Court backlog figures, by region</a><span class="c mono">3 DOCS</span></article>
+    <article class="row"><span class="no mono">08</span><span class="d mono">SEP 07</span><a href="#">Per-diem rates and boarding between counties</a><span class="c mono">6 DOCS</span></article>
+    <article class="row"><span class="no mono">07</span><span class="d mono">AUG 31</span><a href="#">August prison population, by facility</a><span class="c mono">1 DOC</span></article>
+    <article class="row"><span class="no mono">06</span><span class="d mono">AUG 24</span><a href="#">Medical contracts up for renewal this fall</a><span class="c mono">7 DOCS</span></article>
+    <article class="row"><span class="no mono">05</span><span class="d mono">AUG 17</span><a href="#">Who inspects the jails, and how often</a><span class="c mono">4 DOCS</span></article>
+    <article class="row"><span class="no mono">04</span><span class="d mono">AUG 10</span><a href="#">Bail figures from four county courts</a><span class="c mono">4 DOCS</span></article>
+    <article class="row"><span class="no mono">03</span><span class="d mono">AUG 03</span><a href="#">Staffing vacancies, posted versus filled</a><span class="c mono">5 DOCS</span></article>
+    <article class="row"><span class="no mono">02</span><span class="d mono">JUL 27</span><a href="#">The July population report, annotated</a><span class="c mono">1 DOC</span></article>
+    <article class="row"><span class="no mono">01</span><span class="d mono">JUL 20</span><a href="#">What this brief is, and what it will not be</a><span class="c mono">—</span></article>
+  </section>
+
+  <footer>
+    <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
+    <p>Corrections: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a> · Records and tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a> · <a href="#">Unsubscribe</a></p>
+  </footer>
+</div>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body>
+</html>

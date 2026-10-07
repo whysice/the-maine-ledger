@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="FCC Petersburg: 61 transgender people counted in 2023, one documented death in 2015, three deaths in six weeks this spring, and a care policy that has been rewritten, blocked and rewritten again." />
+<meta name="theme-color" content="#161513" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Maine Ledger" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>FCC Petersburg: Transgender People in Federal Custody — Maine Ledger</title>
+<link rel="stylesheet" href="ledger.css" />
+<style>
+.top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+.name { font-weight:700; font-size:34px; line-height:.95; letter-spacing:-.02em; margin:0; color:var(--ink); text-decoration:none; display:block; }
+.name small { display:block; white-space:nowrap; font-weight:400; font-style:italic; font-size:15px; letter-spacing:0; margin-top:8px; color:var(--ink2); }
+.tools { display:flex; gap:22px; align-items:center; }
+.tools a { color:var(--ink); text-decoration:none; font-size:15px; }
+.tools a:hover, .tools a[aria-current] { text-decoration:underline; }
+@media (max-width:560px){ .tools a:not(.sub-btn) { display:none; } }
+
+.strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule); }
+.strip > div { padding:12px 16px 12px 0; border-right:1px solid var(--rule2); }
+.strip > div + div { padding-left:16px; }
+.strip > div:last-child { border-right:0; }
+.strip .k { color:var(--ink2); }
+.strip .v { font-weight:600; font-size:15px; margin-top:2px; font-family:Spectral,Georgia,serif; letter-spacing:0; }
+@media (max-width:760px){ .strip { grid-template-columns:1fr 1fr; } .strip > div:nth-child(2){border-right:0} .strip > div:nth-child(3){padding-left:0;border-top:1px solid var(--rule2)} .strip > div:nth-child(4){border-top:1px solid var(--rule2)} }
+
+.story { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:56px; padding:40px 0 48px; }
+@media (max-width:980px){ .story { grid-template-columns:1fr; gap:32px; } .rail { position:static; order:-1; } .rail .doc, .rail h4:nth-of-type(2), .facts { display:none; } .toc { margin-bottom:0; } }
+.rail { position:sticky; top:24px; align-self:start; }
+.rail h4 { margin:0 0 8px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
+.rail h4::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+.toc { list-style:none; margin:0 0 28px; padding:0; font-size:14.5px; }
+.toc li { border-bottom:1px solid var(--rule2); }
+.toc a { display:flex; gap:10px; padding:7px 0; color:var(--ink); text-decoration:none; }
+.toc a:hover { color:var(--acc); }
+.toc .n { color:var(--ink2); min-width:2ch; }
+.rail .doc { margin-bottom:10px; }
+.rail .doc a { font-size:13.5px; }
+.facts { border-top:2px solid var(--rule); margin-top:28px; }
+.facts div { display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid var(--rule2); font-size:14px; }
+.facts b { font-weight:600; text-align:right; font-variant-numeric:tabular-nums; }
+.facts b.acc { color:var(--acc); }
+
+.hed h1 { font-size:clamp(32px,4.4vw,56px); line-height:1.05; letter-spacing:-.025em; margin:0 0 18px; font-weight:700; max-width:22ch; }
+.hed .dek { font-size:clamp(18px,1.8vw,22px); line-height:1.4; color:var(--ink2); margin:0 0 22px; max-width:60ch; font-style:italic; }
+.hed .meta { display:flex; gap:14px; flex-wrap:wrap; color:var(--ink2); padding-bottom:22px; border-bottom:1px solid var(--rule); }
+.hed .meta b { color:var(--ink); font-weight:500; }
+
+.body { max-width:68ch; }
+.body > p { margin:0 0 1.1em; font-size:17.5px; line-height:1.6; }
+.body > p:first-of-type::first-letter { float:left; font-size:3.9em; line-height:.78; padding:7px 10px 0 0; font-weight:700; }
+.body h2 { font-size:clamp(23px,2.4vw,30px); line-height:1.15; letter-spacing:-.015em; margin:44px 0 14px; font-weight:600; display:flex; gap:14px; align-items:baseline; scroll-margin-top:24px; }
+.body h2 .n { font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:400; color:var(--acc); letter-spacing:.04em; }
+.body h3 { font-size:17.5px; margin:28px 0 8px; font-weight:600; }
+.body ul, .body ol { margin:0 0 1.1em; padding-left:1.3em; font-size:17px; line-height:1.55; }
+.body li { margin-bottom:.45em; }
+.body li b { font-weight:600; }
+.body p b { font-weight:600; }
+.body blockquote { margin:24px 0; padding:0 0 0 20px; border-left:2px solid var(--acc); font-size:19px; line-height:1.45; }
+.body blockquote footer { border:0; padding:6px 0 0; font-size:13px; color:var(--ink2); }
+.body a { color:var(--ink); text-decoration-color:var(--rule2); }
+.body a:hover { color:var(--acc); text-decoration-color:var(--acc); }
+.body .note { font-style:italic; color:var(--ink2); border-top:1px solid var(--rule2); border-bottom:1px solid var(--rule2); padding:12px 0; font-size:16px; }
+
+.tbl { width:100%; border-collapse:collapse; margin:20px 0 28px; font-size:15px; line-height:1.4; border-top:2px solid var(--rule); }
+.tbl caption { text-align:left; padding:0 0 8px; color:var(--ink2); }
+.tbl th { text-align:left; font-weight:500; color:var(--ink2); padding:8px 12px 8px 0; border-bottom:1px solid var(--rule); vertical-align:bottom; }
+.tbl td { padding:9px 12px 9px 0; border-bottom:1px solid var(--rule2); vertical-align:top; }
+.tbl th:last-child, .tbl td:last-child { padding-right:0; }
+.tbl .r { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.tbl .nw { white-space:nowrap; }
+.tbl .neg { color:var(--acc); }
+.tbl .pick { background:var(--acc-soft); }
+.tbl td a { text-decoration:none; }
+.tbl td a::after { content:" ↗"; font-size:12px; color:var(--ink2); }
+.tbl-wrap { overflow-x:auto; }
+.tbl.wide { min-width:560px; }
+
+.sources { border-top:2px solid var(--rule); padding:32px 0 8px; }
+.sources h2 { font-size:15px; font-weight:600; margin:0 0 20px; display:flex; gap:10px; align-items:center; }
+.sources h2::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+.sources .intro { color:var(--ink2); max-width:68ch; margin:0 0 24px; font-size:16px; }
+.sgrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 48px; }
+@media (max-width:860px){ .sgrid { grid-template-columns:1fr; } }
+.sgrid h3 { margin:0 0 8px; font-size:15px; font-weight:600; }
+.sgrid ul { list-style:none; margin:0; padding:0; font-size:14.5px; line-height:1.45; }
+.sgrid li { padding:7px 0; border-bottom:1px solid var(--rule2); display:grid; grid-template-columns:1fr; gap:2px; }
+.sgrid li a { color:var(--ink); text-decoration:none; }
+.sgrid li a:hover { color:var(--acc); text-decoration:underline; }
+.sgrid li .mono { color:var(--ink2); }
+.sgrid .ck { color:var(--acc); }
+.open { border-top:2px solid var(--rule); margin-top:40px; }
+.open h2 { margin:0; }
+.open ul { list-style:none; padding:0; margin:12px 0 0; font-size:16px; }
+.open li { display:grid; grid-template-columns:150px 1fr; gap:16px; padding:10px 0; border-bottom:1px solid var(--rule2); }
+.open li .mono { color:var(--ink2); padding-top:4px; }
+@media (max-width:600px){ .open li { grid-template-columns:1fr; gap:4px; } }
+
+.listen { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:14px 0; border-bottom:1px solid var(--rule); position:relative; }
+.listen button, .listen select { white-space:nowrap; text-wrap:initial; font:inherit; font-size:14px; padding:7px 14px; border:1px solid var(--ink); border-radius:2px; background:transparent; color:var(--ink); cursor:pointer; }
+.listen button:hover { background:var(--ink); color:var(--paper,#f5f1e8); }
+.listen button[data-play] { background:var(--acc); border-color:var(--acc); color:#fff; }
+.listen button[data-play]:hover { background:var(--ink); border-color:var(--ink); }
+.listen button:disabled { opacity:.4; cursor:default; }
+.listen select { padding:7px 10px; border-color:var(--rule); color:var(--ink2); background:transparent; }
+.listen .st { color:var(--ink2); margin-left:auto; }
+.listen .pb { position:absolute; left:0; bottom:-1px; height:2px; background:var(--acc); width:0; transition:width .3s; }
+.summary { border:1px solid var(--rule); border-left:3px solid var(--acc); padding:18px 22px; margin:20px 0 8px; max-width:68ch; }
+.summary h3 { margin:0 0 10px; font-size:15px; font-weight:600; display:flex; align-items:center; gap:12px; }
+.summary h3 button { white-space:nowrap; text-wrap:initial; margin-left:auto; font:inherit; font-size:13px; padding:4px 12px; border:1px solid var(--ink); border-radius:2px; background:transparent; cursor:pointer; color:var(--ink); }
+.summary h3 button:hover { background:var(--ink); color:var(--paper,#f5f1e8); }
+.summary ul { margin:0; padding-left:1.15em; font-size:16px; line-height:1.5; }
+.summary li { margin-bottom:.4em; }
+.summary p.note { margin:12px 0 0; font-size:13px; color:var(--ink2); font-style:italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
+    <nav class="tools"><a href="index.html">This week</a><a href="index.html#counties">By county</a><a href="archive.html">Archive</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav>
+  </header>
+  <div class="strip mono">
+    <div><div class="k">ENTRY</div><div class="v">Special report · Federal</div></div>
+    <div><div class="k">PLACE</div><div class="v">Petersburg, Virginia</div></div>
+    <div><div class="k">RECORDS CITED</div><div class="v">42 documents</div></div>
+    <div><div class="k">PUBLISHED</div><div class="v">Oct 6, 2026</div></div>
+  </div>
+
+  <div class="story">
+    <main>
+      <header class="hed">
+        <h1>FCC Petersburg: transgender people in federal custody</h1>
+        <p class="dek">Sixty-one people counted in 2023. One documented death, in 2015, after she sued over her care. Three deaths in six weeks this spring, inspectors kept out of the housing units, and a policy that has been rewritten, blocked and rewritten again.</p>
+        <p class="meta mono"><span>PUBLISHED <b>OCT 06 2026</b></span><span>BY <b>SAMANTHA CLAYTON</b></span><span>READ <b>16 MIN</b></span><span>SOURCES <b>42</b></span></p>
+        <div class="listen">
+          <button type="button" data-play>Listen</button>
+          <button type="button" data-stop hidden>Stop</button>
+          <button type="button" data-sum aria-expanded="false" aria-controls="summary">Summary</button>
+          <select data-rate aria-label="Reading speed"><option value="0.9">0.9×</option><option value="1" selected>1×</option><option value="1.2">1.2×</option><option value="1.5">1.5×</option></select>
+          <span class="st mono" data-status>16 MIN · READ BY YOUR DEVICE</span>
+          <div class="pb" data-bar></div>
+        </div>
+      </header>
+
+      <section class="summary" id="summary" hidden>
+        <h3>In brief <span class="mono" style="font-weight:400;color:var(--ink2)">EDITOR'S SUMMARY</span><button type="button" data-sum-play>Listen</button></h3>
+        <ul><li>Sixty-one of 2,360 people at FCC Petersburg identified as transgender or intersex at the last audit, in October 2023. No newer count is public.</li><li>One documented death of a transgender woman, Ashley Jean Arnold, in 2015, two months after a judge ruled against her lawsuit over medical care.</li><li>Three deaths were announced in six weeks in May and June 2026; the bureau gives no cause and does not record gender identity in death notices.</li><li>A 2021 death sent two lieutenants and a nurse to prison for failing to get a man medical care over 30 hours.</li><li>Care for transgender people in federal custody has been cancelled, ordered restored, rewritten and blocked again since January 2025; the government asked the Supreme Court for a stay on Sept. 28, 2026.</li><li>Outside inspectors were refused entry to housing units in 2021. The bureau announced in July 2026 it would close the Low.</li></ul>
+        <p class="note">Written by the editor from the records cited below, not generated by software. The full report has the sources for every line.</p>
+      </section>
+
+      <div class="body">
+        <p>When outside auditors visited the federal prison complex at Petersburg, Virginia in the fall of 2023, 61 of the 2,360 people held there identified as transgender or intersex. In the three years since, the federal government has cancelled the policy that governed their care, a judge has ordered that care to continue, and the Bureau of Prisons has announced it is closing part of the complex.</p>
+        <p>What the public cannot see is how those 61 people, or whoever has replaced them, are faring. A review of Bureau of Prisons releases, court filings, inspection reports and Justice Department records found one documented death of a transgender woman at Petersburg, in 2015, after she sued over her medical care. It found no public data that would show whether there have been others. The bureau does not publish deaths by prison and gender identity, and its death notices give no cause.</p>
+        <p>The same records show three deaths at the complex in just over six weeks this spring, a 2021 death that sent two lieutenants and a nurse to prison, and inspectors who were refused entry to the housing units. Petersburg is not named in any of the national court filings on transgender care reviewed for this story.</p>
+
+        <h2 id="s1"><span class="n">01</span>A complex in the middle of a shutdown</h2>
+        <p>The Federal Correctional Complex at Petersburg sits on River Road in Prince George County, between Petersburg and Hopewell. It holds men in a medium security prison, a low security prison and a minimum security camp. The oldest part dates to 1932, according to the <a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/page_content/attachments/FCC%20Petersburg%20Report%209.9.22.pdf">DC Corrections Information Council</a>, which monitors District of Columbia residents held in federal prisons.</p>
+        <p>On July 1, 2026 the Bureau of Prisons <a href="https://www.bop.gov/news/pdfs/20260701_pr_facility_closures.pdf">announced</a> it would close six sites, “Petersburg FCI Low” among them, “to address decades of deferred maintenance and extreme staffing challenges.” It put its maintenance backlog at more than $4 billion.</p>
+        <p>“We are a Bureau that acts,” Director William K. Marshall III said in the release. Staff at the Low “will be transferred to other units onsite or nearby.”</p>
+        <p>The release gives no timeline and does not say where the people held at the Low will go. The bureau’s population report dated Oct. 1, 2026 lists 1,629 people at the Medium and 204 at the camp. It has no line for the Low.</p>
+        <p>The union that represents federal prison workers asked Congress to stop the closures. Congress had already provided about $3 billion for personnel and $2 billion for infrastructure, American Federation of Government Employees President Everett Kelley wrote, and “those investments should be used to strengthen the federal prison system, not dismantle it.” He made the case in a <a href="https://www.afge.org/globalassets/documents/generalreports/2026/afge-letter-on-bop-facility-closures-july-2-2026.pdf">July 2 letter</a>.</p>
+
+        <h2 id="s2"><span class="n">02</span>Who is held at the Medium</h2>
+        <p>The Medium is one of the prisons where the bureau runs its Sex Offender Management Program. The bureau’s <a href="https://www.bop.gov/inmates/custody_and_care/sex_offenders.jsp">sex offender page</a> lists it. When DC inspectors visited in 2014, they reported that 48 percent of the people there had been convicted of sex offenses and that it was “one of nine facilities in the country” offering the program.</p>
+        <p>The only public count of transgender people at Petersburg comes from the complex’s most recent audit under the Prison Rape Elimination Act. The <a href="https://www.bop.gov/locations/institutions/pem/pem_prea.pdf">auditor’s final report</a>, submitted Dec. 18, 2023, records 2,360 people at the complex on the first day of the visit, Oct. 31, 2023. Of those, 61 identified as transgender or intersex.</p>
+        <p>For scale: the bureau told a federal court it held 2,198 transgender people across the whole system as of Feb. 20, 2025, <a href="https://www.npr.org/2025/02/21/nx-s1-5305282/trans-inmates-federal-prison-policy-transfers">NPR reported</a>. It later told another judge that 1,028 people in its custody had a gender dysphoria diagnosis and that roughly 628 of them were receiving hormone therapy.</p>
+        <p>No bureau document or court filing found in this review explains why transgender people are placed at Petersburg in particular. The closest comparison is in Arizona. The Marshall Project <a href="https://www.themarshallproject.org/2024/10/09/trans-tucson-federal-prison-assault-prea">reported in October 2024</a> that the federal penitentiary in Tucson, another sex offender program site, held more transgender women than any other federal prison.</p>
+        <p>The bureau council that handled questions about transgender people in custody no longer exists under its old name. A Feb. 21, 2025 bureau memo says, “The Transgender Executive Council has been renamed the Special Populations Oversight Committee (SPOC), and the associated mailbox previously utilized by the transgender population has been taken offline.”</p>
+
+        <h2 id="s3"><span class="n">03</span>One death on the record</h2>
+        <p>Ashley Jean Arnold died at the Medium on Feb. 24, 2015. She was 32. <a href="https://www.prisonlegalnews.org/news/2015/mar/3/transgender-prisoner-denied-adequate-treatment-hangs-herself/">Prison Legal News</a> and <a href="https://www.vice.com/en/article/the-uphill-battle-to-make-prison-safer-for-trans-women/">Vice</a> reported the death as a suicide. No Bureau of Prisons statement on it was found.</p>
+        <p>Arnold had sued prison officials in July 2013 in federal court in Alexandria. The case is Arnold v. Wilson, No. 1:13-cv-900. According to Vice, which reviewed the court file, she asked for treatment in line with the standards of the World Professional Association for Transgender Health. She “was eventually placed on hormones in January 2014 (about six months after the suit was first filed),” Vice reported, and “the process took nearly two years.”</p>
+        <p>On Dec. 23, 2014, U.S. District Judge Leonie M. Brinkema ruled for the government. Prison Legal News reported that she found officials “were not deliberately indifferent to Arnold’s serious medical needs.” Vice quoted the ruling as finding “constitutionally adequate treatment.” Arnold appealed. She died about two months after the ruling.</p>
+        <blockquote>A prison official is not liable “unless the official knows of and disregards an excessive risk to inmate health or safety.”<footer>Farmer v. Brennan, 511 U.S. 825 (1994), a case brought by a transgender woman in federal custody. It supplies the legal test applied in Arnold’s case.</footer></blockquote>
+        <p>After Arnold’s death, two people held with her who had helped with her legal work asked the Justice Department to open a criminal inquiry into what they alleged was harassment and retaliation by staff. One of them, Christopher Zoukis, wrote the Prison Legal News article. Vice wrote that the Justice Department and the Bureau of Prisons “declined to comment.” No public record of what became of the request was found.</p>
+        <p><b>How this compares nationally.</b> The Justice Department’s inspector general reviewed 344 deaths in federal prisons from fiscal 2014 through 2021 and <a href="https://oig.justice.gov/sites/default/files/reports/24-041.pdf">reported in February 2024</a> that “suicides accounted for approximately 54 percent, or 187.” More than half of those who died by suicide, 102 of 187, were housed alone. The report does not break the deaths down by prison and does not mention Petersburg.</p>
+        <p class="note">If you or someone you know is in crisis, call or text 988 to reach the Suicide and Crisis Lifeline.</p>
+
+        <h2 id="s4"><span class="n">04</span>A death that ended in convictions</h2>
+        <p>One Petersburg death has been examined in open court. Nothing in the record suggests the man was transgender. The case matters here because it is the only Petersburg death found in this review in which the government has publicly established what staff did.</p>
+        <p>The man, identified by prosecutors only as W.W., was 47. He “died of injuries he sustained over the course of a 30-hour period spanning Jan. 9 and 10, 2021,” the Justice Department said in a <a href="https://www.justice.gov/opa/pr/one-former-federal-bureau-prisons-official-sentenced-federal-civil-rights-violation-failing">May 2025 release</a>.</p>
+        <table class="tbl">
+          <caption class="mono">THE W.W. CASE, STAFF OUTCOMES</caption>
+          <thead><tr><th>Staff member</th><th>Outcome</th><th>Sentence</th></tr></thead>
+          <tbody>
+            <tr><td class="nw">Lt. Michael Anderson</td><td>Pleaded guilty July 12, 2023 to deprivation of rights</td><td>Three years in prison</td></tr>
+            <tr><td class="nw">Lt. Shronda Covington</td><td>Convicted by a jury Dec. 21, 2024 of deprivation of rights and false statements</td><td>12 months in prison, 12 months of home confinement</td></tr>
+            <tr><td class="nw">Nurse Tonya Farley</td><td>Convicted of false statements</td><td>Six months in prison, six months of home confinement</td></tr>
+            <tr><td class="nw">Officer Yolanda Blackwell</td><td>Acquitted</td><td>None</td></tr>
+          </tbody>
+        </table>
+        <p>Covington “willfully failed to ensure” that the man received medical care “even though she knew that W.W. had serious medical needs,” the department said. The outcomes for <a href="https://oig.justice.gov/news/press-release/federal-bureau-prisons-lieutenant-pleads-guilty-violating-civil-rights-inmate">Anderson</a> and for <a href="https://oig.justice.gov/news/press-release/former-federal-bureau-prisons-employees-convicted-charges-arising-their-failure">Covington, Farley and Blackwell</a> come from the department’s inspector general.</p>
+        <p>Other Petersburg staff have been prosecuted for corruption. A correctional officer was sentenced in 2012 to 12 months for <a href="https://www.justice.gov/archive/usao/vae/news/2012/09/20120913brooksnr.html">conspiring to distribute heroin</a>. Two former officials were sentenced in September 2021, to four years and to 10 months, in a <a href="https://www.oversight.gov/two-former-bureau-prisons-officials-sentenced-bribery-scheme-federal-prison-petersburg">bribery scheme</a>. In June 2026 federal prosecutors in Georgia <a href="https://www.justice.gov/usao-mdga/pr/twelve-indicted-alleged-drone-smuggling-conspiracy-ten-prisons">announced an indictment</a> of 12 people accused of flying contraband into 10 prisons by drone. Petersburg is on the list.</p>
+
+        <h2 id="s5"><span class="n">05</span>The policy fight</h2>
+        <p>Care for transgender people in federal prisons has been rewritten, blocked and rewritten again since January 2025. As of this week it is governed by a court order that the government has asked the Supreme Court to lift.</p>
+        <div class="tbl-wrap"><table class="tbl wide">
+          <caption class="mono">THE RECORD, JAN 2025 TO OCT 2026</caption>
+          <thead><tr><th>Date</th><th>What happened</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td class="nw">Jan. 20, 2025</td><td>Executive Order 14168 directs that “no Federal funds are expended for any medical procedure, treatment, or drug for the purpose of conforming an inmate’s appearance to that of the opposite sex.”</td><td><a href="https://www.govinfo.gov/content/pkg/FR-2025-01-30/pdf/2025-02090.pdf">Federal Register</a></td></tr>
+            <tr><td class="nw">Feb. 21, 2025</td><td>A bureau memo ends clothing accommodations and special pat search arrangements and tells staff to use “legal name or pronouns corresponding to their biological sex.” It says medical care will continue for now because of a court order in another case.</td><td><a href="https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/156821.pdf">Memo</a></td></tr>
+            <tr><td class="nw">Feb. 25, 2025</td><td>The bureau cancels its Transgender Offender Manual, Program Statement 5200.08.</td><td><a href="https://www.prisonlegalnews.org/news/2025/may/1/bop-jettisons-transgender-offender-manual/">Prison Legal News</a></td></tr>
+            <tr><td class="nw">Feb. 28, 2025</td><td>A second memo applies the funding ban to the bureau’s own money.</td><td><a href="https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/156822.pdf">Memo</a></td></tr>
+            <tr><td class="nw">March 7, 2025</td><td>Kingdom v. Trump is filed in federal court in Washington by the ACLU, the ACLU of the District of Columbia and Transgender Law Center.</td><td><a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.278186/gov.uscourts.dcd.278186.68.0.pdf">Court order</a></td></tr>
+            <tr><td class="nw">June 3, 2025</td><td>Judge Royce C. Lamberth certifies a class of everyone in bureau custody with a gender dysphoria diagnosis and orders care to continue.</td><td><a href="https://assets.aclu.org/live/uploads/2025/03/067-Memorandum-Opinion-Granting-Plaintiffs-Motion-for-Class-Certification-and-Motion-for-a-Preliminary-Injunction.pdf">Opinion</a></td></tr>
+            <tr><td class="nw">Dec. 2, 2025</td><td>The Justice Department tells prison rape auditors to “immediately pause” compliance findings on the standards that protect transgender people.</td><td><a href="https://www.npr.org/2025/12/04/nx-s1-5630490/prison-doj-safety-memo-changes-trans-lgbtq-inmates">NPR</a></td></tr>
+            <tr><td class="nw">Feb. 19, 2026</td><td>The bureau issues Program Statement 5260.01. It ends new hormone prescriptions, requires a “tapering plan” for people already on hormones and bars surgery.</td><td><a href="https://www.bop.gov/policy/progstat/5260_001.pdf">Program statement</a></td></tr>
+            <tr><td class="nw">Feb. 19, 2026</td><td>Lamberth issues a protective order, citing “unrebutted evidence that multiple class members have experienced retaliation or threats of retaliation.”</td><td><a href="https://assets.aclu.org/live/uploads/2025/03/2026-02-19-Dkt-124-Order-Granting-Non-Retaliation-Order.pdf">Order</a></td></tr>
+            <tr><td class="nw">June 17, 2026</td><td>Lamberth blocks the new program statement, calling it “a near total ban on gender-affirming care.”</td><td><a href="https://assets.aclu.org/live/uploads/2025/03/2026-06-17-Dkt-216-Memorandum-Order-on-Updated-PI.pdf">Memorandum order</a></td></tr>
+            <tr><td class="nw">Sept. 18, 2026</td><td>The federal appeals court in Washington declines, 2 to 1, to put the injunction on hold.</td><td><a href="https://assets.aclu.org/live/uploads/2025/03/2026-09-18-Kingdom-Ruling-on-Stay.pdf">Order</a></td></tr>
+            <tr class="pick"><td class="nw">Sept. 28, 2026</td><td>The government asks the Supreme Court for a stay. A response is due Oct. 8.</td><td><a href="https://www.supremecourt.gov/docket/docketfiles/html/public/26a416.html">Supreme Court docket</a></td></tr>
+          </tbody>
+        </table></div>
+        <p>Lamberth’s first ruling did not reach the constitutional question. He found the policy likely violated the law that governs how agencies make decisions. “Neither the BOP nor the Executive Order provides any serious explanation as to why the treatment modalities covered by the Executive Order or implementing memoranda should be handled differently than any other mental health intervention,” he wrote.</p>
+        <p>Federal law limits this kind of order in a prison case to 90 days, so the plaintiffs have had to win it again and again. The current order took effect Sept. 15, 2026, which puts its expiration in mid-December unless it is renewed.</p>
+        <p><b>Is the order being followed?</b> In February 2026, <a href="https://www.unclosetedmedia.com/p/we-spoke-to-8-incarcerated-trans">Uncloseted Media reported</a> that the plaintiffs’ lawyers had “confirmed cases of noncompliance at 19 different prisons.” The article names five. Petersburg is not one of them, and the 19 are not listed.</p>
+        <p>Petersburg also does not appear in about 30 filings from the case reviewed for this story, including the complaint, the rulings and the status reports. That is an absence of evidence. It is not a finding that Petersburg is complying.</p>
+        <p><b>The audit gap.</b> Federal rules require each prison to be audited under the Prison Rape Elimination Act at least once every three years. Petersburg’s last report is dated December 2023. Under the Justice Department’s December 2025 instruction, auditors have been told to hold off on ruling whether a prison meets the standards written for transgender people.</p>
+
+        <h2 id="s6"><span class="n">06</span>What outside inspectors found</h2>
+        <p>Petersburg has one regular outside inspector that most federal prisons lack. Because the District of Columbia has no prison of its own, its residents serve felony sentences in federal custody, and the DC Corrections Information Council visits the prisons that hold them. It has published three reports on Petersburg.</p>
+        <div class="tbl-wrap"><table class="tbl wide">
+          <caption class="mono">DC CORRECTIONS INFORMATION COUNCIL REPORTS</caption>
+          <thead><tr><th>Report</th><th>Visit</th><th>Selected findings</th></tr></thead>
+          <tbody>
+            <tr><td class="nw"><a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/publication/attachments/FCI%20Petersburg%20Medium%20Inspection%20Report%20and%20BOP%20Response%204%2026%2016.pdf">Medium, April 2016</a></td><td class="nw">Aug. 18, 2014</td><td>Rated capacity 1,108, population 1,702. “Health Services has one doctor (32 staff total) for the entire Petersburg complex.” “The average wait time for sick calls is up to two weeks.”</td></tr>
+            <tr><td class="nw"><a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/publication/attachments/FCI%20Petersburg%20Low%20Inspection%20Report%20and%20BOP%20Response%204%2026%2016%20.pdf">Low, April 2016</a></td><td class="nw">Aug. 19, 2014</td><td>Rated capacity 834, population 1,184. Residents reported asbestos, roaches and mice. The bureau replied that the Low “has asbestos containing materials” and said they posed no danger if undisturbed.</td></tr>
+            <tr><td class="nw"><a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/page_content/attachments/FCC%20Petersburg%20Report%209.9.22.pdf">Complex, September 2022</a></td><td class="nw">December 2021</td><td>1,502 people at the Medium, 770 at the Low. “The most concerning issues at FCI Petersburg are the reports of leaking roofs and serious flooding in housing units.”</td></tr>
+          </tbody>
+        </table></div>
+        <p>The 2022 report records something else. “The CIC was not permitted to tour any general population housing units at either institution, despite regularly visiting such units at other facilities,” the inspectors wrote. Residents told them of mold and of being moved out of units at the Low because of roof damage. Staff told them the unit closures “were due to COVID.”</p>
+        <p>None of the three reports mentions transgender residents. The 2016 reports list no suicides at either prison for the period they covered.</p>
+
+        <h2 id="s7"><span class="n">07</span>What the government does not count</h2>
+        <p>The Bureau of Prisons announces deaths one press release at a time. The releases name the person, the sentence and the time. They do not give a cause, and they do not record gender identity. The four bureau releases linked below each describe the person as male. The February 2025 death is taken from a Progress-Index report of the bureau’s statement.</p>
+        <div class="tbl-wrap"><table class="tbl wide">
+          <caption class="mono">DEATHS ANNOUNCED AT PETERSBURG, FEB 2025 TO JUN 2026</caption>
+          <thead><tr><th>Date of death</th><th>Unit</th><th class="r">Age</th><th>Time at Petersburg</th><th>FBI notified</th></tr></thead>
+          <tbody>
+            <tr><td class="nw"><a href="https://www.yahoo.com/news/authorities-inmate-fci-petersburg-found-004644669.html">Feb. 18, 2025</a></td><td>Medium</td><td class="r">37</td><td>About 23 months</td><td>Not stated</td></tr>
+            <tr><td class="nw"><a href="https://www.bop.gov/news/pdfs/20250924_press_release_petersburg_death_harstine.pdf">Sept. 24, 2025</a></td><td>Low</td><td class="r">39</td><td>1 day</td><td>Not stated</td></tr>
+            <tr><td class="nw"><a href="https://www.bop.gov/news/pdfs/20260516_pr_fci_petersburg_medium.pdf">May 15, 2026</a></td><td>Medium</td><td class="r">22</td><td>16 days</td><td>Yes</td></tr>
+            <tr><td class="nw"><a href="https://www.bop.gov/news/pdfs/20260621_pr_fci_petersburg_low.pdf">June 20, 2026</a></td><td>Low</td><td class="r">38</td><td>About 3.5 months</td><td>Yes</td></tr>
+            <tr><td class="nw"><a href="https://www.bop.gov/news/pdfs/20260629_pr_fci_petersburg_medium.pdf">June 27, 2026</a></td><td>Medium</td><td class="r">41</td><td>3 days</td><td>Yes</td></tr>
+          </tbody>
+        </table></div>
+        <p>Two things stand out. Three people died in just over six weeks in May and June 2026, days before the bureau announced the Low would close. And three of the five had been at Petersburg 16 days or less.</p>
+        <p>The releases do not say how any of the five died, so nothing here establishes a cause or a link between them. The numbers do show what a reader cannot learn from the bureau’s own notices: whether a death was a suicide, an overdose, an illness or an assault, and whether the person was transgender.</p>
+        <p>The records that would answer those questions exist. The inspector general’s 2024 report describes the internal reviews the bureau conducts after a death, including a “Psychological Reconstruction” after a suicide. Those reviews are not published. The inspector general’s own dataset covers fiscal 2014 through 2021 and was released only as national totals.</p>
+        <p>No bureau release about a Petersburg death dated after June 29, 2026 was found.</p>
+
+        <h2 id="s8"><span class="n">08</span>What this review could not confirm</h2>
+        <p>This story relies on public records only. It does not include interviews with people held at Petersburg.</p>
+        <section class="open" style="margin-top:20px">
+          <ul>
+            <li><span class="mono">A SECOND DEATH</span><span>A claim that a transgender person died by suicide at the Medium in 2018, attributed to a prison guide, was checked and could not be supported. The <a href="https://federalcriminaldefenseattorney.com/federal-bureau-prisons/virginia/fci-petersburg-medium/">guide’s Petersburg page</a> as it stands today does not say that, and no bureau release, news report or court filing was found to support it. It is not reported here as fact.</span></li>
+            <li><span class="mono">ARNOLD RULING</span><span>The text of the December 2014 decision could not be obtained. What it says is taken from Prison Legal News and Vice. The outcome of her appeal was not found.</span></li>
+            <li><span class="mono">WHY PETERSBURG</span><span>No official explanation was found for the number of transgender people held there, and no count more recent than October 2023.</span></li>
+            <li><span class="mono">THE LOW TODAY</span><span>The bureau has not said whether the Low is empty. Its Oct. 1, 2026 population report has no line for it. Newsweek reported 611 people there when the closure was announced, a figure that could not be checked against a bureau record.</span></li>
+            <li><span class="mono">CLAIMS LEFT OUT</span><span>Two other claims were checked and could not be supported: that the Low’s basement housing units were condemned in 2017, and that two people died at the Medium in September 2018.</span></li>
+            <li><span class="mono">COMPLIANCE</span><span>No public record shows whether staff at Petersburg are following the court’s orders.</span></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <aside class="rail">
+      <h4>In this report</h4>
+      <ol class="toc">
+        <li><a href="#s1"><span class="n mono">01</span>A complex in the middle of a shutdown</a></li>
+        <li><a href="#s2"><span class="n mono">02</span>Who is held at the Medium</a></li>
+        <li><a href="#s3"><span class="n mono">03</span>One death on the record</a></li>
+        <li><a href="#s4"><span class="n mono">04</span>A death that ended in convictions</a></li>
+        <li><a href="#s5"><span class="n mono">05</span>The policy fight</a></li>
+        <li><a href="#s6"><span class="n mono">06</span>What outside inspectors found</a></li>
+        <li><a href="#s7"><span class="n mono">07</span>What the government does not count</a></li>
+        <li><a href="#s8"><span class="n mono">08</span>What could not be confirmed</a></li>
+      </ol>
+      <h4>Key records</h4>
+      <div class="doc"><div class="t mono">PREA AUDIT · PDF</div><a href="https://www.bop.gov/locations/institutions/pem/pem_prea.pdf">FCC Petersburg final audit report</a><div class="pg mono">DEC 18 2023 · 61 TRANSGENDER OR INTERSEX</div></div>
+      <div class="doc"><div class="t mono">COURT ORDER · PDF</div><a href="https://assets.aclu.org/live/uploads/2025/03/2026-06-17-Dkt-216-Memorandum-Order-on-Updated-PI.pdf">Kingdom v. Trump, memorandum order</a><div class="pg mono">LAMBERTH · JUN 17 2026</div></div>
+      <div class="doc"><div class="t mono">PRESS RELEASE · PDF</div><a href="https://www.bop.gov/news/pdfs/20260701_pr_facility_closures.pdf">Facility closures and operational changes</a><div class="pg mono">BOP · JUL 1 2026</div></div>
+      <div class="doc"><div class="t mono">INSPECTION · PDF</div><a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/page_content/attachments/FCC%20Petersburg%20Report%209.9.22.pdf">DC CIC report on FCC Petersburg</a><div class="pg mono">SEP 9 2022 · UNITS NOT TOURED</div></div>
+      <div class="facts">
+        <div><span>Transgender or intersex, Oct. 2023</span><b>61 of 2,360</b></div>
+        <div><span>Documented transgender deaths</span><b>1</b></div>
+        <div><span>Deaths announced, May–Jun 2026</span><b class="acc">3 in 6 weeks</b></div>
+        <div><span>Staff sentenced in W.W. case</span><b>3</b></div>
+        <div><span>Current care order expires</span><b>Mid-Dec 2026</b></div>
+        <div><span>Supreme Court response due</span><b>Oct 8, 2026</b></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="sources">
+    <h2>Sources <span class="mono" style="font-weight:400;color:var(--ink2)">42 DOCUMENTS</span></h2>
+    <p class="intro">Items marked <span class="ck">✱</span> were read through a summary of the page and should be checked against the original before publication. Everything else was read in the original document.</p>
+    <div class="sgrid">
+      <div>
+        <h3>Bureau of Prisons</h3>
+        <ul>
+          <li><a href="https://www.bop.gov/news/pdfs/20260701_pr_facility_closures.pdf">Facility closures and operational changes</a><span class="mono">PRESS RELEASE · JUL 1 2026</span></li>
+          <li><a href="https://www.bop.gov/PublicInfo/execute/popreport?todo=query&amp;output=json">Population report</a><span class="mono">DATA DATED OCT 1 2026</span></li>
+          <li><span>Death notices of <a href="https://www.bop.gov/news/pdfs/20250924_press_release_petersburg_death_harstine.pdf">Sept. 24, 2025</a>, <a href="https://www.bop.gov/news/pdfs/20260516_pr_fci_petersburg_medium.pdf">May 16, 2026</a>, <a href="https://www.bop.gov/news/pdfs/20260621_pr_fci_petersburg_low.pdf">June 21, 2026</a> and <a href="https://www.bop.gov/news/pdfs/20260629_pr_fci_petersburg_medium.pdf">June 29, 2026</a></span></li>
+          <li><a href="https://www.bop.gov/locations/institutions/pem/pem_prea.pdf">FCC Petersburg PREA audit report</a><span class="mono">SUBMITTED DEC 18 2023</span></li>
+          <li><a href="https://www.bop.gov/policy/progstat/5260_001.pdf">Program Statement 5260.01, Management of Inmates with Gender Dysphoria</a><span class="mono">FEB 19 2026</span></li>
+          <li><a href="https://www.bop.gov/inmates/custody_and_care/sex_offenders.jsp">Sex offender programs page</a></li>
+          <li><span>Memos of <a href="https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/156821.pdf">Feb. 21, 2025</a> and <a href="https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/156822.pdf">Feb. 28, 2025</a></span><span class="mono">FILED AS EXHIBITS IN KINGDOM V. TRUMP</span></li>
+        </ul>
+        <h3 style="margin-top:28px">Justice Department</h3>
+        <ul>
+          <li><a href="https://www.justice.gov/opa/pr/one-former-federal-bureau-prisons-official-sentenced-federal-civil-rights-violation-failing">Sentencing of Covington and Farley</a><span class="mono">MAY 8 2025</span></li>
+          <li><span>Inspector general notices on the <a href="https://oig.justice.gov/news/press-release/federal-bureau-prisons-lieutenant-pleads-guilty-violating-civil-rights-inmate">Anderson plea</a> and the <a href="https://oig.justice.gov/news/press-release/former-federal-bureau-prisons-employees-convicted-charges-arising-their-failure">December 2024 verdicts</a></span></li>
+          <li><a href="https://oig.justice.gov/sites/default/files/reports/24-041.pdf">Evaluation of Issues Surrounding Inmate Deaths in Federal Bureau of Prisons Institutions</a><span class="mono">OIG REPORT 24-041 · FEB 2024</span></li>
+          <li><a href="https://www.justice.gov/archive/usao/vae/news/2012/09/20120913brooksnr.html">Heroin conspiracy sentencing</a><span class="mono">SEP 13 2012</span></li>
+          <li><a href="https://www.oversight.gov/two-former-bureau-prisons-officials-sentenced-bribery-scheme-federal-prison-petersburg">Bribery scheme sentencing</a><span class="mono">SEP 2021</span></li>
+          <li><a href="https://www.justice.gov/usao-mdga/pr/twelve-indicted-alleged-drone-smuggling-conspiracy-ten-prisons">Drone smuggling indictment</a><span class="mono">JUN 24 2026 <span class="ck">✱</span></span></li>
+        </ul>
+        <h3 style="margin-top:28px">Courts and executive orders</h3>
+        <ul>
+          <li><a href="https://www.govinfo.gov/content/pkg/FR-2025-01-30/pdf/2025-02090.pdf">Executive Order 14168</a><span class="mono">90 FED. REG. 8615</span></li>
+          <li><span>Kingdom v. Trump, No. 1:25-cv-00691 (D.D.C.): <a href="https://assets.aclu.org/live/uploads/2025/03/067-Memorandum-Opinion-Granting-Plaintiffs-Motion-for-Class-Certification-and-Motion-for-a-Preliminary-Injunction.pdf">June 3, 2025 opinion</a>, <a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.278186/gov.uscourts.dcd.278186.68.0.pdf">June 3, 2025 order</a>, <a href="https://assets.aclu.org/live/uploads/2025/03/2026-02-19-Dkt-124-Order-Granting-Non-Retaliation-Order.pdf">Feb. 19, 2026 protective order</a>, <a href="https://assets.aclu.org/live/uploads/2025/03/2026-06-17-Dkt-216-Memorandum-Order-on-Updated-PI.pdf">June 17, 2026 memorandum order</a>, <a href="https://assets.aclu.org/live/uploads/2025/03/242-Order-Granting-Plaintiffs-Motion-for-Renewed-Preliminary-Injunction.pdf">Aug. 26, 2026 renewed injunction</a></span></li>
+          <li><a href="https://assets.aclu.org/live/uploads/2025/03/2026-09-18-Kingdom-Ruling-on-Stay.pdf">D.C. Circuit order denying a stay</a><span class="mono">SEP 18 2026</span></li>
+          <li><a href="https://www.supremecourt.gov/docket/docketfiles/html/public/26a416.html">Trump v. Kingdom, No. 26A416</a><span class="mono">SUPREME COURT DOCKET</span></li>
+          <li><a href="https://www.law.cornell.edu/supct/html/92-7247.ZO.html">Farmer v. Brennan</a><span class="mono">511 U.S. 825 (1994)</span></li>
+          <li><a href="https://www.aclu.org/cases/kingdom-v-trump">ACLU case page for Kingdom v. Trump</a><span class="mono">LINKS THE FULL RECORD</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Inspections</h3>
+        <ul>
+          <li><span>DC Corrections Information Council reports on <a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/publication/attachments/FCI%20Petersburg%20Medium%20Inspection%20Report%20and%20BOP%20Response%204%2026%2016.pdf">FCI Petersburg Medium</a> and <a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/publication/attachments/FCI%20Petersburg%20Low%20Inspection%20Report%20and%20BOP%20Response%204%2026%2016%20.pdf">FCI Petersburg Low</a>, April 26, 2016, and on <a href="https://cic.dc.gov/sites/default/files/dc/sites/cic/page_content/attachments/FCC%20Petersburg%20Report%209.9.22.pdf">FCC Petersburg</a>, Sept. 9, 2022</span></li>
+        </ul>
+        <h3 style="margin-top:28px">News and other reporting</h3>
+        <ul>
+          <li><a href="https://www.prisonlegalnews.org/news/2015/mar/3/transgender-prisoner-denied-adequate-treatment-hangs-herself/">Transgender prisoner denied adequate treatment</a><span class="mono">PRISON LEGAL NEWS · MAR 3 2015 · HEADLINE NAMES A METHOD; ARTICLE PRINTS A PRIOR NAME</span></li>
+          <li><a href="https://www.vice.com/en/article/the-uphill-battle-to-make-prison-safer-for-trans-women/">The Uphill Battle to Make Prison Safer for Trans Women</a><span class="mono">VICE · APR 23 2015</span></li>
+          <li><a href="https://www.prisonlegalnews.org/news/2025/may/1/bop-jettisons-transgender-offender-manual/">BOP jettisons Transgender Offender Manual</a><span class="mono">PRISON LEGAL NEWS · MAY 1 2025</span></li>
+          <li><a href="https://www.npr.org/2025/02/21/nx-s1-5305282/trans-inmates-federal-prison-policy-transfers">NPR on the bureau’s head count</a><span class="mono">FEB 21 2025</span></li>
+          <li><a href="https://www.npr.org/2025/12/04/nx-s1-5630490/prison-doj-safety-memo-changes-trans-lgbtq-inmates">NPR on the audit memo</a><span class="mono">DEC 4 2025</span></li>
+          <li><a href="https://www.unclosetedmedia.com/p/we-spoke-to-8-incarcerated-trans">We Spoke to 8 Incarcerated Trans People</a><span class="mono">UNCLOSETED MEDIA · FEB 21 2026</span></li>
+          <li><a href="https://www.themarshallproject.org/2024/10/09/trans-tucson-federal-prison-assault-prea">Marshall Project on USP Tucson</a><span class="mono">OCT 9 2024 <span class="ck">✱</span></span></li>
+          <li><a href="https://www.yahoo.com/news/authorities-inmate-fci-petersburg-found-004644669.html">Progress-Index on the February 2025 death</a><span class="mono">VIA YAHOO NEWS</span></li>
+          <li><a href="https://www.afge.org/globalassets/documents/generalreports/2026/afge-letter-on-bop-facility-closures-july-2-2026.pdf">AFGE letter to Congress</a><span class="mono">JUL 2 2026</span></li>
+          <li><a href="https://federalcriminaldefenseattorney.com/federal-bureau-prisons/virginia/fci-petersburg-medium/">Franklin-Best guide to FCI Petersburg Medium</a></li>
+          <li><span>Newsweek report on the closures</span><span class="mono">JUL 1 2026 <span class="ck">✱</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
+    <p>Corrections run at the top of the next issue, set at the same size as the error. Write <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>. Records and tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>.</p>
+    <p><a href="story.html">Previous report: Aroostook County Jail</a> · <a href="archive.html">Archive</a> · <a href="#">Unsubscribe</a></p>
+  </footer>
+</div>
+<script src="listen.js" defer></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body>
+</html>

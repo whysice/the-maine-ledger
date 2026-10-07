@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Aroostook County Jail: five perfect inspections, no fire suppression, a tripling deficit and a design firm the county’s own team did not pick." />
+<meta name="theme-color" content="#161513" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Maine Ledger" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Aroostook County Jail: Perfect Scores, Unsafe Building — Maine Ledger</title>
+<link rel="stylesheet" href="ledger.css" />
+<style>
+.top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+.name { font-weight:700; font-size:34px; line-height:.95; letter-spacing:-.02em; margin:0; color:var(--ink); text-decoration:none; display:block; }
+.name small { display:block; white-space:nowrap; font-weight:400; font-style:italic; font-size:15px; letter-spacing:0; margin-top:8px; color:var(--ink2); }
+.tools { display:flex; gap:22px; align-items:center; }
+.tools a { color:var(--ink); text-decoration:none; font-size:15px; }
+.tools a:hover, .tools a[aria-current] { text-decoration:underline; }
+@media (max-width:560px){ .tools a:not(.sub-btn) { display:none; } }
+
+.strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule); }
+.strip > div { padding:12px 16px 12px 0; border-right:1px solid var(--rule2); }
+.strip > div + div { padding-left:16px; }
+.strip > div:last-child { border-right:0; }
+.strip .k { color:var(--ink2); }
+.strip .v { font-weight:600; font-size:15px; margin-top:2px; font-family:Spectral,Georgia,serif; letter-spacing:0; }
+@media (max-width:760px){ .strip { grid-template-columns:1fr 1fr; } .strip > div:nth-child(2){border-right:0} .strip > div:nth-child(3){padding-left:0;border-top:1px solid var(--rule2)} .strip > div:nth-child(4){border-top:1px solid var(--rule2)} }
+
+/* story layout: text column + sticky record rail */
+.story { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:56px; padding:40px 0 48px; }
+@media (max-width:980px){ .story { grid-template-columns:1fr; gap:32px; } .rail { position:static; order:-1; } .rail .doc, .rail h4:nth-of-type(2), .facts { display:none; } .toc { margin-bottom:0; } }
+.rail { position:sticky; top:24px; align-self:start; }
+.rail h4 { margin:0 0 8px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
+.rail h4::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+.toc { list-style:none; margin:0 0 28px; padding:0; font-size:14.5px; }
+.toc li { border-bottom:1px solid var(--rule2); }
+.toc a { display:flex; gap:10px; padding:7px 0; color:var(--ink); text-decoration:none; }
+.toc a:hover { color:var(--acc); }
+.toc .n { color:var(--ink2); min-width:2ch; }
+.rail .doc { margin-bottom:10px; }
+.rail .doc a { font-size:13.5px; }
+.facts { border-top:2px solid var(--rule); margin-top:28px; }
+.facts div { display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid var(--rule2); font-size:14px; }
+.facts b { font-weight:600; text-align:right; font-variant-numeric:tabular-nums; }
+.facts b.acc { color:var(--acc); }
+
+.hed h1 { font-size:clamp(32px,4.4vw,56px); line-height:1.05; letter-spacing:-.025em; margin:0 0 18px; font-weight:700; max-width:22ch; }
+.hed .dek { font-size:clamp(18px,1.8vw,22px); line-height:1.4; color:var(--ink2); margin:0 0 22px; max-width:60ch; font-style:italic; }
+.hed .meta { display:flex; gap:14px; flex-wrap:wrap; color:var(--ink2); padding-bottom:22px; border-bottom:1px solid var(--rule); }
+.hed .meta b { color:var(--ink); font-weight:500; }
+
+.body { max-width:68ch; }
+.body > p { margin:0 0 1.1em; font-size:17.5px; line-height:1.6; }
+.body > p:first-of-type::first-letter { float:left; font-size:3.9em; line-height:.78; padding:7px 10px 0 0; font-weight:700; }
+.body h2 { font-size:clamp(23px,2.4vw,30px); line-height:1.15; letter-spacing:-.015em; margin:44px 0 14px; font-weight:600; display:flex; gap:14px; align-items:baseline; scroll-margin-top:24px; }
+.body h2 .n { font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:400; color:var(--acc); letter-spacing:.04em; }
+.body h3 { font-size:17.5px; margin:28px 0 8px; font-weight:600; }
+.body ul, .body ol { margin:0 0 1.1em; padding-left:1.3em; font-size:17px; line-height:1.55; }
+.body li { margin-bottom:.45em; }
+.body li b { font-weight:600; }
+.body blockquote { margin:24px 0; padding:0 0 0 20px; border-left:2px solid var(--acc); font-size:19px; line-height:1.45; }
+.body blockquote footer { border:0; padding:6px 0 0; font-size:13px; color:var(--ink2); }
+.body a { color:var(--ink); text-decoration-color:var(--rule2); }
+.body a:hover { color:var(--acc); text-decoration-color:var(--acc); }
+
+/* ledger tables */
+.tbl { width:100%; border-collapse:collapse; margin:20px 0 28px; font-size:15px; line-height:1.4; border-top:2px solid var(--rule); }
+.tbl caption { text-align:left; padding:0 0 8px; color:var(--ink2); }
+.tbl th { text-align:left; font-weight:500; color:var(--ink2); padding:8px 12px 8px 0; border-bottom:1px solid var(--rule); vertical-align:bottom; }
+.tbl td { padding:9px 12px 9px 0; border-bottom:1px solid var(--rule2); vertical-align:top; }
+.tbl th:last-child, .tbl td:last-child { padding-right:0; }
+.tbl .r { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.tbl .neg { color:var(--acc); }
+.tbl .pick { background:var(--acc-soft); }
+.tbl td a { text-decoration:none; }
+.tbl td a::after { content:" ↗"; font-size:12px; color:var(--ink2); }
+.tbl-wrap { overflow-x:auto; }
+.tbl.wide { min-width:560px; }
+
+/* sources */
+.sources { border-top:2px solid var(--rule); padding:32px 0 8px; }
+.sources h2 { font-size:15px; font-weight:600; margin:0 0 20px; display:flex; gap:10px; align-items:center; }
+.sources h2::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+.sources .intro { color:var(--ink2); max-width:68ch; margin:0 0 24px; font-size:16px; }
+.sgrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 48px; }
+@media (max-width:860px){ .sgrid { grid-template-columns:1fr; } }
+.sgrid h3 { margin:0 0 8px; font-size:15px; font-weight:600; }
+.sgrid ul { list-style:none; margin:0; padding:0; font-size:14.5px; line-height:1.45; }
+.sgrid li { padding:7px 0; border-bottom:1px solid var(--rule2); display:grid; grid-template-columns:1fr; gap:2px; }
+.sgrid li a { color:var(--ink); text-decoration:none; }
+.sgrid li a:hover { color:var(--acc); text-decoration:underline; }
+.sgrid li .mono { color:var(--ink2); }
+.open { border-top:2px solid var(--rule); margin-top:40px; }
+.open h2 { margin:0; }
+.open ul { list-style:none; padding:0; margin:12px 0 0; font-size:16px; }
+.open li { display:grid; grid-template-columns:150px 1fr; gap:16px; padding:10px 0; border-bottom:1px solid var(--rule2); }
+.open li .mono { color:var(--ink2); padding-top:4px; }
+@media (max-width:600px){ .open li { grid-template-columns:1fr; gap:4px; } }
+
+.listen { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:14px 0; border-bottom:1px solid var(--rule); position:relative; }
+.listen button, .listen select { white-space:nowrap; text-wrap:initial; font:inherit; font-size:14px; padding:7px 14px; border:1px solid var(--ink); border-radius:2px; background:transparent; color:var(--ink); cursor:pointer; }
+.listen button:hover { background:var(--ink); color:var(--paper,#f5f1e8); }
+.listen button[data-play] { background:var(--acc); border-color:var(--acc); color:#fff; }
+.listen button[data-play]:hover { background:var(--ink); border-color:var(--ink); }
+.listen button:disabled { opacity:.4; cursor:default; }
+.listen select { padding:7px 10px; border-color:var(--rule); color:var(--ink2); background:transparent; }
+.listen .st { color:var(--ink2); margin-left:auto; }
+.listen .pb { position:absolute; left:0; bottom:-1px; height:2px; background:var(--acc); width:0; transition:width .3s; }
+.summary { border:1px solid var(--rule); border-left:3px solid var(--acc); padding:18px 22px; margin:20px 0 8px; max-width:68ch; }
+.summary h3 { margin:0 0 10px; font-size:15px; font-weight:600; display:flex; align-items:center; gap:12px; }
+.summary h3 button { white-space:nowrap; text-wrap:initial; margin-left:auto; font:inherit; font-size:13px; padding:4px 12px; border:1px solid var(--ink); border-radius:2px; background:transparent; cursor:pointer; color:var(--ink); }
+.summary h3 button:hover { background:var(--ink); color:var(--paper,#f5f1e8); }
+.summary ul { margin:0; padding-left:1.15em; font-size:16px; line-height:1.5; }
+.summary li { margin-bottom:.4em; }
+.summary p.note { margin:12px 0 0; font-size:13px; color:var(--ink2); font-style:italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
+    <nav class="tools"><a href="index.html">This week</a><a href="index.html#counties">By county</a><a href="archive.html">Archive</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav>
+  </header>
+  <div class="strip mono">
+    <div><div class="k">ENTRY</div><div class="v">Special report</div></div>
+    <div><div class="k">PLACE</div><div class="v">Aroostook County</div></div>
+    <div><div class="k">RECORDS CITED</div><div class="v">39 documents</div></div>
+    <div><div class="k">PUBLISHED</div><div class="v">Oct 6, 2026</div></div>
+  </div>
+
+  <div class="story">
+    <main>
+      <header class="hed">
+        <h1>Aroostook County Jail: perfect scores, unsafe building</h1>
+        <p class="dek">Five straight 100 percent state inspections. No fire suppression. A capacity that rose as the jail filled, a deficit that tripled, a death the record barely notes, and a design firm the county’s own interview team did not pick.</p>
+        <p class="meta mono"><span>PUBLISHED <b>OCT 06 2026</b></span><span>READ <b>18 MIN</b></span><span>SOURCES <b>39</b>, ALL OPENED</span></p>
+        <div class="listen">
+          <button type="button" data-play>Listen</button>
+          <button type="button" data-stop hidden>Stop</button>
+          <button type="button" data-sum aria-expanded="false" aria-controls="summary">Summary</button>
+          <select data-rate aria-label="Reading speed"><option value="0.9">0.9×</option><option value="1" selected>1×</option><option value="1.2">1.2×</option><option value="1.5">1.5×</option></select>
+          <span class="st mono" data-status>18 MIN · READ BY YOUR DEVICE</span>
+          <div class="pb" data-bar></div>
+        </div>
+      </header>
+
+      <section class="summary" id="summary" hidden>
+        <h3>In brief <span class="mono" style="font-weight:400;color:var(--ink2)">EDITOR'S SUMMARY</span><button type="button" data-sum-play>Listen</button></h3>
+        <ul><li>Aroostook County Jail in Houlton scored 100 percent on five straight state inspections, yet federal consultants found in 2024 that it has no fire suppression and called the building unsafe.</li><li>Its rated capacity nearly doubled since 1991 while the building did not change; about 90 percent of those held are awaiting trial.</li><li>A May 2021 in-custody death appears as one row in a state table. The review of it has never been published.</li><li>The jail sits an hour or more from the county’s population centers, and the county’s own assessment says that distance changes who gets arrested.</li><li>A new jail is now priced in the tens of millions; the jail fund has run a deficit in six of seven audited years and the shortfall has more than tripled since 2023.</li><li>The jail appears under different names across state, federal and court records, which is why its paper trail is hard to follow.</li></ul>
+        <p class="note">Written by the editor from the records cited below, not generated by software. The full report has the sources for every line.</p>
+      </section>
+
+      <div class="body">
+        <p>The Aroostook County Jail has scored 100 percent on five straight state inspections. In 2024, federal consultants walked the same building in Houlton and found it has no fire suppression system and no way to clear smoke.</p>
+        <p>Both findings are on the public record, and the consultants themselves explained how both can be true. A perfect score, they wrote, “is not atypical when establishing minimum standards and working with agencies to find operational means to overcome physical plant deficiencies.”</p>
+        <p>A review of county audits, budget packets, commission minutes, state corrections reports, court orders and federal detention data found the same gap in other places. The jail’s rated capacity rose as the jail filled. Its deficit has deepened in each of the last three audited years. A 2021 death in custody appears in a state report and, as far as this review could find, nowhere in the news. And the contract to plan a replacement went to a firm other than the one the county’s own interview team recommended.</p>
+
+        <h2 id="s1"><span class="n">01</span>Perfect scores, unsafe building</h2>
+        <p>Then-Sheriff Shawn Gillen told <a href="https://thecounty.me/?p=269218">The County in January 2023</a> that the jail had scored 100 percent on each of its last five reviews, a run that began in 2013. The Maine Department of Corrections inspects county jails every two years.</p>
+        <p>Eighteen months later, two consultants working for the National Institute of Corrections, an agency of the U.S. Department of Justice, spent June 18 to 20, 2024 at the jail. The county administrator and the former sheriff had asked for the visit. Their <a href="https://aroostook.me.us/pdfs/jail-justice-system-assessment-final-2024/">report, dated July 23, 2024</a>, is posted on the county website.</p>
+        <blockquote>“There are numerous fire and life safety issues that simply cannot be addressed or make little sense to address in a building of this vintage. Despite a smoke detection system being installed, there is no suppression system or smoke evacuation, nor adequate windows for smoke dissipation.”<footer>Karen Albert and Roger Lichtman, National Institute of Corrections, July 23, 2024</footer></blockquote>
+        <p>The report’s other findings include:</p>
+        <ul>
+          <li>The medical exam room is “woefully too small, and during the site visit water backup was coming from the drain.”</li>
+          <li>“Neither the inmate side of visitation nor the visitor side are ADA accessible.”</li>
+          <li>The building “is a significant deterrent in meeting PREA standards,” a reference to the federal Prison Rape Elimination Act. Shared toilets and showers leave people “having to fashion their own privacy.”</li>
+          <li>The layout “significantly restricts the ability for staff to effectively observe and actively supervise inmates.”</li>
+        </ul>
+        <p>The consultants did not fault the staff. They wrote that there was “no indication of significant standards-compliance issues outside the physical limitations of the facility,” and that staff reported few incidents despite the crowding.</p>
+        <p>Their conclusion was about the building. “To expect a jail in a rural community with a harsh environment to function for 50 years, let alone 135 years is unrealistic,” they wrote.</p>
+        <p>County Administrator Justin Tibbetts put it more bluntly to <a href="https://www.wabi.tv/2026/09/10/one-bad-plug-away-catastrophe-aroostook-county-looks-new-jail-site/">WAGM in September 2026</a>: “Some of the staff, we like to joke that we’re one bad plug away from a catastrophe.”</p>
+
+        <h2 id="s2"><span class="n">02</span>A capacity number that kept moving</h2>
+        <p>The jail’s rated capacity, the number of people the state allows it to hold, has nearly doubled since 1991. The building did not.</p>
+        <table class="tbl">
+          <caption class="mono">RATED CAPACITY, AROOSTOOK COUNTY JAIL</caption>
+          <thead><tr><th>Year</th><th>Rated capacity</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>1985</td><td>85, after an expansion into the basement</td><td><a href="https://aroostook.me.us/pdfs/jail-justice-system-assessment-final-2024/">NIC assessment</a></td></tr>
+            <tr><td>1991</td><td>66</td><td><a href="https://rebuild.observer-me.com/?p=59567">Houlton Pioneer Times</a></td></tr>
+            <tr><td>2012</td><td>72</td><td><a href="https://thecounty.me/?p=84036">The County</a></td></tr>
+            <tr><td>2013</td><td>86, with 105 expected</td><td><a href="https://rebuild.observer-me.com/?p=59567">Houlton Pioneer Times</a></td></tr>
+            <tr><td>2014</td><td>123, after “additional beds were brought in”</td><td><a href="https://thecounty.me/2014/09/10/news/county-jail-facing-budget-crunch/">The County</a></td></tr>
+            <tr><td>2020 to 2023</td><td>117</td><td><a href="https://thecounty.me/2020/11/19/news/aroostook-county-jail-receives-high-marks-following-inspection/">The County</a></td></tr>
+          </tbody>
+        </table>
+        <p>The sources do not explain why the 1991 figure is lower than the 1985 one.</p>
+        <p>The increases followed a citation. After a March 2013 inspection, when the jail was rated for 72, the state cited it for exceeding its “established rated capacity” on 75.1 percent of the days during the last six months, the <a href="https://rebuild.observer-me.com/?p=24666">Pioneer Times reported</a>.</p>
+        <p>The county’s own consultants have since said the higher number did not make the jail safer. “The capacity of the jail was increased without adding physical space, which does not improve safety or management,” Justice Planners wrote in its <a href="https://aroostook.me.us/pdfs/aroostook-county-jail-forecast-analysis-justice-planners/">June 2025 needs assessment</a>.</p>
+        <p>The federal consultants set the jail’s functional capacity, the number it can hold while still absorbing spikes and separating people by sex and risk, at 94. “Prior to 2020 the population often exceeded the design capacity and always exceeded the operational capacity,” they wrote. The County reported in November 2020 that the jail had been averaging about 120 people.</p>
+        <p>The pressure is not new. In 2012 the county’s capital plan asked for $6.5 million to add 50 beds, and a county official said that on any given day 15 to 40 inmates could be housed in other facilities around the state. In the first 10 months of 2013, jail staff moved 2,596 inmates a total of 118,848 miles for transfers.</p>
+        <p>Most of the people held are not serving sentences. Then-County Administrator Ryan Pelletier said in June 2024 that 90 percent were awaiting trial, <a href="https://thecounty.me/?p=282549">The County reported</a>.</p>
+
+        <h2 id="s3"><span class="n">03</span>A death the record barely notes</h2>
+        <p>The Maine Department of Corrections’ <a href="https://lldc.mainelegislature.org/Open/Rpts/kf8732_z99c22_2021.pdf">2021 Report on Jails</a> includes a five-row table of in-custody death reviews completed that year. The third row reads “Aroostook County Jail” and “05/25/21.”</p>
+        <p>That is all the report says about it. Causes are given only for the five deaths as a group: two suicides or attempted suicides, two natural deaths and one drug related. Three of the people were men and two were women. Their average age was 35.2. The report does not say which of those facts belong to the person who died in Houlton.</p>
+        <p>Searches of the Bangor Daily News, The County, WAGM, Maine Public and The Maine Monitor for this review turned up no story, statement or press release about the death. One may exist that the searches missed.</p>
+        <p>Earlier deaths at the jail were handled differently. Suicides in August 2013 and September 2014 were covered at the time by the <a href="https://www.bangordailynews.com/2013/09/11/news/investigation-finds-proper-procedures-followed-by-aroostook-county-jail-staff-in-inmate-death/">Bangor Daily News</a> and the <a href="https://www.pressherald.com/?p=4686494">Portland Press Herald</a>. After the 2013 death, the sheriff’s office asked the Maine State Police to investigate so the public could see an independent inquiry, the Bangor Daily News reported.</p>
+        <p>Under the Attorney General’s death investigation protocol, quoted in the state report, a death in any jail must be reported immediately to the medical examiner, the state police and the Department of Corrections. The department then reviews whether the jail’s handling of the person “violated mandatory standards.” If it did, corrective action is required.</p>
+        <p>The report does not say what the review of the May 25, 2021 death found. That review has not been published.</p>
+
+        <h2 id="s4"><span class="n">04</span>Where the jail sits decides who gets arrested</h2>
+        <p>Houlton is the county seat, but it sits at the southern end of a very large county. The federal consultants put the jail about an hour’s drive from Presque Isle and 20 minutes more from Caribou.</p>
+        <p>That distance changes police behavior, according to the county’s needs assessment. “There were indications from some agencies located to the north that a number of arrests are regularly not made in an effort to reduce trips to the current jail,” Justice Planners wrote. The firm found that more than two-thirds of arrests in the county from 2022 to 2025 took place in its northern half.</p>
+        <p>The consultants built that into their math. A new jail in Houlton would need 158 beds by 2050, they projected. A jail farther north would need 229, because they assumed the move “will result in a 45% increase in jail bookings.”</p>
+        <p>The jail study commission split on the question. At its Feb. 5, 2026 meeting, six members favored asking commissioners to consider a more central site and four were opposed, according to <a href="https://aroostook.me.us/pdfs/2026-03-03-jsc-packet/">the minutes</a>. Moving the jail out of the county seat requires voter approval. Staffing pulls the other way: 78 percent of corrections staff are in the Houlton area, <a href="https://thecounty.me/?p=291586">The County reported</a> in June 2025.</p>
+        <h3>Long stays</h3>
+        <p>State data from fiscal years 2010 through 2013 show people held before trial in Aroostook stayed an average of 21 to 24 days, against a statewide average of 10 to 14. In fiscal 2010 and 2011 Aroostook’s figure was the highest of any Maine jail in the <a href="https://www.maine.gov/corrections/sites/maine.gov.corrections/files/boc/CJALOSFY10to13(1).pdf">state table</a>.</p>
+        <p>More recently, Justice Planners reported that the average stay rose 35 percent after 2019 even as bookings fell 36 percent. It called the number of people held for violating release conditions or probation “unusually high compared to other jurisdictions.”</p>
+        <h3>Waiting for a lawyer</h3>
+        <p>In a <a href="https://courts.maine.gov/news/peterson/SJC-23-2_2024.01.12_final_order.pdf">January 2024 order</a>, Associate Justice Wayne R. Douglas of the Maine Supreme Judicial Court found that “there have been no rostered attorneys available for court appointment in Aroostook County.” Two men had been in the jail for 34 and 38 days without an assigned lawyer as of a November 2023 hearing. The lead petitioner “waited over eleven weeks.” The two assistant public defenders covering the county carried about 70 cases each.</p>
+        <p>The justice also made a finding about the building: “The physical layout and other conditions at the Aroostook County Jail do not allow for private meetings between a lawyer for the day and a defendant.” He denied the petition for release.</p>
+        <p>Justice Planners wrote in 2025 that the backlog of unrepresented defendants, “once over 100, has dropped significantly.” It could not measure how court delay feeds the jail population. “The project team was unsuccessful in its efforts to obtain even basic monthly case processing data from the courts,” the firm wrote.</p>
+
+        <h2 id="s5"><span class="n">05</span>The price tag and the design firm</h2>
+        <p>The price of a fix has climbed. The 2012 plan was a $6.5 million addition. In June 2025, Justice Planners President Alan Richardson told the jail commission a new jail would run “from $91 million to $112 million,” <a href="https://thecounty.me/?p=291586">The County reported</a>. WAGM put the range at $85 million to $120 million in September 2026.</p>
+        <p>The written needs assessment is less specific. It says only that new jails in many parts of the country cost “around $800 per square foot plus soft costs.” Richardson said a 158-bed jail would need about 99,000 square feet and a 229-bed jail about 121,000. At $800 a square foot, that works out to $79.2 million and $96.8 million before soft costs.</p>
+        <h3>The firm the interview team picked</h3>
+        <p>Four teams answered the county’s request for design proposals, due Nov. 3, 2025. A scoring summary in the jail commission’s <a href="https://aroostook.me.us/pdfs/2025-12-09-jsc-packet/">Dec. 9, 2025 packet</a> ranked them:</p>
+        <table class="tbl">
+          <caption class="mono">DESIGN PROPOSAL SCORING, DEC. 9, 2025 PACKET</caption>
+          <thead><tr><th>Team</th><th class="r">Score out of 500</th></tr></thead>
+          <tbody>
+            <tr><td>WBRC + STV + CGL</td><td class="r">405</td></tr>
+            <tr class="pick"><td>SMRT Architects &amp; Engineers <span class="mono" style="color:var(--acc)">· HIRED</span></td><td class="r">400</td></tr>
+            <tr><td>LaBella + Justice Planners</td><td class="r">360</td></tr>
+            <tr><td>Haley Ward + RQAW</td><td class="r">310</td></tr>
+          </tbody>
+        </table>
+        <p>The two leaders tied on cost. Each scored 3 out of 5 for “Cost / Value.” The note for SMRT reads, “Proposal does not claim lowest cost.” The note for WBRC reads, “Likely to be not the lowest fee due to national talent.” SMRT’s edge was a 5 for referendum support.</p>
+        <p>After interviews, Interim County Administrator Dana Gendreau polled the interview team on Feb. 5, 2026. “Nine (9) committee members choose WBRC as their top pick, followed by SMRT, then LaBella,” the <a href="https://aroostook.me.us/pdfs/2026-03-03-jsc-packet/">minutes</a> say. The team considered sending commissioners two names and decided one “would be more beneficial.” The full commission then voted to recommend that the county contract with WBRC.</p>
+        <h3>The firm the commissioners hired</h3>
+        <p>Thirteen days later, county commissioners chose SMRT instead. They acted on Gendreau’s recommendation and cited “positive references, a record of on-time delivery, substantial experience in Maine construction projects and lower pre-referendum costs,” the <a href="https://www.bangordailynews.com/2026/02/18/aroostook/aroostook-government/design-firm-new-aroostook-county-jail/">Bangor Daily News reported</a>. The story did not mention WBRC or the commission’s vote.</p>
+        <p>The commission is advisory, and commissioners were free to choose differently. The fee proposals that would show how much lower SMRT’s pre-referendum costs were were not in the commission packets reviewed for this story.</p>
+        <p>In May 2026 the county hired SMRT for $249,830 to cover site selection and concept design through a referendum, the <a href="https://www.bangordailynews.com/2026/05/28/aroostook/aroostook-government/aroostook-county-hires-architecture-firm-design-new-jail/">Bangor Daily News reported</a>. The fee for final design is to be negotiated only after voters approve the project and money is appropriated.</p>
+        <h3>Eight sites</h3>
+        <p>Proposals for land were due Sept. 28, 2026. The <a href="https://www.bangordailynews.com/2026/10/05/aroostook/aroostook-government/new-aroostook-jail-potential-sites/">Bangor Daily News listed</a> what came in:</p>
+        <div class="tbl-wrap"><table class="tbl wide">
+          <caption class="mono">SITE PROPOSALS RECEIVED, SEPT. 28, 2026</caption>
+          <thead><tr><th>Site</th><th class="r">Acres</th><th>Offered by</th><th class="r">Price</th></tr></thead>
+          <tbody>
+            <tr><td>Houlton Industrial Park, Route 1</td><td class="r">115</td><td>Public</td><td class="r">Low to no cost</td></tr>
+            <tr><td>Tactical Alert Site, former Loring Air Force Base</td><td class="r">33.6</td><td>Loring Development Authority</td><td class="r">Low to no cost</td></tr>
+            <tr><td>Cheney Grove industrial area, Fort Fairfield</td><td class="r">33</td><td>Public</td><td class="r">$1</td></tr>
+            <tr><td>34 Woodland Road, Caribou</td><td class="r">15</td><td>Private</td><td class="r">$139,900</td></tr>
+            <tr><td>Access Road, Houlton</td><td class="r">15+</td><td>Private</td><td class="r">$375,000</td></tr>
+            <tr><td>Montgomery Avenue and Route 1, Caribou</td><td class="r">19</td><td>Private</td><td class="r">$725,000</td></tr>
+            <tr><td>Former mobile home park, Route 1, Presque Isle</td><td class="r">54</td><td>Private</td><td class="r">$1.3 million</td></tr>
+            <tr><td>Between Cary Medical Center and NAPA Auto Parts, Caribou</td><td class="r">73</td><td>Private</td><td class="r">$1.83 million</td></tr>
+          </tbody>
+        </table></div>
+        <p>SMRT’s contract covers evaluating up to five of them. The Presque Isle City Council declined to offer city land after a Sept. 21 executive session but endorsed a central Aroostook location, the <a href="https://www.bangordailynews.com/2026/10/05/aroostook/aroostook-government/presque-isle-maine-aroostook-county-jail-no-proposal-submission/">newspaper reported</a>. A bond referendum could come as early as 2027.</p>
+
+        <h2 id="s6"><span class="n">06</span>A growing deficit and the inmate money accounts</h2>
+        <p>The jail’s main fund has ended in the red in six of the last seven audited years, and the hole has more than tripled since fiscal 2023. The figures below come from the county’s <a href="https://aroostook.me.us/pdfs/year-ending-06-30-2025-aroostook-county-jail-audit/">jail audits</a>, prepared by the Buxton accounting firm RHR Smith.</p>
+        <div class="tbl-wrap"><table class="tbl wide">
+          <caption class="mono">JAIL GENERAL FUND, FISCAL YEARS ENDING JUNE 30</caption>
+          <thead><tr><th>Fiscal year</th><th class="r">Jail spending</th><th class="r">Fund balance at year end</th><th>Audit report dated</th></tr></thead>
+          <tbody>
+            <tr><td>2019</td><td class="r">$3,525,940</td><td class="r neg">($4,008)</td><td>March 17, 2022</td></tr>
+            <tr><td>2020</td><td class="r">$3,869,294</td><td class="r neg">($38,385)</td><td>June 28, 2022</td></tr>
+            <tr><td>2021</td><td class="r">$3,868,954</td><td class="r neg">($32,866)</td><td>Oct. 15, 2024</td></tr>
+            <tr><td>2022</td><td class="r">$4,146,330</td><td class="r">$78,315</td><td>Oct. 15, 2024</td></tr>
+            <tr><td>2023</td><td class="r">$4,961,519</td><td class="r neg">($152,682)</td><td>Oct. 16, 2024</td></tr>
+            <tr><td>2024</td><td class="r">$5,280,260</td><td class="r neg">($270,961)</td><td>Oct. 16, 2024</td></tr>
+            <tr><td>2025</td><td class="r">$5,689,216</td><td class="r neg">($590,134)</td><td>June 23, 2026</td></tr>
+          </tbody>
+        </table></div>
+        <p>The dates in the last column tell their own story. The audit for the year that ended in June 2019 is dated March 2022. Four years of audits, fiscal 2021 through 2024, are dated on two consecutive days in October 2024.</p>
+        <p>The gap is widening because costs are rising while state money falls. The budget commissioners took up in an <a href="https://aroostook.me.us/pdfs/2026-04-28-fc-budget-work-session-packet/">April 28, 2026 work session</a> proposes $7,013,171 for the jail in fiscal 2027, up from $6,325,197. Over the same two budgets the state’s community corrections line drops from $1,420,138 to $1,212,852, and the amount to be raised from property taxes rises from $4,830,059 to $5,725,319.</p>
+        <p>The overtime line goes from $430,000 to $530,000, with another $125,000 for holiday overtime. The jail spent $484,670 on overtime in fiscal 2025. The medical provider contract is budgeted at $1,230,285.</p>
+        <p>A bill to raise state jail funding, LD 2232, “did not pass during this session,” the county’s budget memo says.</p>
+        <h3>The inmate money</h3>
+        <p>Two smaller accounts hold money that comes from the people in the jail and their families. The audits describe a Commissary Account that takes in “commissary sales and telephone and commissary commissions,” and an Inmate Benefit Fund for “inmate financial activities.”</p>
+        <p>In a <a href="https://legislature.maine.gov/testimony/resources/CJPS20210414Sheriff%20Departments132863816086687410.pdf">December 2019 survey</a> for the Legislature, Jail Administrator Craig Clossey reported that phone calls cost 29 cents a minute locally and 21 cents interstate, and tablets $5 a month. The jail kept “64% of gross revenue” from phones and a 10 percent commission on tablets.</p>
+        <p>Three things about those accounts stand out in the audits.</p>
+        <ol>
+          <li><b>The county’s auditor did not audit one of them for five years.</b> In each audit for fiscal 2020 through 2024, RHR Smith wrote, “We did not audit the financial statements of the Inmate Benefit Fund,” and said it relied on “other auditors.” The reports do not name them.</li>
+          <li><b>Six months are missing from the annual statements.</b> Through 2023 the Inmate Benefit Fund was reported on a calendar year. The fiscal 2025 audit says the year end for both accounts was changed to June 30. The six months from January through June 2024 appear only as two correction lines, of $639 and $1,390.</li>
+          <li><b>Income dropped sharply.</b> The Commissary Account took in $126,698 in the fiscal 2024 audit and $35,419 in fiscal 2025. The Inmate Benefit Fund took in $206,144 in calendar 2023 and $108,872 in fiscal 2025. In fiscal 2025 the outgoing money is described in one word: “Other.”</li>
+        </ol>
+        <p>A federal rule change explains at least part of the drop. The county’s fiscal 2026 budget memo says a Federal Communications Commission policy “now requires certain phone calls and other charges can no longer be charged to inmates,” and adds, “Previously those funds offset these expenses but are no longer allowed.” The county created a $33,775 Jail Records Management line because, the fiscal 2027 packet says, “we can no longer count on the Inmate Benefit Account to cover this cost.”</p>
+
+        <h2 id="s7"><span class="n">07</span>What the jail is called in the records</h2>
+        <p>No hidden or code name for the jail turned up. What makes its records hard to find is ordinary: each system files it under a different label. A reader searching only “Aroostook County Jail” will miss most of what is cited here.</p>
+        <table class="tbl">
+          <caption class="mono">ONE JAIL, NINE LABELS</caption>
+          <thead><tr><th>Label</th><th>Where it is used</th></tr></thead>
+          <tbody>
+            <tr><td>Aroostook County Jail</td><td>County website, state reports, news coverage</td></tr>
+            <tr><td>Aroostook County Detention Center</td><td>The 2024 federal assessment</td></tr>
+            <tr><td>Jail Department of the County of Aroostook</td><td>County audits</td></tr>
+            <tr><td>ACJ</td><td>Local news shorthand</td></tr>
+            <tr><td>Aroostook County Courthouse and Jail</td><td>National Register of Historic Places listing</td></tr>
+            <tr><td>AROOSTOOK alone, with no “jail”</td><td>Finance and bed-day tables in state reports</td></tr>
+            <tr><td><span class="mono">AROOSME</span></td><td>Federal immigration detention records</td></tr>
+            <tr><td><span class="mono">23003</span></td><td>The county’s federal FIPS code, used in national jail datasets</td></tr>
+            <tr><td><span class="mono">aroostook-doc-me</span></td><td>The address of the county’s online inmate portal</td></tr>
+          </tbody>
+        </table>
+        <p>The county’s posted notices name Securus Technologies as the phone provider and Access Corrections for <a href="https://aroostook.me.us/pdfs/jail-money/">money deposits</a>. The federal assessment names Alternative Correctional Healthcare as the medical contractor.</p>
+        <h3>The immigration label</h3>
+        <p>U.S. Immigration and Customs Enforcement lists the jail under the code AROOSME and classifies it as “USMS IGA,” meaning it is tied to a U.S. Marshals Service agreement, according to a <a href="https://raw.githubusercontent.com/vera-institute/ice-detention-trends/main/metadata/facilities.csv">facility list</a> the Vera Institute of Justice compiled from ICE records.</p>
+        <p>Vera’s daily counts show how little ICE has used it. Between October 2008 and January 2012, ICE held between one and five people there on 63 scattered days. It held one to three people on 13 days between February and May 2020. The count is zero on every day since, in data that runs into 2026.</p>
+        <p>The marshals agreement itself, and whatever it pays the county per day, was not found on the county website.</p>
+        <h3>Lookalike websites</h3>
+        <p>Several private sites present themselves as the jail’s roster or inmate search, among them aroostookcountyjail.org, aroostookcountyjailme.org and houltonjail.org. The last one <a href="https://houltonjail.org/">says</a> it is “a privately owned website” and lists a street address that is not the jail’s. The county’s only official site is <a href="https://aroostook.me.us/departments/sheriff/">aroostook.me.us</a>.</p>
+
+        <h2 id="s8"><span class="n">08</span>What the court record shows, and what this review could not confirm</h2>
+        <p>One federal case forced a change inside the jail. In Smith v. Aroostook County, a woman facing a 40-day sentence sued in 2018 because the jail would not let her continue her prescribed addiction medication. A federal judge ordered the jail to provide it on March 27, 2019, and the 1st U.S. Circuit Court of Appeals affirmed on April 30, 2019.</p>
+        <p>The case ended without a final ruling. The county sought a reduction of her sentence in state court, the sentence was cut to a $100 fine, and the federal claims became moot, according to the <a href="https://clearinghouse.net/case/17163/">Civil Rights Litigation Clearinghouse</a>. The county paid $175,000 in attorneys’ fees.</p>
+
+        <section class="open">
+          <h2 style="margin-top:0;padding-top:20px"><span class="n">—</span>What remains open</h2>
+          <ul>
+            <li><span class="mono">THE 2021 DEATH</span><span>The name, cause and findings are not public.</span></li>
+            <li><span class="mono">OTHER DEATHS</span><span>The state’s 2017 and 2019 jail reports list no Aroostook death. The reports for 2018, 2020 and 2022 through 2025 could not be read for this review, so those years are unchecked.</span></li>
+            <li><span class="mono">STAFF MISCONDUCT</span><span>Searches found no criminal charges or decertifications involving jail staff. That is a search result, not a finding that none occurred.</span></li>
+            <li><span class="mono">OTHER LAWSUITS</span><span>A party search of federal court dockets was not completed.</span></li>
+            <li><span class="mono">PREA AUDIT</span><span>No published Prison Rape Elimination Act audit of the jail was found.</span></li>
+            <li><span class="mono">DESIGN FEES</span><span>The four firms’ fee proposals and the record of the commissioners’ Feb. 18, 2026 vote were not reviewed.</span></li>
+            <li><span class="mono">SITE PRICE</span><span>The Bangor Daily News gave the Presque Isle parcel’s price as $1.3 million in one Oct. 5 story and $1.95 million in another.</span></li>
+            <li><span class="mono">IMMIGRATION</span><span>One private website says the jail holds ICE detainees. Nothing in the federal data supports that for any day after May 8, 2020.</span></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <aside class="rail">
+      <h4>In this report</h4>
+      <ol class="toc">
+        <li><a href="#s1"><span class="n mono">01</span>Perfect scores, unsafe building</a></li>
+        <li><a href="#s2"><span class="n mono">02</span>A capacity number that kept moving</a></li>
+        <li><a href="#s3"><span class="n mono">03</span>A death the record barely notes</a></li>
+        <li><a href="#s4"><span class="n mono">04</span>Where the jail sits</a></li>
+        <li><a href="#s5"><span class="n mono">05</span>The price tag and the design firm</a></li>
+        <li><a href="#s6"><span class="n mono">06</span>Deficit and inmate money</a></li>
+        <li><a href="#s7"><span class="n mono">07</span>What the jail is called</a></li>
+        <li><a href="#s8"><span class="n mono">08</span>Court record and open questions</a></li>
+      </ol>
+      <h4>Key records</h4>
+      <div class="doc"><div class="t mono">FEDERAL ASSESSMENT · PDF</div><a href="https://aroostook.me.us/pdfs/jail-justice-system-assessment-final-2024/">Jail and Justice System Assessment, NIC</a><div class="pg mono">JUL 23 2024</div></div>
+      <div class="doc"><div class="t mono">NEEDS ASSESSMENT · PDF</div><a href="https://aroostook.me.us/pdfs/aroostook-county-jail-forecast-analysis-justice-planners/">Justice Planners report</a><div class="pg mono">JUN 2025</div></div>
+      <div class="doc"><div class="t mono">STATE REPORT · PDF</div><a href="https://lldc.mainelegislature.org/Open/Rpts/kf8732_z99c22_2021.pdf">MDOC 2021 Report on Jails</a><div class="pg mono">DEATH REVIEW TABLE</div></div>
+      <div class="doc"><div class="t mono">AUDIT · PDF</div><a href="https://aroostook.me.us/pdfs/year-ending-06-30-2025-aroostook-county-jail-audit/">Jail audit, FY ending June 30, 2025</a><div class="pg mono">RHR SMITH · JUN 23 2026</div></div>
+      <div class="facts">
+        <div><span>State inspections at 100%</span><b>5</b></div>
+        <div><span>Fire suppression system</span><b>None</b></div>
+        <div><span>Rated capacity, 1991 → 2023</span><b>66 → 117</b></div>
+        <div><span>Functional capacity, per NIC</span><b>94</b></div>
+        <div><span>Fund balance, FY2025</span><b class="acc">($590,134)</b></div>
+        <div><span>New-jail estimate</span><b>$85–120M</b></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="sources">
+    <h2>Sources <span class="mono" style="font-weight:400;color:var(--ink2)">39 DOCUMENTS</span></h2>
+    <p class="intro">Every document below was opened for this story. Figures from the county audits, budget packets, commission packets, the two consultant reports, the state jail reports, the court order and the ICE data were read directly from the original files.</p>
+    <div class="sgrid">
+      <div>
+        <h3>County records</h3>
+        <ul>
+          <li><a href="https://aroostook.me.us/pdfs/jail-justice-system-assessment-final-2024/">Jail and Justice System Assessment</a><span class="mono">NATIONAL INSTITUTE OF CORRECTIONS · ALBERT &amp; LICHTMAN · JUL 23 2024</span></li>
+          <li><a href="https://aroostook.me.us/pdfs/aroostook-county-jail-forecast-analysis-justice-planners/">Aroostook County Jail Needs Assessment Report</a><span class="mono">JUSTICE PLANNERS · JUN 2025</span></li>
+          <li><a href="https://aroostook.me.us/pdfs/2025-12-09-jsc-packet/">Jail Study Commission packet, Dec. 9, 2025</a><span class="mono">DESIGN PROPOSAL SCORING</span></li>
+          <li><a href="https://aroostook.me.us/pdfs/2026-03-03-jsc-packet/">Jail Study Commission packet, March 3, 2026</a><span class="mono">MINUTES OF FEB 5 2026</span></li>
+          <li><span>Jail audits for fiscal years <a href="https://aroostook.me.us/pdfs/year-ending-6-30-2019-aroostook-jail-audit/">2019</a>, <a href="https://aroostook.me.us/pdfs/year-ending-6-30-2020-aroostook-jail-audit/">2020</a>, <a href="https://aroostook.me.us/pdfs/year-ending-06-30-2021-aroostook-county-jail-audit-2/">2021</a>, <a href="https://aroostook.me.us/pdfs/year-ending-06-30-2022-aroostook-county-jail-audit/">2022</a>, <a href="https://aroostook.me.us/pdfs/year-ending-06-30-2023-aroostook-county-jail-audit/">2023</a>, <a href="https://aroostook.me.us/pdfs/year-ending-06-30-2024-aroostook-county-jail-audit/">2024</a> and <a href="https://aroostook.me.us/pdfs/year-ending-06-30-2025-aroostook-county-jail-audit/">2025</a></span><span class="mono">RHR SMITH</span></li>
+          <li><a href="https://aroostook.me.us/pdfs/2025-04-29-fc-budget-work-session-agenda-packet/">Budget work session packet, April 29, 2025</a><span class="mono">FISCAL 2026</span></li>
+          <li><a href="https://aroostook.me.us/pdfs/2026-04-28-fc-budget-work-session-packet/">Budget work session packet, April 28, 2026</a><span class="mono">FISCAL 2027</span></li>
+          <li><span><a href="https://aroostook.me.us/pdfs/jail-communications/">Resident communications notice</a> and <a href="https://aroostook.me.us/pdfs/jail-money/">money deposit notice</a></span></li>
+        </ul>
+        <h3 style="margin-top:28px">State and court records</h3>
+        <ul>
+          <li><span>Maine Department of Corrections Report on Jails for <a href="https://lldc.mainelegislature.org/Open/Rpts/kf8732_z99c22_2017.pdf">2017</a>, <a href="https://lldc.mainelegislature.org/Open/Rpts/kf8732_z99c22_2019.pdf">2019</a> and <a href="https://lldc.mainelegislature.org/Open/Rpts/kf8732_z99c22_2021.pdf">2021</a></span></li>
+          <li><a href="https://www.maine.gov/corrections/sites/maine.gov.corrections/files/boc/CJALOSFY10to13(1).pdf">Maine county jails pretrial average length of stay, FY2010 to FY2013</a><span class="mono">MAINE BOARD OF CORRECTIONS</span></li>
+          <li><a href="https://courts.maine.gov/news/peterson/SJC-23-2_2024.01.12_final_order.pdf">Peterson v. Johnson, SJC-23-2, final decision and order</a><span class="mono">JAN 12 2024</span></li>
+          <li><a href="https://legislature.maine.gov/testimony/resources/CJPS20210414Sheriff%20Departments132863816086687410.pdf">Sheriffs’ responses to the Legislature’s phone and tablet survey</a><span class="mono">AROOSTOOK RESPONSE · DEC 11 2019</span></li>
+          <li><a href="https://clearinghouse.net/case/17163/">Smith v. Aroostook County case summary</a><span class="mono">CIVIL RIGHTS LITIGATION CLEARINGHOUSE</span></li>
+        </ul>
+        <h3 style="margin-top:28px">Federal data</h3>
+        <ul>
+          <li><span><a href="https://raw.githubusercontent.com/vera-institute/ice-detention-trends/main/metadata/facilities.csv">ICE detention facility list</a> and daily population counts</span><span class="mono"><a href="https://github.com/vera-institute/ice-detention-trends">VERA INSTITUTE OF JUSTICE · ICE DETENTION TRENDS</a></span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>News reports</h3>
+        <ul>
+          <li><a href="https://thecounty.me/?p=269218">Aroostook County Jail scores perfect marks on biennial inspection</a><span class="mono">THE COUNTY · JAN 4 2023</span></li>
+          <li><a href="https://thecounty.me/?p=282549">Aroostook County Jail is unsafe, crowded and not secure, federal experts say</a><span class="mono">THE COUNTY · JUN 20 2024</span></li>
+          <li><a href="https://thecounty.me/?p=291586">Consultants share potential Aroostook County jail needs</a><span class="mono">THE COUNTY · JUN 20 2025</span></li>
+          <li><a href="https://thecounty.me/2020/11/19/news/aroostook-county-jail-receives-high-marks-following-inspection/">Aroostook County Jail receives high marks following inspection</a><span class="mono">THE COUNTY · NOV 2020</span></li>
+          <li><a href="https://thecounty.me/2014/09/10/news/county-jail-facing-budget-crunch/">County Jail facing budget crunch</a><span class="mono">THE COUNTY · SEP 2014</span></li>
+          <li><a href="https://thecounty.me/?p=84036">County Commissioners OK capital improvement plan</a><span class="mono">THE COUNTY · AUG 29 2012</span></li>
+          <li><a href="https://rebuild.observer-me.com/?p=59567">Aroostook County Jail expands inmate population, faces budget shortfall</a><span class="mono">HOULTON PIONEER TIMES</span></li>
+          <li><a href="https://rebuild.observer-me.com/?p=24666">Clossey named jail administrator</a><span class="mono">HOULTON PIONEER TIMES · 2013</span></li>
+          <li><a href="https://www.bangordailynews.com/2013/09/11/news/investigation-finds-proper-procedures-followed-by-aroostook-county-jail-staff-in-inmate-death/">Investigation finds proper procedures followed by Aroostook County Jail staff in inmate death</a><span class="mono">BANGOR DAILY NEWS · SEP 11 2013</span></li>
+          <li><a href="https://www.pressherald.com/?p=4686494">Official: Aroostook County inmate dies</a><span class="mono">PORTLAND PRESS HERALD · SEP 10 2014</span></li>
+          <li><a href="https://www.bangordailynews.com/2026/02/18/aroostook/aroostook-government/design-firm-new-aroostook-county-jail/">County chooses design firm for new Aroostook jail</a><span class="mono">BANGOR DAILY NEWS · FEB 18 2026</span></li>
+          <li><a href="https://www.bangordailynews.com/2026/05/28/aroostook/aroostook-government/aroostook-county-hires-architecture-firm-design-new-jail/">Aroostook County hires architecture firm to design new jail</a><span class="mono">BANGOR DAILY NEWS · MAY 28 2026</span></li>
+          <li><a href="https://bangordailynews.com/2026/09/10/aroostook/aroostook-government/aroostook-county-new-jail-land-search-joam40zk0w">Aroostook County begins land search for new jail</a><span class="mono">BANGOR DAILY NEWS · SEP 10 2026</span></li>
+          <li><a href="https://www.wabi.tv/2026/09/10/one-bad-plug-away-catastrophe-aroostook-county-looks-new-jail-site/">‘One bad plug away from a catastrophe’: Aroostook County looks for new jail site</a><span class="mono">WAGM · SEP 10 2026</span></li>
+          <li><a href="https://www.bangordailynews.com/2026/10/05/aroostook/aroostook-government/new-aroostook-jail-potential-sites/">One of these 8 sites could hold Aroostook’s next jail</a><span class="mono">BANGOR DAILY NEWS · OCT 5 2026</span></li>
+          <li><a href="https://www.bangordailynews.com/2026/10/05/aroostook/aroostook-government/presque-isle-maine-aroostook-county-jail-no-proposal-submission/">Aroostook’s next jail will not be built on city-owned land in Presque Isle</a><span class="mono">BANGOR DAILY NEWS · OCT 5 2026</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
+    <p>Corrections run at the top of the next issue, set at the same size as the error. Write <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>. Records and tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>.</p>
+    <p><a href="story-print.html">Print edition of this report</a> · <a href="archive.html">Archive</a> · <a href="#">Unsubscribe</a></p>
+  </footer>
+</div>
+<script src="listen.js" defer></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Maine Ledger, print edition № 12." />
+<meta name="theme-color" content="#161513" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Maine Ledger" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Maine Ledger — print edition № 12</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+doc-page:not(:defined){visibility:hidden}
+/* Print: US Letter, one ink. Body Times New Roman 11pt black per spec; the ledger furniture in mono. */
+.page { font-family:"Times New Roman", Times, serif; font-size:11pt; line-height:14.5pt; color:#000; background:#fff;
+  padding:0.55in 0.65in 0.5in; box-sizing:border-box; display:flex; flex-direction:column; }
+.page p { font-size:11pt; line-height:14.5pt; color:#000; margin:0; }
+.mono { font-family:"JetBrains Mono", monospace; font-size:7.5pt; letter-spacing:.04em; }
+.top { border-bottom:2pt solid #000; padding-bottom:8pt; display:flex; justify-content:space-between; align-items:flex-end; gap:12pt; }
+.name { font-family:Spectral, "Times New Roman", serif; font-weight:700; font-size:30pt; line-height:28pt; letter-spacing:-.02em; margin:0; }
+.name small { display:block; font-family:"Times New Roman", serif; font-weight:400; font-style:italic; font-size:10pt; letter-spacing:0; margin-top:4pt; }
+.top .mono { text-align:right; line-height:11pt; }
+.strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:0.75pt solid #000; }
+.strip div { padding:5pt 8pt 5pt 0; border-right:0.5pt solid #999; } .strip div + div { padding-left:8pt; } .strip > div:last-child { border-right:0; }
+.strip .v { font-weight:700; font-size:9pt; margin-top:1pt; font-family:"Times New Roman", serif; letter-spacing:0; }
+.lead { font-family:Spectral, serif; font-weight:600; font-size:13.5pt; line-height:16.5pt; margin:10pt 0 8pt; letter-spacing:-.01em; }
+
+.ledger { border-top:1.5pt solid #000; flex:1; }
+.lhead { display:grid; grid-template-columns:0.55in 1.05in 1fr 1.55in; gap:10pt; padding:4pt 0; border-bottom:0.75pt solid #000; color:#444; }
+.row { display:grid; grid-template-columns:0.55in 1.05in 1fr 1.55in; gap:10pt; padding:9pt 0; border-bottom:0.5pt solid #999; }
+.row .d { color:#444; padding-top:2pt; }
+.row .pl { font-weight:700; font-size:10pt; padding-top:0.5pt; }
+.row h2 { font-family:Spectral, serif; font-size:12.5pt; line-height:14.5pt; font-weight:600; letter-spacing:-.01em; margin:0 0 3pt; }
+.row p { text-align:justify; hyphens:auto; }
+.doc { border:0.5pt solid #000; padding:5pt 6pt; font-size:8.5pt; line-height:11pt; align-self:start; }
+.doc .t { color:#444; margin-bottom:2pt; } .doc b { display:block; font-weight:700; } .doc .pg { margin-top:2pt; color:#444; }
+
+.bottom { display:grid; grid-template-columns:1fr 1fr; gap:0.3in; margin-top:10pt; }
+.nums { border-top:0.75pt solid #000; padding-top:6pt; }
+.cap { font-family:"JetBrains Mono", monospace; font-size:7.5pt; letter-spacing:.08em; color:#444; margin:0 0 5pt; }
+.fig { display:flex; align-items:baseline; gap:7pt; margin:0 0 4pt; }
+.fig .n { font-family:Spectral, serif; font-size:22pt; line-height:22pt; font-weight:700; min-width:2.6em; text-align:right; letter-spacing:-.02em; }
+.fig .what { font-size:10.5pt; line-height:13pt; }
+.src { font-size:9pt !important; line-height:12pt !important; font-style:italic; }
+.docket { border-top:0.75pt solid #000; padding-top:6pt; }
+.docket p { font-size:10.5pt; line-height:13pt; margin:0 0 4pt; }
+.docket .d { font-family:"JetBrains Mono", monospace; font-size:7.5pt; letter-spacing:.06em; }
+
+.foot { font-size:8.5pt; line-height:11.5pt; padding-top:6pt; border-top:2pt solid #000; margin-top:10pt; }
+.foot p { font-size:8.5pt; line-height:11.5pt; margin:0 0 2.5pt; }
+</style>
+</head>
+<body>
+<doc-page>
+  <section class="page" id="p1" data-screen-label="Print № 12">
+    <div class="top">
+      <h1 class="name">Maine Ledger<small>Jails, prisons and courts, by the record.</small></h1>
+      <p class="mono">PRINT EDITION<br />MON OCT 05 2026<br />AUGUSTA · MAINE</p>
+    </div>
+    <div class="strip mono">
+      <div>ISSUE<div class="v">№ 12</div></div>
+      <div>WEEK OF<div class="v">Oct 5, 2026</div></div>
+      <div>RECORDS CITED<div class="v">4 documents</div></div>
+      <div>ONLINE<div class="v">maineledger.org</div></div>
+    </div>
+    <p class="lead">Aroostook stops looking for a jail site, the sanctions rule stands, and the first jail-funding increase in six years.</p>
+
+    <div class="ledger">
+      <div class="lhead mono"><span>DATE</span><span>PLACE</span><span>ENTRY</span><span>RECORD</span></div>
+      <article class="row">
+        <span class="d mono">OCT 01</span><span class="pl">Aroostook County</span>
+        <div><h2>County closes its site search for a new jail</h2><p>Commissioners have ended the search for a site to replace the county jail. Construction estimates run $85 to 120 million, and a bond question could go to voters next year. The county has not yet published a preferred-site recommendation.</p></div>
+        <div class="doc"><div class="t mono">MINUTES · PDF</div><b>Aroostook County Commissioners, regular meeting</b><div class="pg mono">OCT 01 2026 · P. 3, ITEM 7</div></div>
+      </article>
+      <article class="row">
+        <span class="d mono">SEP 30</span><span class="pl">Statewide</span>
+        <div><h2>Corrections keeps rule allowing sanctions before a hearing ends</h2><p>The Department of Corrections has retained a disciplinary rule that permits sanctions to be imposed before a disciplinary hearing concludes — or after a finding of not guilty. The rule stands as adopted; the department has not announced a revision.</p></div>
+        <div class="doc"><div class="t mono">RULE · ADOPTED</div><b>MDOC rulemaking record, prisoner discipline</b><div class="pg mono">SEP 30 2026</div></div>
+      </article>
+      <article class="row">
+        <span class="d mono">OCT 02</span><span class="pl">State House</span>
+        <div><h2>LD 1962, on access to facilities, is now law</h2><p>The bill addresses legislator access to correctional facilities and vacancies on county Boards of Visitors. It has been enacted and signed. The Boards, required by statute, have carried unfilled seats in several counties.</p></div>
+        <div class="doc"><div class="t mono">STATUTE · ENACTED</div><b>LD 1962, as enacted</b><div class="pg mono">OCT 02 2026 · 132ND LEGISLATURE</div></div>
+      </article>
+      <article class="row">
+        <span class="d mono">OCT 01</span><span class="pl">Counties</span>
+        <div><h2>Jails to get $4 million more in state funding for 2027</h2><p>County jails will receive an additional $4 million in state support for 2027. It is the first increase in the state’s share since 2021, over which period counties have carried rising costs through property taxes.</p></div>
+        <div class="doc"><div class="t mono">BUDGET · ENACTED</div><b>Enacted budget language, county jail operations</b><div class="pg mono">OCT 01 2026</div></div>
+      </article>
+    </div>
+
+    <div class="bottom">
+      <section class="nums">
+        <p class="cap">BY THE NUMBERS</p>
+        <p class="fig"><span class="n">2,100</span><span class="what">people in state prisons on an average day in August</span></p>
+        <p class="fig"><span class="n">215</span><span class="what">of them women</span></p>
+        <p class="src">Source: MDOC monthly report, August 2026.</p>
+      </section>
+      <section class="docket">
+        <p class="cap">ON THE CALENDAR</p>
+        <p><span class="d">OCT 07</span> — Aroostook County Commissioners, regular meeting; new-jail financing on the agenda.</p>
+        <p><span class="d">OCT 14</span> — Criminal Justice and Public Safety Committee, interim work session.</p>
+        <p><span class="d">OCT 20</span> — MDOC September population report due.</p>
+        <p class="src">Dates from published agendas; confirm before attending.</p>
+      </section>
+    </div>
+
+    <div class="foot">
+      <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question. Published weekly by email with a web archive at maineledger.org; this print edition appears occasionally.</p>
+      <p>Corrections run at the top of the next issue, set at the same size as the error: whysice937@gmail.com · Records and tips: whysice937@gmail.com — documents are preferred over characterizations · Subscribe or unsubscribe: maineledger.org/subscribe</p>
+    </div>
+  </section>
+</doc-page>
+<script src="doc-page.js"></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body>
+</html>
