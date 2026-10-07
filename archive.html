@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>Maine Ledger — archive</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" />
 <link rel="stylesheet" href="ledger.css" />
 <style>
 .top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
@@ -23,7 +24,6 @@
 .tools a { color:var(--ink); text-decoration:none; font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
 .tools a:hover, .tools a[aria-current] { text-decoration:underline; }
 @media (max-width:560px){ .tools { gap:0 14px; } .tools .sub-btn { padding:0 12px; } }
-.preview { background:var(--card); border-bottom:1px solid var(--rule2); padding:8px 0; font-size:14px; color:var(--ink2); }
 
 .head { padding:40px 0 24px; display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:40px; align-items:end; }
 @media (max-width:860px){ .head { grid-template-columns:1fr; gap:20px; } }
@@ -45,12 +45,12 @@
 .row .cur { color:var(--ink); font-weight:600; }
 .row .np { font-size:18px; color:var(--ink2); }
 @media (max-width:760px){ .lhead { display:none; } .row { grid-template-columns:72px minmax(0,1fr); row-gap:4px; } .row .c { grid-column:2; text-align:left; } }
+.note { margin:0 0 4px; padding:10px 14px; border:1px solid var(--rule2); border-radius:2px; background:var(--card); font-size:15px; color:var(--ink2); max-width:72ch; }
 .yr { padding:28px 0 6px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
 .yr::after { content:""; flex:1; border-top:1px solid var(--rule2); }
 </style>
 </head>
 <body>
-<div class="preview"><div class="wrap">Design preview. Issues 1 to 11 are sample listings and cannot be opened.</div></div>
 <div class="wrap">
   <header class="top">
     <a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
@@ -64,16 +64,17 @@
     </div>
     <div class="tot mono">
       <div><div class="k">ISSUES</div><div class="v">12</div></div>
-      <div><div class="k">RECORDS CITED</div><div class="v">61 documents</div></div>
+      <div><div class="k">RECORDS CITED IN ISSUES</div><div class="v">57 documents</div></div>
     </div>
   </section>
 
+  <p class="note">Issues 1 to 11 went out by email. Their web copies are not posted yet; until they are, write <a href="mailto:whysice937@gmail.com?subject=Back%20issue%20request">whysice937@gmail.com</a> and the issue will be sent to you.</p>
   <div class="yr">2026</div>
   <section class="ledger">
     <div class="lhead mono"><span>№</span><span>DATE</span><span>ISSUE</span><span>RECORDS</span></div>
     <article class="row"><span class="no mono">RPT</span><span class="d mono">OCT 06</span><a href="petersburg.html">FCC Petersburg: transgender people in federal custody</a><span class="c mono">42 DOCS</span></article>
     <article class="row"><span class="no mono">RPT</span><span class="d mono">OCT 06</span><a href="story.html">Aroostook County Jail: perfect scores, unsafe building</a><span class="c mono">39 DOCS</span></article>
-    <article class="row"><span class="no mono">12</span><span class="d mono">OCT 05</span><a href="email.html">A new jail in Aroostook; sanctions rule stands; LD 1962 enacted <span class="cur mono">· LATEST</span></a><span class="c mono">4 DOCS</span></article>
+    <article class="row"><span class="no mono">12</span><span class="d mono">OCT 05</span><a href="index.html">Eight sites for Aroostook’s jail; sanctions rule stays; August prison count <span class="cur mono">· LATEST</span></a><span class="c mono">5 DOCS</span></article>
     <article class="row"><span class="no mono">11</span><span class="d mono">SEP 28</span><span class="np">Board of Visitors vacancies, counted by county</span><span class="c mono">16 DOCS</span></article>
     <article class="row"><span class="no mono">10</span><span class="d mono">SEP 21</span><span class="np">What the jails spent, 2021–2025</span><span class="c mono">5 DOCS</span></article>
     <article class="row"><span class="no mono">09</span><span class="d mono">SEP 14</span><span class="np">Court backlog figures, by region</span><span class="c mono">3 DOCS</span></article>

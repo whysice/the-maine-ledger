@@ -4,6 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Jails, prisons and courts, by the record. An independent weekly brief on Maine’s county jails, state prisons and criminal courts." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Maine Ledger" />
+<meta property="og:title" content="Maine Ledger № 12: eight sites for Aroostook’s jail; Corrections keeps Procedure O.21" />
+<meta property="og:description" content="Jails, prisons and courts, by the record. Every entry links to the government’s own document." />
 <meta name="theme-color" content="#161513" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="assets/icon-192.png" type="image/png" />
@@ -14,6 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>Maine Ledger — jails, prisons and courts, by the record</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" />
 <link rel="stylesheet" href="ledger.css" />
 <style>
 /* masthead */
@@ -24,7 +29,6 @@
 .tools a { color:var(--ink); text-decoration:none; font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
 .tools a:hover, .tools a[aria-current] { text-decoration:underline; }
 @media (max-width:560px){ .tools { gap:0 14px; } .tools .sub-btn { padding:0 12px; } }
-.preview { background:var(--card); border-bottom:1px solid var(--rule2); padding:8px 0; font-size:14px; color:var(--ink2); }
 
 .strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule); }
 .strip > div { padding:12px 16px 12px 0; border-right:1px solid var(--rule2); }
@@ -46,6 +50,19 @@
 .changed .d { color:var(--ink2); padding-top:4px; }
 .delta { color:var(--ink); font-weight:700; }
 
+.correction { margin:24px 0 0; padding:16px 18px; border:2px solid var(--ink); border-radius:2px; background:var(--card); }
+.correction h2 { margin:0 0 8px; font-size:clamp(20px,2.2vw,26px); line-height:1.2; font-weight:600; letter-spacing:-.01em; }
+.correction h2 .mono { display:block; margin-bottom:6px; color:var(--ink2); font-weight:400; letter-spacing:.02em; }
+.correction p { margin:0; color:var(--ink2); max-width:80ch; font-size:16px; }
+.row .d { text-decoration:none; color:var(--ink2); align-self:start; }
+.row a.d { display:block; min-height:44px; }
+.row a.d:hover { color:var(--acc); text-decoration:underline; }
+.row:target { background:var(--acc-soft); box-shadow:0 0 0 12px var(--acc-soft); }
+.row p + p.also { margin-top:10px; }
+.cal { margin:28px 0 0; border-top:1px solid var(--rule); }
+.cal > h3 { margin:16px 0 0; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
+.cal > h3::after { content:""; flex:1; border-top:1px solid var(--rule2); }
+.cal .row { border-bottom:0; }
 /* the ledger */
 .ledger { margin:12px 0 0; border-top:2px solid var(--rule); }
 .lhead { display:grid; grid-template-columns:120px 150px minmax(0,1fr) 230px; gap:20px; padding:10px 0; color:var(--ink2); border-bottom:1px solid var(--rule); }
@@ -58,22 +75,11 @@
 .order { color:var(--ink2); margin:10px 0 0; }
 @media (max-width:980px){ .lhead { display:none; } .row { grid-template-columns:1fr; gap:10px; } .row .d, .row .pl { padding-top:0; } .row .d .lbl, .row .pl .lbl { position:static; width:auto; height:auto; clip:auto; margin-right:8px; color:var(--ink2); font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:400; } .doc { max-width:420px; } }
 
-.nums { padding:32px 0 24px; border-bottom:1px solid var(--rule); }
-.nums h3 { margin:0 0 12px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
-.nums h3::after { content:""; flex:1; border-top:1px solid var(--rule2); }
-.nums .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px; }
-@media (max-width:760px){ .nums .grid { grid-template-columns:1fr; gap:20px; } }
-.num .n { font-size:clamp(32px,4vw,40px); line-height:1; font-weight:700; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
-.nums .src { color:var(--ink2); margin:14px 0 0; }
-.num p { margin:8px 0 0; color:var(--ink2); max-width:40ch; }
-
 .two { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; padding:40px 0; }
 @media (max-width:860px){ .two { grid-template-columns:1fr; } }
 .two h3 { margin:0 0 12px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
+.h3link { font-weight:400; display:inline-flex; align-items:center; min-height:44px; padding:0 4px; }
 .two h3::after { content:""; flex:1; border-top:1px solid var(--rule2); }
-.counties { columns:2; column-gap:24px; margin:0; padding:0; list-style:none; font-size:15px; }
-.counties li { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px dotted var(--rule2); break-inside:avoid; }
-.counties li .c { color:var(--ink2); }
 .arch { list-style:none; margin:0; padding:0; }
 .arch li { display:grid; grid-template-columns:64px 1fr 60px; gap:12px; padding:8px 0; border-bottom:1px dotted var(--rule2); font-size:15px; }
 .arch a { color:var(--ink); } .arch a:hover { color:var(--acc); }
@@ -89,7 +95,6 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to this week’s entries</a>
-<div class="preview"><div class="wrap">Design preview. Entries, counts and back issues on this page are sample content, not a published record.</div></div>
 <div class="wrap">
   <header class="top">
     <h1 class="masthead"><a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a></h1>
@@ -99,21 +104,26 @@
     <div><div class="k">ISSUE</div><div class="v">№ 12</div></div>
     <div><div class="k">WEEK OF</div><div class="v">Oct 5, 2026</div></div>
     <div><div class="k">RECORDS CITED</div><div class="v">5 documents</div></div>
-    <div><div class="k">READ TIME</div><div class="v">4 min</div></div>
+    <div><div class="k">LINKS CHECKED</div><div class="v">Oct 7, 2026</div></div>
   </div>
 
   <main id="main">
+  <section class="correction" id="correction" aria-labelledby="corr-h">
+    <h2 id="corr-h"><span class="mono">CORRECTED OCT 7, 2026</span> Aroostook has not closed its jail-site search.</h2>
+    <p>An earlier version of this issue said county commissioners ended the search on Oct. 1. They did not; the search is open and eight properties were submitted. That version also listed LD 1962 and the $4 million jail allocation as this week’s news. Both happened in April: LD 1962 became law without the Governor’s signature on April 19, 2026, and the $4 million was a one-time allocation for the 2025–26 fiscal year, signed April 16, 2026. Both are now out of this week’s entries; LD 1962 is under <a href="#calendar">On the calendar</a>.</p>
+  </section>
+
   <section class="lead">
     <div>
-      <h2>Aroostook stops looking for a jail site, the sanctions rule stands, and the first jail-funding increase in six years.</h2>
-      <p>Four items this week. Each row below is one entry in the record: where it happened, what the document says, and the document itself.</p>
+      <h2>Eight properties are in the running for Aroostook’s next jail, and Corrections keeps the rule that allows sanctions after a not-guilty finding.</h2>
+      <p>Three entries this week. Each row is one entry in the record: when, where, what the document says, and a link to the document on the government’s own site.</p>
     </div>
     <aside class="changed" aria-labelledby="changed-h">
       <h3 id="changed-h">What changed since № 11</h3>
       <ul>
-        <li><span class="d mono">LD 1962</span><span>Pending → <span class="delta">Enacted</span></span></li>
-        <li><span class="d mono">JAIL FUNDING</span><span>No increase since 2021 → <span class="delta">+$4M for 2027</span></span></li>
-        <li><span class="d mono">AROOSTOOK</span><span>Site search open → <span class="delta">Closed</span></span></li>
+        <li><span class="d mono">AROOSTOOK</span><span>Land proposals due Sept. 28 → <span class="delta">8 submitted</span></span></li>
+        <li><span class="d mono">PROCEDURE O.21</span><span>Open for comment → <span class="delta">Kept</span></span></li>
+        <li><span class="d mono">PRISONS</span><span>August average → <span class="delta">2,100 people</span></span></li>
       </ul>
     </aside>
   </section>
@@ -121,36 +131,38 @@
   <section class="ledger" id="ledger" aria-labelledby="ledger-h">
     <h2 id="ledger-h" class="lbl">This week’s entries</h2>
     <div class="lhead mono" aria-hidden="true"><span>DATE</span><span>PLACE</span><span>ENTRY</span><span>RECORD</span></div>
-    <article class="row">
-      <span class="d mono"><span class="lbl">Date</span>OCT 02</span><span class="pl"><span class="lbl">Place</span>State House</span>
-      <div><h3>LD 1962, on access to facilities, is now law</h3><p>The bill, Legislative Document 1962, addresses legislator access to correctional facilities and vacancies on county Boards of Visitors. It has been enacted and signed. The Boards, required by statute, have carried unfilled seats in several counties.</p></div>
-      <div class="doc"><span class="lbl">Record</span><div class="t mono">STATUTE · ENACTED</div><span class="title">LD 1962, as enacted</span><div class="pg mono">OCT 02 2026 · 132ND LEGISLATURE</div><div class="pending mono">DOCUMENT PENDING</div></div>
+
+    <article class="row" id="aroostook-jail-sites">
+      <a class="d mono" href="#aroostook-jail-sites" title="Link to this entry"><span class="lbl">Date</span>OCT 05</a><span class="pl"><span class="lbl">Place</span>Aroostook County</span>
+      <div><h3>Eight properties are in the running for the county’s next jail</h3><p>Land proposals closed Sept. 28. Eight were submitted: three in Caribou, two in Houlton, and one each in Presque Isle, Limestone and Fort Fairfield. Presque Isle’s city council chose not to offer city-owned land; a privately owned Presque Isle parcel is among the eight. The county’s architect, SMRT, can evaluate up to five sites. A consultant last year put construction at $91 to 112 million, and a bond question could go to voters as early as next year.</p>
+      <p class="also">The county has not yet posted the list of sites. Reporting: <a href="https://www.bangordailynews.com/2026/10/05/aroostook/aroostook-government/new-aroostook-jail-potential-sites/" rel="noopener">Bangor Daily News, Oct. 5</a> · <a href="https://thecounty.me/2026/10/05/news/aroostook-countys-next-jail-not-on-city-land-presque-isle/" rel="noopener">The County, Oct. 5</a></p></div>
+      <div class="doc"><span class="lbl">Record</span><div class="t mono">AGENDA · COMMISSIONERS</div><a href="https://aroostook.me.us/pdfs/2026-09-16-caribou-agenda/" rel="noopener">Aroostook County Commissioners, Sept. 16 meeting: update on the jail land search</a><div class="pg mono">SEP 16 2026 · ART. 10</div><div class="src mono"><span>aroostook.me.us</span><span class="go">Open ↗</span></div></div>
     </article>
-    <article class="row">
-      <span class="d mono"><span class="lbl">Date</span>OCT 01</span><span class="pl"><span class="lbl">Place</span>Aroostook County</span>
-      <div><h3>County closes its site search for a new jail</h3><p>Commissioners have ended the search for a site to replace the county jail. Construction estimates run $85 to 120 million, and a bond question could go to voters next year. The county has not yet published a preferred-site recommendation.</p></div>
-      <div class="doc"><span class="lbl">Record</span><div class="t mono">MINUTES · PDF</div><span class="title">Aroostook County Commissioners, regular meeting</span><div class="pg mono">OCT 01 2026 · P. 3, ITEM 7</div><div class="pending mono">DOCUMENT PENDING</div></div>
+
+    <article class="row" id="mdoc-procedure-o21">
+      <a class="d mono" href="#mdoc-procedure-o21" title="Link to this entry"><span class="lbl">Date</span>SEP 23</a><span class="pl"><span class="lbl">Place</span>Statewide</span>
+      <div><h3>Corrections keeps the rule allowing sanctions regardless of a hearing’s outcome</h3><p>In its response to public comments on proposed changes to its adult resident discipline rule, the Maine Department of Corrections said Procedure O.21 “will not be removed.” The provision lets staff restrict privileges or take other action whether or not a disciplinary case is brought, and states: “A dismissal or a finding of not guilty does not preclude taking any such action.” Comments closed Aug. 21.</p>
+      <p class="also">Rule text: <a href="https://www.maine.gov/corrections/sites/maine.gov.corrections/files/2026-02/20.1%20AF.pdf" rel="noopener">Policy 20.1, Procedure O.21, p. 37</a> (maine.gov) · Reporting: <a href="https://mainemorningstar.com/2026/09/28/dept-of-corrections-will-continue-policy-allowing-for-punishment-regardless-of-guilt/" rel="noopener">Maine Morning Star, Sept. 28</a> · <a href="https://www.bangordailynews.com/2026/09/28/state/state-police-courts/maine-prisons-disciplinary-policy-guilt-upheld/" rel="noopener">Bangor Daily News, Sept. 28</a></p></div>
+      <div class="doc"><span class="lbl">Record</span><div class="t mono">RULEMAKING · RESPONSE TO COMMENTS</div><a href="https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/Summary%20of%20and%20Resp%20to%20Public%20Comments.pdf" rel="noopener">Summary of and Responses to Public Comments, Rule Ch. 10, §20.1, Adult Resident Discipline</a><div class="pg mono">FILE DATED SEP 23 2026 · 9 PP.</div><div class="src mono"><span>maine.gov/corrections</span><span class="go">Open ↗</span></div></div>
     </article>
-    <article class="row">
-      <span class="d mono"><span class="lbl">Date</span>OCT 01</span><span class="pl"><span class="lbl">Place</span>Counties</span>
-      <div><h3>Jails to get $4 million more in state funding for 2027</h3><p>County jails will receive an additional $4 million in state support for 2027. It is the first increase in the state’s share since 2021, over which period counties have carried rising costs through property taxes.</p></div>
-      <div class="doc"><span class="lbl">Record</span><div class="t mono">BUDGET · ENACTED</div><span class="title">Enacted budget language, county jail operations</span><div class="pg mono">OCT 01 2026</div><div class="pending mono">DOCUMENT PENDING</div></div>
+
+    <article class="row" id="mdoc-august-population">
+      <a class="d mono" href="#mdoc-august-population" title="Link to this entry"><span class="lbl">Date</span>SEP 10</a><span class="pl"><span class="lbl">Place</span>Statewide</span>
+      <div><h3>State prisons held 2,100 people on an average day in August</h3><p>The Department of Corrections’ August report puts the average incarcerated population at 2,100: 1,884 men and 215 women. The average for 2026 so far is 2,095.</p>
+      <p class="also">All monthly reports: <a href="https://www.maine.gov/corrections/node/44" rel="noopener">maine.gov/corrections</a></p></div>
+      <div class="doc"><span class="lbl">Record</span><div class="t mono">DATA REPORT · MONTHLY</div><a href="https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/August%202026%20Monthly%20Adult%20Data%20Report.pdf" rel="noopener">August 2026 MDOC Adult Data Report</a><div class="pg mono">SEP 10 2026 · §1.1, P. 3</div><div class="src mono"><span>maine.gov/corrections</span><span class="go">Open ↗</span></div></div>
     </article>
-    <article class="row">
-      <span class="d mono"><span class="lbl">Date</span>SEP 30</span><span class="pl"><span class="lbl">Place</span>Statewide</span>
-      <div><h3>Corrections keeps rule allowing sanctions before a hearing ends</h3><p>The Maine Department of Corrections has retained a disciplinary rule that permits sanctions to be imposed before a disciplinary hearing concludes, and after a finding of not guilty. The rule stands as adopted; the department has not announced a revision.</p></div>
-      <div class="doc"><span class="lbl">Record</span><div class="t mono">RULE · ADOPTED</div><span class="title">Maine Department of Corrections rulemaking record, prisoner discipline</span><div class="pg mono">SEP 30 2026</div><div class="pending mono">DOCUMENT PENDING</div></div>
-    </article>
-    <p class="order mono">ENTRIES RUN NEWEST FIRST, BY THE DATE ON THE DOCUMENT.</p>
+    <p class="order mono">ENTRIES RUN NEWEST FIRST. EACH ENTRY HAS ITS OWN LINK: TAP THE DATE.</p>
   </section>
 
-  <section class="nums" aria-labelledby="nums-h">
-    <h3 id="nums-h">Standing counts</h3>
-    <div class="grid">
-      <div class="num"><div class="n">2,100</div><p>people in state prisons on an average day in August.</p></div>
-      <div class="num"><div class="n">215</div><p>of them women.</p></div>
-    </div>
-    <p class="src mono">SOURCE: MAINE DEPARTMENT OF CORRECTIONS MONTHLY POPULATION REPORT, AUGUST 2026 · DOCUMENT PENDING</p>
+  <section class="cal" id="calendar" aria-labelledby="cal-h">
+    <h3 id="cal-h">On the calendar</h3>
+    <article class="row">
+      <span class="d mono"><span class="lbl">Due</span>JAN 31 2027</span><span class="pl"><span class="lbl">Place</span>State House</span>
+      <div><h3>Corrections’ rules on legislator access to facilities are due</h3><p>LD 1962 requires the commissioner to adopt rules setting which areas legislators may enter, how they may speak with residents and staff, and when entry may be refused. The same law lets the Senate President and House Speaker fill a vacant Board of Visitors seat if the Governor has not filled it within 90 days. It became law without the Governor’s signature on April 19, 2026, and took effect July 29.</p>
+      <p class="also">Bill history: <a href="https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1962&amp;snum=132" rel="noopener">LD 1962, 132nd Legislature</a> (legislature.maine.gov)</p></div>
+      <div class="doc"><span class="lbl">Record</span><div class="t mono">PUBLIC LAW · CHAPTERED</div><a href="https://lldc.mainelegislature.org/Open/Laws/2025/2025_PL_c765.pdf" rel="noopener">Public Law 2025, chapter 765 (LD 1962)</a><div class="pg mono">UNSIGNED APR 19 2026 · SEC. 3</div><div class="src mono"><span>mainelegislature.org</span><span class="go">Open ↗</span></div></div>
+    </article>
   </section>
 
   <section class="two">
@@ -162,12 +174,13 @@
       </ul>
     </div>
     <div>
-      <h3>Past issues <a class="mono" href="archive.html" style="font-weight:400">ARCHIVE</a></h3>
+      <h3>Past issues <a class="mono h3link" href="archive.html">FULL ARCHIVE</a></h3>
       <ul class="arch">
         <li><span class="t mono">№ 11</span><span>Board of Visitors vacancies, counted by county</span><span class="c mono">SEP 28</span></li>
         <li><span class="t mono">№ 10</span><span>What the jails spent, 2021–2025</span><span class="c mono">SEP 21</span></li>
         <li><span class="t mono">№ 9</span><span>Court backlog figures, by region</span><span class="c mono">SEP 14</span></li>
       </ul>
+      <p class="also"><a href="archive.html">Request a back issue</a></p>
     </div>
   </section>
   </main>

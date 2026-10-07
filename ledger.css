@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap');
 /* Maine Ledger — shared tokens and base. Option A accent: moss. */
 :root { --paper:#f6f4ee; --card:#fffdf8; --ink:#161513; --ink2:#5a574f; --rule:#161513; --rule2:rgba(22,21,19,.18); --acc:#2e5a3c; --acc-soft:#e3ebe3; }
 * { box-sizing:border-box; }
@@ -24,6 +23,17 @@ a:hover { color:var(--ink); }
 .doc a:visited { color:var(--ink2); }
 .doc:has(a:hover) { border-color:var(--ink2); }
 .doc .pending { margin-top:6px; color:var(--ink2); }
+/* Where the link goes, before you click: the source's own domain. */
+.doc .src { margin-top:8px; padding-top:8px; border-top:1px dotted var(--rule2); color:var(--ink2); display:flex; justify-content:space-between; gap:8px; }
+.doc .src .go { color:var(--acc); white-space:nowrap; }
+.doc:has(a:hover) .src .go { text-decoration:underline; }
+.doc a:focus-visible { outline:none; }
+.doc:has(a:focus-visible) { outline:2px solid var(--acc); outline-offset:2px; }
+/* Secondary reporting, under the entry text. */
+.also { margin-top:10px; font-size:14px; color:var(--ink2); }
+.also a { color:var(--ink2); }
+.also a:hover { color:var(--acc); }
+
 .doc .pg { margin-top:6px; color:var(--ink2); }
 footer { border-top:2px solid var(--rule); padding:24px 0 48px; font-size:14px; color:var(--ink2); }
 footer p { margin:0 0 6px; max-width:80ch; }

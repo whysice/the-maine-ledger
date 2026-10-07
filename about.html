@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>Maine Ledger — about and method</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" />
 <link rel="stylesheet" href="ledger.css" />
 <style>
 .top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
@@ -27,10 +28,6 @@ h2::after { content:""; flex:1; border-top:1px solid var(--rule2); }
 p, li { color:var(--ink2); }
 p { margin:0 0 12px; }
 ul { margin:0 0 12px; padding-left:20px; }
-dl { display:grid; grid-template-columns:120px 1fr; gap:8px 16px; margin:0; }
-dt { color:var(--ink2); padding-top:3px; }
-dd { margin:0; }
-.todo { color:var(--ink2); font-style:italic; }
 </style>
 </head>
 <body>
@@ -45,12 +42,8 @@ dd { margin:0; }
     <p>Maine Ledger is an independent weekly brief on Maine’s county jails, state prisons and criminal courts. Each entry states what a public document says and links to the document.</p>
 
     <h2>Who publishes it</h2>
-    <dl class="mono">
-      <dt>EDITOR</dt><dd class="todo">To be named before launch.</dd>
-      <dt>BASED IN</dt><dd class="todo">To be stated before launch.</dd>
-      <dt>FUNDING</dt><dd class="todo">To be stated before launch.</dd>
-    </dl>
-    <p style="margin-top:12px">It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
+    <p>Maine Ledger is edited independently in Maine.</p>
+    <p>It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
 
     <h2>What counts as a record</h2>
     <p>A record is a document produced by a public body or a court: meeting minutes and packets, statutes and bills, adopted rules, budgets, audits, inspection reports, court orders, and agency data reports. Documents are preferred over characterizations.</p>
@@ -60,6 +53,15 @@ dd { margin:0; }
       <li>An entry needs a document. If the document is not yet available, the entry says so.</li>
       <li>Four to six entries a week, newest first by the date on the document.</li>
       <li>No commentary. An entry reports what changed and what the document says.</li>
+    </ul>
+
+    <h2 id="read">How to read an entry</h2>
+    <ul>
+      <li><b>Date</b> is the date on the document, not the date we wrote about it.</li>
+      <li><b>Place</b> is the body that produced the record: a county, the State House, a state department.</li>
+      <li><b>The card on the right</b> is the record. The line at its foot names the site it opens on, so you can see it is the government’s own copy before you click.</li>
+      <li><b>Reporting</b> under an entry links to news coverage of the same record, for context. The record is the source; the coverage is not.</li>
+      <li><b>LD</b> means Legislative Document, Maine’s bill number. <b>MDOC</b> is the Maine Department of Corrections.</li>
     </ul>
 
     <h2>Corrections</h2>
