@@ -19,10 +19,10 @@
 .top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
 .name { font-weight:700; font-size:34px; line-height:.95; letter-spacing:-.02em; margin:0; color:var(--ink); text-decoration:none; display:block; }
 .name small { display:block; white-space:nowrap; font-weight:400; font-style:italic; font-size:15px; letter-spacing:0; margin-top:8px; color:var(--ink2); }
-.tools { display:flex; gap:22px; align-items:center; }
-.tools a { color:var(--ink); text-decoration:none; font-size:15px; }
+.tools { display:flex; gap:4px 18px; align-items:center; flex-wrap:wrap; }
+.tools a { color:var(--ink); text-decoration:none; font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
 .tools a:hover, .tools a[aria-current] { text-decoration:underline; }
-@media (max-width:560px){ .tools a:not(.sub-btn) { display:none; } }
+@media (max-width:560px){ .tools { gap:0 14px; } .tools .sub-btn { padding:0 12px; } }
 
 .strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule); }
 .strip > div { padding:12px 16px 12px 0; border-right:1px solid var(--rule2); }
@@ -34,7 +34,7 @@
 
 /* story layout: text column + sticky record rail */
 .story { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:56px; padding:40px 0 48px; }
-@media (max-width:980px){ .story { grid-template-columns:1fr; gap:32px; } .rail { position:static; order:-1; } .rail .doc, .rail h4:nth-of-type(2), .facts { display:none; } .toc { margin-bottom:0; } }
+@media (max-width:980px){ .story { grid-template-columns:minmax(0,1fr); gap:32px; } .rail { position:static; order:-1; } .rail .doc, .rail h4:nth-of-type(2), .facts { display:none; } .toc { margin-bottom:0; } }
 .rail { position:sticky; top:24px; align-self:start; }
 .rail h4 { margin:0 0 8px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
 .rail h4::after { content:""; flex:1; border-top:1px solid var(--rule2); }
@@ -71,6 +71,7 @@
 
 /* ledger tables */
 .tbl { width:100%; border-collapse:collapse; margin:20px 0 28px; font-size:15px; line-height:1.4; border-top:2px solid var(--rule); }
+.tbl-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
 .tbl caption { text-align:left; padding:0 0 8px; color:var(--ink2); }
 .tbl th { text-align:left; font-weight:500; color:var(--ink2); padding:8px 12px 8px 0; border-bottom:1px solid var(--rule); vertical-align:bottom; }
 .tbl td { padding:9px 12px 9px 0; border-bottom:1px solid var(--rule2); vertical-align:top; }
@@ -125,7 +126,7 @@
 <div class="wrap">
   <header class="top">
     <a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
-    <nav class="tools"><a href="index.html">This week</a><a href="index.html#counties">By county</a><a href="archive.html">Archive</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav>
+    <nav class="tools"><a href="index.html">This week</a><a href="archive.html">Archive</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav>
   </header>
   <div class="strip mono">
     <div><div class="k">ENTRY</div><div class="v">Special report</div></div>
@@ -416,7 +417,7 @@
   <footer>
     <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
     <p>Corrections run at the top of the next issue, set at the same size as the error. Write <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>. Records and tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>.</p>
-    <p><a href="story-print.html">Print edition of this report</a> · <a href="archive.html">Archive</a> · <a href="#">Unsubscribe</a></p>
+    <p><a href="story-print.html">Print edition of this report</a> · <a href="archive.html">Archive</a> · <a href="about.html">About and method</a></p>
   </footer>
 </div>
 <script src="listen.js" defer></script>
