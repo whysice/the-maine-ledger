@@ -45,7 +45,8 @@
 .toc .n { color:var(--ink2); min-width:2ch; }
 .rail .doc { margin-bottom:10px; }
 .rail .doc a { font-size:13.5px; }
-.facts { border-top:2px solid var(--rule); margin-top:28px; }
+.facts { margin-top:28px; background:var(--card); border:1px solid var(--rule2); border-top:2px solid var(--rule); border-radius:var(--radius); box-shadow:var(--shadow-sm); padding:4px 14px; }
+.facts div:last-child { border-bottom:0; }
 .facts div { display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid var(--rule2); font-size:14px; }
 .facts b { font-weight:600; text-align:right; font-variant-numeric:tabular-nums; }
 .facts b.acc { color:var(--acc); }
@@ -90,7 +91,9 @@
 .sources h2 { font-size:15px; font-weight:600; margin:0 0 20px; display:flex; gap:10px; align-items:center; }
 .sources h2::after { content:""; flex:1; border-top:1px solid var(--rule2); }
 .sources .intro { color:var(--ink2); max-width:68ch; margin:0 0 24px; font-size:16px; }
-.sgrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 48px; }
+.sgrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; align-items:start; }
+.sgrid > div { background:var(--card); border:1px solid var(--rule2); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); padding:var(--pad); }
+.sgrid li:last-child { border-bottom:0; }
 @media (max-width:860px){ .sgrid { grid-template-columns:1fr; } }
 .sgrid h3 { margin:0 0 8px; font-size:15px; font-weight:600; }
 .sgrid ul { list-style:none; margin:0; padding:0; font-size:14.5px; line-height:1.45; }
@@ -98,7 +101,6 @@
 .sgrid li a { color:var(--ink); text-decoration:none; }
 .sgrid li a:hover { color:var(--acc); text-decoration:underline; }
 .sgrid li .mono { color:var(--ink2); }
-.sgrid .ck { color:var(--acc); }
 .open { border-top:2px solid var(--rule); margin-top:40px; }
 .open h2 { margin:0; }
 .open ul { list-style:none; padding:0; margin:12px 0 0; font-size:16px; }
@@ -115,13 +117,13 @@
 .listen select { padding:7px 10px; border-color:var(--rule); color:var(--ink2); background:transparent; }
 .listen .st { color:var(--ink2); margin-left:auto; }
 .listen .pb { position:absolute; left:0; bottom:-1px; height:2px; background:var(--acc); width:0; transition:width .3s; }
-.summary { border:1px solid var(--rule); border-left:3px solid var(--acc); padding:18px 22px; margin:20px 0 8px; max-width:68ch; }
+.summary { border:1px solid var(--rule2); border-radius:var(--radius-lg); background:var(--card); box-shadow:var(--shadow-md); padding:var(--pad); margin:20px 0 8px; max-width:68ch; }
 .summary h3 { margin:0 0 10px; font-size:15px; font-weight:600; display:flex; align-items:center; gap:12px; }
 .summary h3 button { white-space:nowrap; text-wrap:initial; margin-left:auto; font:inherit; font-size:13px; padding:4px 12px; border:1px solid var(--ink); border-radius:2px; background:transparent; cursor:pointer; color:var(--ink); }
 .summary h3 button:hover { background:var(--ink); color:var(--paper,#f5f1e8); }
 .summary ul { margin:0; padding-left:1.15em; font-size:16px; line-height:1.5; }
 .summary li { margin-bottom:.4em; }
-.summary p.note { margin:12px 0 0; font-size:13px; color:var(--ink2); font-style:italic; }
+.summary p.note { margin:12px 0 0; font-size:13px; color:var(--ink2); }
 </style>
 </head>
 <body>
@@ -142,7 +144,7 @@
       <header class="hed">
         <h1>FCC Petersburg: transgender people in federal custody</h1>
         <p class="dek">Sixty-one people counted in 2023. One documented death, in 2015, after she sued over her care. Three deaths in six weeks this spring, inspectors kept out of the housing units, and a policy that has been rewritten, blocked and rewritten again.</p>
-        <p class="meta mono"><span>PUBLISHED <b>OCT 06 2026</b></span><span>BY <b>SAMANTHA CLAYTON</b></span><span>READ <b>16 MIN</b></span><span>SOURCES <b>42</b></span></p>
+        <p class="meta mono"><span>PUBLISHED <b>OCT 06 2026</b></span><span>BY <b>SAMANTHA CLAYTON</b></span><span>READ <b>16 MIN</b></span><span>SOURCES <b>41</b></span></p>
         <div class="listen">
           <button type="button" data-play>Listen</button>
           <button type="button" data-stop hidden>Stop</button>
@@ -156,7 +158,7 @@
       <section class="summary" id="summary" hidden>
         <h3>In brief <span class="mono" style="font-weight:400;color:var(--ink2)">EDITOR'S SUMMARY</span><button type="button" data-sum-play>Listen</button></h3>
         <ul><li>Sixty-one of 2,360 people at FCC Petersburg identified as transgender or intersex at the last audit, in October 2023. No newer count is public.</li><li>One documented death of a transgender woman, Ashley Jean Arnold, in 2015, two months after a judge ruled against her lawsuit over medical care.</li><li>Three deaths were announced in six weeks in May and June 2026; the bureau gives no cause and does not record gender identity in death notices.</li><li>A 2021 death sent two lieutenants and a nurse to prison for failing to get a man medical care over 30 hours.</li><li>Care for transgender people in federal custody has been cancelled, ordered restored, rewritten and blocked again since January 2025; the government asked the Supreme Court for a stay on Sept. 28, 2026.</li><li>Outside inspectors were refused entry to housing units in 2021. The bureau announced in July 2026 it would close the Low.</li></ul>
-        <p class="note">Written by the editor from the records cited below, not generated by software. The full report has the sources for every line.</p>
+        <p class="note">The full report has the sources for every line.</p>
       </section>
 
       <div class="body">
@@ -175,7 +177,7 @@
         <p>The Medium is one of the prisons where the bureau runs its Sex Offender Management Program. The bureau’s <a href="https://www.bop.gov/inmates/custody_and_care/sex_offenders.jsp">sex offender page</a> lists it. When DC inspectors visited in 2014, they reported that 48 percent of the people there had been convicted of sex offenses and that it was “one of nine facilities in the country” offering the program.</p>
         <p>The only public count of transgender people at Petersburg comes from the complex’s most recent audit under the Prison Rape Elimination Act. The <a href="https://www.bop.gov/locations/institutions/pem/pem_prea.pdf">auditor’s final report</a>, submitted Dec. 18, 2023, records 2,360 people at the complex on the first day of the visit, Oct. 31, 2023. Of those, 61 identified as transgender or intersex.</p>
         <p>For scale: the bureau told a federal court it held 2,198 transgender people across the whole system as of Feb. 20, 2025, <a href="https://www.npr.org/2025/02/21/nx-s1-5305282/trans-inmates-federal-prison-policy-transfers">NPR reported</a>. It later told another judge that 1,028 people in its custody had a gender dysphoria diagnosis and that roughly 628 of them were receiving hormone therapy.</p>
-        <p>No bureau document or court filing found in this review explains why transgender people are placed at Petersburg in particular. The closest comparison is in Arizona. The Marshall Project <a href="https://www.themarshallproject.org/2024/10/09/trans-tucson-federal-prison-assault-prea">reported in October 2024</a> that the federal penitentiary in Tucson, another sex offender program site, held more transgender women than any other federal prison.</p>
+        <p>No bureau document or court filing found in this review explains why transgender people are placed at Petersburg in particular.</p>
         <p>The bureau council that handled questions about transgender people in custody no longer exists under its old name. A Feb. 21, 2025 bureau memo says, “The Transgender Executive Council has been renamed the Special Populations Oversight Committee (SPOC), and the associated mailbox previously utilized by the transgender population has been taken offline.”</p>
 
         <h2 id="s3"><span class="n">03</span>One death on the record</h2>
@@ -190,7 +192,7 @@
         <h2 id="s4"><span class="n">04</span>A death that ended in convictions</h2>
         <p>One Petersburg death has been examined in open court. Nothing in the record suggests the man was transgender. The case matters here because it is the only Petersburg death found in this review in which the government has publicly established what staff did.</p>
         <p>The man, identified by prosecutors only as W.W., was 47. He “died of injuries he sustained over the course of a 30-hour period spanning Jan. 9 and 10, 2021,” the Justice Department said in a <a href="https://www.justice.gov/opa/pr/one-former-federal-bureau-prisons-official-sentenced-federal-civil-rights-violation-failing">May 2025 release</a>.</p>
-        <table class="tbl">
+        <div class="tbl-wrap"><table class="tbl">
           <caption class="mono">THE W.W. CASE, STAFF OUTCOMES</caption>
           <thead><tr><th>Staff member</th><th>Outcome</th><th>Sentence</th></tr></thead>
           <tbody>
@@ -199,7 +201,7 @@
             <tr><td class="nw">Nurse Tonya Farley</td><td>Convicted of false statements</td><td>Six months in prison, six months of home confinement</td></tr>
             <tr><td class="nw">Officer Yolanda Blackwell</td><td>Acquitted</td><td>None</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <p>Covington “willfully failed to ensure” that the man received medical care “even though she knew that W.W. had serious medical needs,” the department said. The outcomes for <a href="https://oig.justice.gov/news/press-release/federal-bureau-prisons-lieutenant-pleads-guilty-violating-civil-rights-inmate">Anderson</a> and for <a href="https://oig.justice.gov/news/press-release/former-federal-bureau-prisons-employees-convicted-charges-arising-their-failure">Covington, Farley and Blackwell</a> come from the department’s inspector general.</p>
         <p>Other Petersburg staff have been prosecuted for corruption. A correctional officer was sentenced in 2012 to 12 months for <a href="https://www.justice.gov/archive/usao/vae/news/2012/09/20120913brooksnr.html">conspiring to distribute heroin</a>. Two former officials were sentenced in September 2021, to four years and to 10 months, in a <a href="https://www.oversight.gov/two-former-bureau-prisons-officials-sentenced-bribery-scheme-federal-prison-petersburg">bribery scheme</a>. In June 2026 federal prosecutors in Georgia <a href="https://www.justice.gov/usao-mdga/pr/twelve-indicted-alleged-drone-smuggling-conspiracy-ten-prisons">announced an indictment</a> of 12 people accused of flying contraband into 10 prisons by drone. Petersburg is on the list.</p>
 
@@ -305,8 +307,8 @@
   </div>
 
   <section class="sources">
-    <h2>Sources <span class="mono" style="font-weight:400;color:var(--ink2)">42 DOCUMENTS</span></h2>
-    <p class="intro">Items marked <span class="ck">✱</span> were read through a summary of the page and should be checked against the original before publication. Everything else was read in the original document.</p>
+    <h2>Sources <span class="mono" style="font-weight:400;color:var(--ink2)">41 DOCUMENTS</span></h2>
+    <p class="intro">Every item below was read in the original document or on the publisher’s own page.</p>
     <div class="sgrid">
       <div>
         <h3>Bureau of Prisons</h3>
@@ -326,7 +328,7 @@
           <li><a href="https://oig.justice.gov/sites/default/files/reports/24-041.pdf">Evaluation of Issues Surrounding Inmate Deaths in Federal Bureau of Prisons Institutions</a><span class="mono">OIG REPORT 24-041 · FEB 2024</span></li>
           <li><a href="https://www.justice.gov/archive/usao/vae/news/2012/09/20120913brooksnr.html">Heroin conspiracy sentencing</a><span class="mono">SEP 13 2012</span></li>
           <li><a href="https://www.oversight.gov/two-former-bureau-prisons-officials-sentenced-bribery-scheme-federal-prison-petersburg">Bribery scheme sentencing</a><span class="mono">SEP 2021</span></li>
-          <li><a href="https://www.justice.gov/usao-mdga/pr/twelve-indicted-alleged-drone-smuggling-conspiracy-ten-prisons">Drone smuggling indictment</a><span class="mono">JUN 24 2026 <span class="ck">✱</span></span></li>
+          <li><a href="https://www.justice.gov/usao-mdga/pr/twelve-indicted-alleged-drone-smuggling-conspiracy-ten-prisons">Drone smuggling indictment</a><span class="mono">U.S. ATTORNEY, M.D. GA. · JUN 24 2026</span></li>
         </ul>
         <h3 style="margin-top:28px">Courts and executive orders</h3>
         <ul>
@@ -351,11 +353,10 @@
           <li><a href="https://www.npr.org/2025/02/21/nx-s1-5305282/trans-inmates-federal-prison-policy-transfers">NPR on the bureau’s head count</a><span class="mono">FEB 21 2025</span></li>
           <li><a href="https://www.npr.org/2025/12/04/nx-s1-5630490/prison-doj-safety-memo-changes-trans-lgbtq-inmates">NPR on the audit memo</a><span class="mono">DEC 4 2025</span></li>
           <li><a href="https://www.unclosetedmedia.com/p/we-spoke-to-8-incarcerated-trans">We Spoke to 8 Incarcerated Trans People</a><span class="mono">UNCLOSETED MEDIA · FEB 21 2026</span></li>
-          <li><a href="https://www.themarshallproject.org/2024/10/09/trans-tucson-federal-prison-assault-prea">Marshall Project on USP Tucson</a><span class="mono">OCT 9 2024 <span class="ck">✱</span></span></li>
           <li><a href="https://www.yahoo.com/news/authorities-inmate-fci-petersburg-found-004644669.html">Progress-Index on the February 2025 death</a><span class="mono">VIA YAHOO NEWS</span></li>
           <li><a href="https://www.afge.org/globalassets/documents/generalreports/2026/afge-letter-on-bop-facility-closures-july-2-2026.pdf">AFGE letter to Congress</a><span class="mono">JUL 2 2026</span></li>
           <li><a href="https://federalcriminaldefenseattorney.com/federal-bureau-prisons/virginia/fci-petersburg-medium/">Franklin-Best guide to FCI Petersburg Medium</a></li>
-          <li><span>Newsweek report on the closures</span><span class="mono">JUL 1 2026 <span class="ck">✱</span></span></li>
+          <li><a href="https://www.newsweek.com/federal-prison-closure-map-inmates-united-states-doj-12148294">Federal prisons housing thousands of inmates to close in US</a><span class="mono">NEWSWEEK · JUL 1 2026</span></li>
         </ul>
       </div>
     </div>
