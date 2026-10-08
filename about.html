@@ -21,7 +21,7 @@
 .tools a { color:var(--ink); text-decoration:none; font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
 .tools a:hover, .tools a[aria-current] { text-decoration:underline; }
 @media (max-width:560px){ .tools { gap:0 14px; } .tools .sub-btn { padding:0 12px; } }
-main { padding:40px 0 24px; max-width:68ch; }
+main { margin:32px 0 36px; max-width:76ch; }
 h1 { font-size:clamp(30px,3.6vw,44px); line-height:1.08; letter-spacing:-.02em; margin:0 0 14px; font-weight:600; }
 h2 { font-size:15px; font-weight:600; margin:36px 0 10px; display:flex; gap:10px; align-items:center; }
 h2::after { content:""; flex:1; border-top:1px solid var(--rule2); }
@@ -37,7 +37,7 @@ ul { margin:0 0 12px; padding-left:20px; }
     <nav class="tools" aria-label="Main"><a href="index.html">This week</a><a href="archive.html">Archive</a><a href="about.html" aria-current="page">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav>
   </header>
 
-  <main>
+  <main class="panel">
     <h1>About and method</h1>
     <p>Maine Ledger is an independent weekly brief on Maine’s county jails, state prisons and criminal courts. Each entry states what a public document says and links to the document.</p>
 
@@ -74,7 +74,7 @@ ul { margin:0 0 12px; padding-left:20px; }
   </main>
 
   <footer>
-    <p><a href="index.html">This week</a> · <a href="archive.html">Archive</a> · <a href="identity.html">About the mark</a></p>
+    <p><a href="index.html">This week</a> · <a href="archive.html">Archive</a></p>
   </footer>
 </div>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
