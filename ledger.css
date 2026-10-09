@@ -78,11 +78,8 @@
   --font-sans: "Public Sans", system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   color-scheme: light;
-  --paper: var(--paper);
   --card: var(--paper-raised);
-  --ink: var(--ink);
   --ink2: var(--ink-soft);
-  --rule: var(--rule);
   --rule2: var(--hairline);
   --spruce: var(--band);
   --spruce-ink: var(--on-band);
@@ -200,7 +197,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; text-wrap: 
 /* Subscribe button: gold pill on band. */
 .sub-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; background: var(--accent); color: var(--on-accent); border: 0; border-radius: var(--radius-pill); font: inherit; font-family: var(--font-sans); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-decoration: none; cursor: pointer; white-space: nowrap; box-shadow: var(--shadow-sm); }
 .sub-btn:hover { background: var(--accent-hover); color: var(--on-accent); }
-.tools .sub-btn, .tools .sub-btn:hover, a.sub-btn, a.sub-btn:hover { color: var(--on-accent); text-decoration: none; box-shadow: none; }
+.top .tools a.sub-btn, .top .tools a.sub-btn:hover, .tools .sub-btn, .tools .sub-btn:hover, a.sub-btn, a.sub-btn:hover { color: var(--on-accent); text-decoration: none; box-shadow: none; }
 
 /* ---- Skip link ---- */
 .skip { position: absolute; left: -9999px; top: 0; background: var(--ink); color: var(--paper); padding: 10px 14px; z-index: 10; }
