@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>
+// Applies a previously chosen theme before first paint, so a reload never flashes the other theme first.
+(function () {
+  try {
+    var t = localStorage.getItem('ledger_theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (err) { /* storage unavailable; prefers-color-scheme decides */ }
+})();
+</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Jails, prisons and courts, by the record. An independent weekly brief on Maine’s county jails, state prisons and criminal courts." />
@@ -8,7 +17,7 @@
 <meta property="og:site_name" content="Maine Ledger" />
 <meta property="og:title" content="Maine Ledger № 1: eight sites for Aroostook’s jail; Corrections keeps Procedure O.21" />
 <meta property="og:description" content="Jails, prisons and courts, by the record. Every entry links to the government’s own document." />
-<meta name="theme-color" content="#161513" />
+<meta name="theme-color" content="#163a2e" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="assets/icon-192.png" type="image/png" />
 <link rel="apple-touch-icon" href="assets/icon-180.png" />
@@ -105,8 +114,8 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to this week’s entries</a>
-<header class="top"><div class="wrap top-in"><h1 class="masthead"><a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a></h1>
-    <nav class="tools" aria-label="Main"><a href="#ledger" aria-current="location">This week</a><a href="archive.html">Archive</a><a href="about.html">About</a><a class="sub-btn" href="#subscribe">Subscribe</a></nav></div></header>
+<header class="top"><div class="wrap top-in"><h1 class="masthead"><a class='name' href='/'>Maine Ledger<small>Jails, prisons and courts, by the record.</small></a></h1>
+    <nav class="tools" aria-label="Main"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button><a href="#ledger" aria-current="location">This week</a><a href='/archive'>Archive</a><a href='/about'>About</a><a class="sub-btn" href="#subscribe">Subscribe</a></nav></div></header>
 <div class="wrap">
   <div class="strip mono">
     <div><div class="k">ISSUE</div><div class="v">№ 1</div></div>
@@ -172,29 +181,51 @@
     <div class="panel">
       <h3>Reports</h3>
       <ul class="arch">
-        <li><span class="t mono">REPORT</span><a href="petersburg.html">FCC Petersburg: transgender people in federal custody</a><span class="c mono">OCT 6</span></li>
-        <li><span class="t mono">REPORT</span><a href="story.html">Aroostook County Jail: perfect scores, unsafe building</a><span class="c mono">OCT 6</span></li>
+        <li><span class="t mono">REPORT</span><a href='/petersburg'>FCC Petersburg: transgender people in federal custody</a><span class="c mono">OCT 6</span></li>
+        <li><span class="t mono">REPORT</span><a href='/story'>Aroostook County Jail: perfect scores, unsafe building</a><span class="c mono">OCT 6</span></li>
       </ul>
     </div>
-    <a class="libcta panel" href="archive.html#documents"><span class="mono">DOCUMENT LIBRARY</span><b>Every record the Ledger has cited, in one place</b><span>89 government records, court filings and news reports, searchable, each opening on its publisher’s site. <span class="go">Browse the library →</span></span></a>
+    <a class='libcta panel' href='/archive#documents'><span class="mono">DOCUMENT LIBRARY</span><b>Every record the Ledger has cited, in one place</b><span>89 government records, court filings and news reports, searchable, each opening on its publisher’s site. <span class="go">Browse the library →</span></span></a>
   </section>
   </main>
 
   <section class="close panel" id="subscribe" aria-labelledby="sub-h">
     <div><h3 id="sub-h">One brief, once a week</h3><p>Four to six entries, each with its document. No commentary, no asks, no fundraising. Mondays by email; archived here the same day.</p></div>
     <div>
-      <form class="form" name="subscribe" method="POST" action="thanks.html" data-netlify="true" netlify-honeypot="company"><input type="hidden" name="form-name" value="subscribe" /><p style="display:none"><label>Company <input name="company" /></label></p><label for="sub-email" class="lbl">Email address</label><input id="sub-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="sub-note" /><button type="submit" class="sub-btn">Subscribe</button></form>
+      <form action='thanks' class='form' method='POST' name='subscribe' data-netlify='true' netlify-honeypot='company'><input type="hidden" name="form-name" value="subscribe" /><p style="display:none"><label>Company <input name="company" /></label></p><label for="sub-email" class="lbl">Email address</label><input id="sub-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="sub-note" /><button type="submit" class="sub-btn">Subscribe</button></form>
       <p class="form-note" id="sub-note">Your address is used only to send the brief. Every issue carries an unsubscribe link.</p>
     </div>
   </section>
 
   <footer>
-    <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question. <a href="about.html">About and method</a>.</p>
+    <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question. <a href='/about'>About and method</a>.</p>
     <p>Corrections run at the top of the next issue, set at the same size as the error. Write <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>.</p>
     <p>Send records or tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a>. Documents are preferred over characterizations.</p>
-    <p><a href="archive.html">Archive</a> · <a href="print.html">Print edition</a> · <a href="about.html">About</a></p>
+    <p><a href='/archive'>Archive</a> · <a href='/print'>Print edition</a> · <a href='/about'>About</a></p>
   </footer>
 </div>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function label() {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var sys = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var effective = cur || sys;
+    btn.textContent = effective === 'dark' ? 'Light mode' : 'Dark mode';
+    btn.setAttribute('aria-label', 'Switch to ' + (effective === 'dark' ? 'light' : 'dark') + ' mode');
+  }
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var sys = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var next = (cur || sys) === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('ledger_theme', next); } catch (err) {}
+    label();
+  });
+  label();
+})();
+</script>
 </body>
 </html>
