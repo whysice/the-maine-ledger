@@ -18,29 +18,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>Maine Ledger — jails, prisons and courts, by the record</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Public+Sans:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="ledger.css" />
 <style>
 /* masthead */
-.top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
-.name { font-weight:700; font-size:clamp(34px,5vw,56px); line-height:.95; letter-spacing:-.02em; margin:0; color:var(--ink); text-decoration:none; display:block; }
-.name small { display:block; white-space:nowrap; font-weight:400; font-style:italic; font-size:clamp(15px,1.6vw,19px); letter-spacing:0; margin-top:8px; color:var(--ink2); }
-.tools { display:flex; gap:4px 18px; align-items:center; flex-wrap:wrap; }
-.tools a { color:var(--ink); text-decoration:none; font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
-.tools a:hover, .tools a[aria-current] { text-decoration:underline; }
-@media (max-width:560px){ .tools { gap:0 14px; } .tools .sub-btn { padding:0 12px; } }
 
 .strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule); }
 .strip > div { padding:12px 16px 12px 0; border-right:1px solid var(--rule2); }
 .strip > div + div { padding-left:16px; }
 .strip > div:last-child { border-right:0; }
 .strip .k { color:var(--ink2); }
-.strip .v { font-weight:600; font-size:15px; margin-top:2px; font-family:Spectral,Georgia,serif; letter-spacing:0; }
+.strip .v { font-weight:600; font-size:15px; margin-top:2px; font-family:var(--serif); letter-spacing:0; }
 @media (max-width:760px){ .strip { grid-template-columns:1fr 1fr; } .strip > div:nth-child(2){border-right:0} .strip > div:nth-child(3){padding-left:0;border-top:1px solid var(--rule2)} .strip > div:nth-child(4){border-top:1px solid var(--rule2)} }
 
 .lead { display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:48px; padding:40px 0 28px; }
 @media (max-width:860px){ .lead { grid-template-columns:1fr; gap:28px; } }
-.lead h2 { font-size:clamp(26px,3.2vw,40px); line-height:1.12; letter-spacing:-.015em; margin:0 0 14px; font-weight:600; }
+.lead h2 { font-size:clamp(30px,4vw,50px); line-height:1.06; letter-spacing:-.01em; margin:0 0 16px; font-weight:700; }
 .lead p { margin:0; color:var(--ink2); max-width:58ch; }
 .changed h3 { margin:0 0 8px; font-weight:600; font-size:15px; display:flex; gap:10px; align-items:center; }
 .changed h3::after { content:""; flex:1; border-top:1px solid var(--rule2); }
@@ -50,11 +43,6 @@
 .changed .d { color:var(--ink2); padding-top:4px; }
 .delta { color:var(--ink); font-weight:700; }
 
-.correction { margin:24px 0 0; padding:var(--pad); border:2px solid var(--ink); border-radius:var(--radius-lg); background:var(--card); box-shadow:var(--shadow-md); }
-.correction h2 { margin:0 0 8px; font-size:clamp(20px,2.2vw,26px); line-height:1.2; font-weight:600; letter-spacing:-.01em; }
-.correction h2 .mono { display:block; margin-bottom:6px; color:var(--ink2); font-weight:400; letter-spacing:.02em; }
-.correction p { margin:0; color:var(--ink2); max-width:80ch; font-size:16px; }
-.correction p + h2 { margin-top:22px; padding-top:20px; border-top:1px solid var(--rule2); }
 .row .d { text-decoration:none; color:var(--ink2); align-self:start; }
 .row a.d { display:block; min-height:44px; }
 .row a.d:hover { color:var(--acc); text-decoration:underline; }
@@ -65,16 +53,16 @@
 .cal > h3::after { content:""; flex:1; border-top:1px solid var(--rule2); }
 .cal .row { border-bottom:0; }
 /* the ledger */
-.ledger { margin:12px 0 0; border-top:2px solid var(--rule); }
+.ledger { margin:12px 0 0; border-top:3px double var(--rule); }
 .lhead { display:grid; grid-template-columns:120px 150px minmax(0,1fr) 230px; gap:20px; padding:10px 0; color:var(--ink2); border-bottom:1px solid var(--rule); }
 .row { display:grid; grid-template-columns:120px 150px minmax(0,1fr) 230px; gap:20px; padding:22px 0; border-bottom:1px solid var(--rule2); }
 .row .d { padding-top:6px; color:var(--ink2); }
 .row .pl { font-weight:600; font-size:15px; padding-top:3px; }
-.row h3 { margin:0 0 8px; font-size:22px; line-height:1.25; letter-spacing:-.01em; font-weight:600; }
+.row h3 { margin:0 0 8px; font-size:24px; line-height:1.2; letter-spacing:-.005em; font-weight:700; }
 .row p { margin:0; color:var(--ink2); font-size:16px; max-width:62ch; }
 .lbl { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .order { color:var(--ink2); margin:10px 0 0; }
-@media (max-width:980px){ .lhead { display:none; } .row { grid-template-columns:1fr; gap:10px; } .row .d, .row .pl { padding-top:0; } .row .d .lbl, .row .pl .lbl { position:static; width:auto; height:auto; clip:auto; margin-right:8px; color:var(--ink2); font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:400; } .doc { max-width:420px; } }
+@media (max-width:980px){ .lhead { display:none; } .row { grid-template-columns:1fr; gap:10px; } .row .d, .row .pl { padding-top:0; } .row .d .lbl, .row .pl .lbl { position:static; width:auto; height:auto; clip:auto; margin-right:8px; color:var(--ink2); font-family:var(--sans); font-size:12px; font-weight:400; } .doc { max-width:420px; } }
 
 .two { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px; padding:40px 0; align-items:start; }
 @media (max-width:860px){ .two { grid-template-columns:1fr; } }
@@ -88,18 +76,30 @@
 .arch .c { color:var(--ink2); text-align:right; }
 
 .close { margin:0 0 40px; box-shadow:var(--shadow-lg); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:center; }
-@media (max-width:860px){ .close { grid-template-columns:1fr; gap:16px; } }
+@media (max-width:860px){ .close { grid-template-columns:minmax(0,1fr); gap:16px; } }
 .arch li:last-child { border-bottom:0; }
 .libcta { display:flex; flex-direction:column; gap:6px; text-decoration:none; color:var(--ink); transition:box-shadow .15s ease, transform .15s ease, border-color .15s ease; }
 .libcta .mono { color:var(--ink2); }
-.libcta b { font-size:22px; line-height:1.2; font-weight:600; letter-spacing:-.01em; }
+.libcta b { font-family:var(--serif-display); font-size:26px; line-height:1.2; font-weight:700; }
 .libcta > span:last-child { color:var(--ink2); max-width:70ch; }
 .libcta .go { color:var(--acc); white-space:nowrap; }
 .libcta:hover { border-color:var(--ink2); box-shadow:var(--shadow-lg); transform:translateY(-1px); color:var(--ink); }
 .libcta:hover .go { text-decoration:underline; }
 @media (prefers-reduced-motion:reduce){ .libcta { transition:none; } .libcta:hover { transform:none; } }
-.close h3 { margin:0 0 6px; font-size:24px; font-weight:600; letter-spacing:-.01em; }
-.close p { margin:0; color:var(--ink2); }
+/* Northern accents: spruce panels mid-page and at the subscribe box. */
+.changed.panel { align-self:start; }
+.changed.panel, .close.panel { background:var(--spruce); color:var(--spruce-ink); border-color:var(--spruce); }
+.changed h3 { color:#fff; font-family:var(--sans); font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+.changed h3::after { border-top-color:rgba(238,243,239,.25); }
+.changed li { border-bottom-color:rgba(238,243,239,.18); }
+.changed .d { color:var(--gold); }
+.changed .delta { color:#fff; }
+.close .form-note { color:var(--spruce-ink2); }
+.close .form input { border-color:transparent; border-radius:999px; }
+.close .form .sub-btn { border-radius:999px; }
+.close label { color:var(--spruce-ink2); }
+.close h3 { margin:0 0 6px; font-size:28px; font-weight:700; color:#fff; }
+.close p { margin:0; color:var(--spruce-ink2); }
 .form-note { margin:8px 0 0; font-size:14px; color:var(--ink2); max-width:460px; }
 </style>
 </head>
@@ -118,13 +118,6 @@
   </div>
 
   <main id="main">
-  <section class="correction" id="correction" aria-labelledby="corr-h">
-    <h2 id="corr-h"><span class="mono">CORRECTED OCT 9, 2026</span> Two details in this issue were corrected.</h2>
-    <p>Land proposals were due Sept. 28; the entry had said they closed that day and cited no source for the date. The department’s response to comments carries no printed date; Sept. 23 is the date the file was created, and the record card now says so. Source labels corrected the same day are noted in the <a href="archive.html#documents">document library</a>.</p>
-    <h2><span class="mono">CORRECTED OCT 7, 2026</span> Aroostook has not closed its jail-site search.</h2>
-    <p>An earlier version of this issue said county commissioners ended the search on Oct. 1. They did not; the search is open and eight properties were submitted. That version also listed LD 1962 and the $4 million jail allocation as this week’s news. Both happened in April: LD 1962 became law without the Governor’s signature on April 19, 2026, and the $4 million was a one-time allocation for the 2025–26 fiscal year, signed April 16, 2026. Both are now out of this week’s entries; LD 1962 is under <a href="#calendar">On the calendar</a>.</p>
-  </section>
-
   <section class="lead">
     <div>
       <h2>Eight properties are in the running for Aroostook’s next jail, and Corrections keeps the rule that allows sanctions after a not-guilty finding.</h2>

@@ -1,21 +1,25 @@
 /* Maine Ledger — shared tokens and base. */
-:root { --paper:#f6f4ee; --card:#fffdf8; --ink:#161513; --ink2:#5a574f; --rule:#161513; --rule2:rgba(22,21,19,.18); --acc:#2e5a3c; --acc-soft:#e3ebe3;
-  /* Depth: warm, low shadows; cards sit just above the paper. */
-  --radius:6px; --radius-lg:10px;
-  --shadow-sm:0 1px 2px rgba(22,21,19,.06), 0 1px 1px rgba(22,21,19,.03);
-  --shadow-md:0 1px 2px rgba(22,21,19,.05), 0 6px 18px -6px rgba(22,21,19,.14);
-  --shadow-lg:0 2px 4px rgba(22,21,19,.05), 0 16px 36px -14px rgba(22,21,19,.22);
+:root { --paper:#f3f0e8; --card:#ffffff; --ink:#15201b; --ink2:#4c5751; --rule:#15201b; --rule2:rgba(21,32,27,.16);
+  /* Broadsheet North: newsprint ground, spruce band, gold accent. */
+  --spruce:#163a2e; --spruce-ink:#eef3ef; --spruce-ink2:#c9d9cf; --gold:#e9b44c;
+  --acc:#163a2e; --acc-soft:#e2ece6;
+  --serif-display:"Libre Caslon Text", Georgia, serif; --serif:"Source Serif 4", Georgia, serif; --sans:"Public Sans", system-ui, sans-serif;
+  /* Depth: cards sit just above the paper, tinted toward spruce. */
+  --radius:10px; --radius-lg:14px;
+  --shadow-sm:0 1px 2px rgba(22,58,46,.06), 0 1px 1px rgba(22,58,46,.03);
+  --shadow-md:0 1px 2px rgba(22,58,46,.06), 0 10px 24px -12px rgba(22,58,46,.24);
+  --shadow-lg:0 2px 4px rgba(22,58,46,.06), 0 18px 36px -16px rgba(22,58,46,.34);
   --pad:clamp(18px,2.4vw,28px); }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--paper); color:var(--ink); font-family:Spectral, Georgia, serif; font-size:17px; line-height:1.55; text-wrap:pretty; -webkit-font-smoothing:antialiased; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.55; text-wrap:pretty; -webkit-font-smoothing:antialiased; }
 a { color:var(--acc); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
 a:hover { color:var(--ink); }
 :focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
-.mono { font-family:"JetBrains Mono", monospace; font-size:12px; letter-spacing:.02em; }
+.mono { font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.08em; }
 .wrap { max-width:1180px; margin:0 auto; padding:0 clamp(18px,4vw,56px); }
-.sub-btn { background:var(--ink); color:var(--paper); padding:0 18px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:var(--radius); box-shadow:var(--shadow-sm); text-decoration:none; font:inherit; font-size:14px; border:0; cursor:pointer; white-space:nowrap; }
-.sub-btn:hover { background:var(--acc); color:var(--paper); }
-.tools .sub-btn, .tools .sub-btn:hover, a.sub-btn, a.sub-btn:hover { color:var(--paper); text-decoration:none; }
+.sub-btn { background:var(--gold); color:var(--ink); font-weight:700; padding:0 18px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:var(--radius); box-shadow:var(--shadow-sm); text-decoration:none; font:inherit; font-size:14px; border:0; cursor:pointer; white-space:nowrap; }
+.sub-btn:hover { background:#f2c76a; color:var(--ink); }
+.tools .sub-btn, .tools .sub-btn:hover, a.sub-btn, a.sub-btn:hover { color:var(--ink); text-decoration:none; }
 .form { display:flex; gap:8px; max-width:460px; }
 .form input { flex:1; min-width:0; height:44px; border:1px solid var(--ink2); border-radius:var(--radius); box-shadow:inset 0 1px 2px rgba(22,21,19,.06); background:#fff; color:var(--ink); padding:0 12px; font:inherit; font-size:16px; }
 .form input::placeholder { color:var(--ink2); }
@@ -66,7 +70,7 @@ footer a { color:var(--ink2); }
 .chip { min-height:44px; padding:0 14px; border:1px solid var(--rule2); border-radius:999px; background:var(--card); color:var(--ink); font:inherit; font-size:14px; cursor:pointer; box-shadow:var(--shadow-sm); }
 .chip:hover { border-color:var(--ink2); }
 .chip[aria-pressed="true"] { background:var(--ink); color:var(--paper); border-color:var(--ink); }
-.chip .c { font-family:"JetBrains Mono",monospace; font-size:12px; opacity:.75; margin-left:4px; }
+.chip .c { font-family:var(--sans); font-size:12px; opacity:.75; margin-left:4px; }
 .lib-count { color:var(--ink2); margin:6px 0 0; min-height:1.4em; }
 .libgroup { margin-top:28px; }
 .libgroup h3 { margin:0 0 12px; font-size:15px; font-weight:600; display:flex; gap:10px; align-items:center; }
@@ -85,3 +89,21 @@ footer a { color:var(--ink2); }
 .k-news { background:#efe9dc; color:#5a4a26; }
 .k-other { background:#e9e9e6; color:#45443f; }
 .docitem[hidden], .libgroup[hidden] { display:none; }
+
+/* ---- Broadsheet North: masthead band, type, rules ---- */
+h1, h2, h3, h4 { font-family:var(--serif-display); }
+.mono, .lbl, .kind, .chip, .jump a, .sub-btn, .form label { font-family:var(--sans); }
+/* The header sits inside .wrap; a full-bleed band is painted behind it. */
+.top { position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; gap:0; padding:28px 0 0; margin-bottom:26px; color:var(--spruce-ink); background:var(--spruce); box-shadow:0 0 0 100vmax var(--spruce); clip-path:inset(0 -100vmax); }
+.top .name, .top .name:hover { font-family:var(--serif-display); font-weight:700; font-size:clamp(40px,7vw,80px); line-height:1; letter-spacing:-.01em; color:#fff; text-decoration:none; display:block; margin:0; }
+.top .name small { display:block; font-family:var(--serif-display); font-style:italic; font-weight:400; font-size:clamp(15px,1.7vw,20px); letter-spacing:0; margin-top:10px; color:var(--spruce-ink2); white-space:normal; }
+.top .tools { width:100%; display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:0 26px; margin-top:20px; padding:4px 0; border-top:3px double var(--gold); }
+.top .tools a { font-family:var(--sans); font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--spruce-ink2); text-decoration:none; min-height:44px; display:inline-flex; align-items:center; }
+.top .tools a:hover { color:#fff; }
+.top .tools a[aria-current] { color:#fff; text-decoration:underline; text-decoration-color:var(--gold); text-decoration-thickness:2px; text-underline-offset:8px; }
+.top .tools a.sub-btn { color:var(--ink); background:var(--gold); border-radius:999px; padding:0 18px; letter-spacing:.08em; box-shadow:none; }
+.top .tools a.sub-btn:hover { background:#f2c76a; color:var(--ink); }
+.top :focus-visible { outline-color:var(--gold); }
+@media (max-width:560px){ .top { padding-top:22px; } .top .tools { gap:0 16px; } .top .tools a { font-size:12px; } }
+footer { border-top:3px double var(--rule); }
+.panel, .doc, .docitem a { background:var(--card); }
