@@ -14,23 +14,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>Aroostook County Jail: Perfect Scores, Unsafe Building — Maine Ledger</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Public+Sans:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="ledger.css" />
 <style>
-.top { border-bottom:2px solid var(--rule); padding:22px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
-.name { font-weight:700; font-size:34px; line-height:.95; letter-spacing:-.02em; margin:0; color:var(--ink); text-decoration:none; display:block; }
-.name small { display:block; white-space:nowrap; font-weight:400; font-style:italic; font-size:15px; letter-spacing:0; margin-top:8px; color:var(--ink2); }
-.tools { display:flex; gap:4px 18px; align-items:center; flex-wrap:wrap; }
-.tools a { color:var(--ink); text-decoration:none; font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
-.tools a:hover, .tools a[aria-current] { text-decoration:underline; }
-@media (max-width:560px){ .tools { gap:0 14px; } .tools .sub-btn { padding:0 12px; } }
 
 .strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule); }
 .strip > div { padding:12px 16px 12px 0; border-right:1px solid var(--rule2); }
 .strip > div + div { padding-left:16px; }
 .strip > div:last-child { border-right:0; }
 .strip .k { color:var(--ink2); }
-.strip .v { font-weight:600; font-size:15px; margin-top:2px; font-family:Spectral,Georgia,serif; letter-spacing:0; }
+.strip .v { font-weight:600; font-size:15px; margin-top:2px; font-family:var(--serif); letter-spacing:0; }
 @media (max-width:760px){ .strip { grid-template-columns:1fr 1fr; } .strip > div:nth-child(2){border-right:0} .strip > div:nth-child(3){padding-left:0;border-top:1px solid var(--rule2)} .strip > div:nth-child(4){border-top:1px solid var(--rule2)} }
 
 /* story layout: text column + sticky record rail */
@@ -61,7 +54,7 @@
 .body > p { margin:0 0 1.1em; font-size:17.5px; line-height:1.6; }
 .body > p:first-of-type::first-letter { float:left; font-size:3.9em; line-height:.78; padding:7px 10px 0 0; font-weight:700; }
 .body h2 { font-size:clamp(23px,2.4vw,30px); line-height:1.15; letter-spacing:-.015em; margin:44px 0 14px; font-weight:600; display:flex; gap:14px; align-items:baseline; scroll-margin-top:24px; }
-.body h2 .n { font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:400; color:var(--acc); letter-spacing:.04em; }
+.body h2 .n { font-family:var(--sans); font-size:12px; font-weight:400; color:var(--acc); letter-spacing:.04em; }
 .body h3 { font-size:17.5px; margin:28px 0 8px; font-weight:600; }
 .body ul, .body ol { margin:0 0 1.1em; padding-left:1.3em; font-size:17px; line-height:1.55; }
 .body li { margin-bottom:.45em; }
