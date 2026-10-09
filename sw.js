@@ -1,4 +1,4 @@
-const CACHE = 'maine-ledger-v7';
+const CACHE = 'maine-ledger-v8';
 const BASE = self.registration.scope;
 const R = p => new URL(p, BASE).href;
 const PRECACHE = ['./', 'index.html', 'archive.html', 'story.html', 'petersburg.html', 'listen.js', 'story-print.html', 'about.html', 'ledger.css', 'offline.html', 'assets/icon-192.png', 'assets/icon-512.png', 'manifest.webmanifest'].map(R);

@@ -93,17 +93,20 @@ footer a { color:var(--ink2); }
 /* ---- Broadsheet North: masthead band, type, rules ---- */
 h1, h2, h3, h4 { font-family:var(--serif-display); }
 .mono, .lbl, .kind, .chip, .jump a, .sub-btn, .form label { font-family:var(--sans); }
-/* The header sits inside .wrap; a full-bleed band is painted behind it. */
-.top { position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; gap:0; padding:28px 0 0; margin-bottom:26px; color:var(--spruce-ink); background:var(--spruce); box-shadow:0 0 0 100vmax var(--spruce); clip-path:inset(0 -100vmax); }
-.top .name, .top .name:hover { font-family:var(--serif-display); font-weight:700; font-size:clamp(40px,7vw,80px); line-height:1; letter-spacing:-.01em; color:#fff; text-decoration:none; display:block; margin:0; }
-.top .name small { display:block; font-family:var(--serif-display); font-style:italic; font-weight:400; font-size:clamp(15px,1.7vw,20px); letter-spacing:0; margin-top:10px; color:var(--spruce-ink2); white-space:normal; }
-.top .tools { width:100%; display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:0 26px; margin-top:20px; padding:4px 0; border-top:3px double var(--gold); }
-.top .tools a { font-family:var(--sans); font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--spruce-ink2); text-decoration:none; min-height:44px; display:inline-flex; align-items:center; }
+/* Masthead: a compact spruce bar. Fixed height, so the web font arriving
+   late never moves the page below it. */
+.top { background:var(--spruce); color:var(--spruce-ink); border-bottom:2px solid var(--gold); margin-bottom:28px; }
+.top-in { display:flex; justify-content:space-between; align-items:center; gap:8px 24px; flex-wrap:wrap; min-height:68px; padding-top:10px; padding-bottom:10px; }
+.top .masthead { margin:0; font-size:inherit; font-weight:inherit; }
+.top .name, .top .name:hover { font-family:var(--serif-display); font-weight:700; font-size:24px; line-height:1.1; letter-spacing:0; color:#fff; text-decoration:none; display:flex; align-items:baseline; flex-wrap:wrap; gap:2px 12px; margin:0; }
+.top .name small { font-family:var(--serif-display); font-style:italic; font-weight:400; font-size:14px; letter-spacing:0; color:var(--spruce-ink2); margin:0; white-space:normal; }
+.top .tools { display:flex; align-items:center; flex-wrap:wrap; gap:0 22px; }
+.top .tools a { font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--spruce-ink2); text-decoration:none; min-height:44px; display:inline-flex; align-items:center; }
 .top .tools a:hover { color:#fff; }
-.top .tools a[aria-current] { color:#fff; text-decoration:underline; text-decoration-color:var(--gold); text-decoration-thickness:2px; text-underline-offset:8px; }
-.top .tools a.sub-btn { color:var(--ink); background:var(--gold); border-radius:999px; padding:0 18px; letter-spacing:.08em; box-shadow:none; }
+.top .tools a[aria-current] { color:#fff; text-decoration:underline; text-decoration-color:var(--gold); text-decoration-thickness:2px; text-underline-offset:6px; }
+.top .tools a.sub-btn { color:var(--ink); background:var(--gold); border-radius:999px; padding:0 18px; min-height:44px; letter-spacing:.08em; box-shadow:none; }
 .top .tools a.sub-btn:hover { background:#f2c76a; color:var(--ink); }
 .top :focus-visible { outline-color:var(--gold); }
-@media (max-width:560px){ .top { padding-top:22px; } .top .tools { gap:0 16px; } .top .tools a { font-size:12px; } }
+@media (max-width:640px){ .top-in { min-height:0; padding-top:12px; padding-bottom:4px; } .top .name small { display:none; } .top .tools { width:100%; gap:0 14px; } .top .tools a { letter-spacing:.05em; } .top .tools a.sub-btn { padding:0 14px; margin-left:auto; } }
 footer { border-top:3px double var(--rule); }
 .panel, .doc, .docitem a { background:var(--card); }
