@@ -6,8 +6,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f6f4ee",
-  "theme_color": "#161513",
+  "background_color": "#f4eddf",
+  "theme_color": "#16263a",
   "lang": "en-US",
   "categories": [
     "news"

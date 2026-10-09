@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Maine Ledger" />
 <meta property="og:title" content="Maine Ledger № 1: eight sites for Aroostook’s jail; Corrections keeps Procedure O.21" />
 <meta property="og:description" content="Jails, prisons and courts, by the record. Every entry links to the government’s own document." />
-<meta name="theme-color" content="#163a2e" />
+<meta name="theme-color" content="#16263a" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="assets/icon-192.png" type="image/png" />
 <link rel="apple-touch-icon" href="assets/icon-180.png" />
@@ -205,27 +205,6 @@
   </footer>
 </div>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
-<script>
-(function () {
-  var btn = document.getElementById('theme-toggle');
-  if (!btn) return;
-  function label() {
-    var cur = document.documentElement.getAttribute('data-theme');
-    var sys = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    var effective = cur || sys;
-    btn.textContent = effective === 'dark' ? 'Light mode' : 'Dark mode';
-    btn.setAttribute('aria-label', 'Switch to ' + (effective === 'dark' ? 'light' : 'dark') + ' mode');
-  }
-  btn.addEventListener('click', function () {
-    var cur = document.documentElement.getAttribute('data-theme');
-    var sys = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    var next = (cur || sys) === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('ledger_theme', next); } catch (err) {}
-    label();
-  });
-  label();
-})();
-</script>
+<script src="theme.js" defer></script>
 </body>
 </html>
