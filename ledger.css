@@ -216,6 +216,7 @@ footer { border-top: 3px double var(--rule); padding: 24px 0 48px; font-size: va
 footer p { margin: 0 0 6px; max-width: 80ch; }
 footer a { color: var(--ink-soft); }
 footer a:hover { color: var(--link); }
+footer .copy { margin-top: 14px; }
 
 /* ---- Panel ---- */
 .panel { background: var(--paper-raised); border: 1px solid var(--hairline); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: var(--pad); }
