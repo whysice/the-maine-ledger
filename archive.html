@@ -1,10 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>
+// Applies a previously chosen theme before first paint, so a reload never flashes the other theme first.
+(function () {
+  try {
+    var t = localStorage.getItem('ledger_theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (err) { /* storage unavailable; prefers-color-scheme decides */ }
+})();
+</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Every issue of Maine Ledger, as published." />
-<meta name="theme-color" content="#161513" />
+<meta name="theme-color" content="#163a2e" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="assets/icon-192.png" type="image/png" />
 <link rel="apple-touch-icon" href="assets/icon-180.png" />
@@ -52,8 +61,8 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap top-in"><a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
-    <nav class="tools"><a href="index.html">This week</a><a href="archive.html" aria-current="page">Archive</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav></div></header>
+<header class="top"><div class="wrap top-in"><a class='name' href='/'>Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
+    <nav class="tools"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button><a href='/'>This week</a><a aria-current='page' href='/archive'>Archive</a><a href='/about'>About</a><a class='sub-btn' href='/#subscribe'>Subscribe</a></nav></div></header>
 <div class="wrap">
 
   <section class="head">
@@ -70,9 +79,9 @@
   <div class="yr" id="issues">2026</div>
   <section class="ledger panel">
     <div class="lhead mono"><span>№</span><span>DATE</span><span>ISSUE</span><span>RECORDS</span></div>
-    <article class="row"><span class="no mono">RPT</span><span class="d mono">OCT 06</span><a href="petersburg.html">FCC Petersburg: transgender people in federal custody</a><span class="c mono">41 DOCS</span></article>
-    <article class="row"><span class="no mono">RPT</span><span class="d mono">OCT 06</span><a href="story.html">Aroostook County Jail: perfect scores, unsafe building</a><span class="c mono">39 DOCS</span></article>
-    <article class="row"><span class="no mono">01</span><span class="d mono">OCT 05</span><a href="index.html">Eight sites for Aroostook’s jail; sanctions rule stays; August prison count <span class="cur mono">· LATEST</span></a><span class="c mono">5 DOCS</span></article>
+    <article class="row"><span class="no mono">RPT</span><span class="d mono">OCT 06</span><a href='/petersburg'>FCC Petersburg: transgender people in federal custody</a><span class="c mono">41 DOCS</span></article>
+    <article class="row"><span class="no mono">RPT</span><span class="d mono">OCT 06</span><a href='/story'>Aroostook County Jail: perfect scores, unsafe building</a><span class="c mono">39 DOCS</span></article>
+    <article class="row"><span class="no mono">01</span><span class="d mono">OCT 05</span><a href='/'>Eight sites for Aroostook’s jail; sanctions rule stays; August prison count <span class="cur mono">· LATEST</span></a><span class="c mono">5 DOCS</span></article>
   </section>
 
   <section class="lib" id="documents" aria-labelledby="lib-h">
@@ -202,7 +211,7 @@
 
   <footer>
     <p>Maine Ledger is an independent publication. It takes no funding from political parties, campaigns, or vendors to correctional systems, and endorses no candidate or ballot question.</p>
-    <p>Corrections: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a> · Records and tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a> · <a href="about.html">About and method</a></p>
+    <p>Corrections: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a> · Records and tips: <a href="mailto:whysice937@gmail.com">whysice937@gmail.com</a> · <a href='/about'>About and method</a></p>
   </footer>
 </div>
 <script>
@@ -225,5 +234,27 @@
 })();
 </script>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function label() {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var sys = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var effective = cur || sys;
+    btn.textContent = effective === 'dark' ? 'Light mode' : 'Dark mode';
+    btn.setAttribute('aria-label', 'Switch to ' + (effective === 'dark' ? 'light' : 'dark') + ' mode');
+  }
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var sys = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var next = (cur || sys) === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('ledger_theme', next); } catch (err) {}
+    label();
+  });
+  label();
+})();
+</script>
 </body>
 </html>
