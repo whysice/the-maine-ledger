@@ -1,6 +1,7 @@
 [build]
   publish = "."
-  command = ""
+  # Rebuilds the facility and bill pages from data/ledger.json; fails the deploy on a duplicate or unknown tag.
+  command = "node scripts/build.mjs"
 
 
 [[headers]]
