@@ -1,0 +1,210 @@
+{
+  "_rules": [
+    "This file is the only place a facility, bill or system name is defined. Pages are built from it by scripts/build.mjs.",
+    "Facility names: the official name is the tag. Local and record names go in aliases. Never add a second facility for a place already listed; add an alias instead. The build refuses an alias that matches another facility's name or alias.",
+    "Bills: LD numbers restart every Legislature, so a bill's id is <legislature>-<LD>, e.g. 132-1962.",
+    "System is who holds the person: county, state, federal, juvenile, supervision, or multiple when the piece is about the handoff between them.",
+    "Facilities outside Maine are listed only when a record shows people from Maine are held there. Put that record in maine_tie."
+  ],
+  "systems": {
+    "county": "County jail",
+    "state": "State prison",
+    "federal": "Federal",
+    "juvenile": "Juvenile",
+    "supervision": "Community supervision",
+    "multiple": "More than one system"
+  },
+  "formats": {
+    "entry": "Weekly entry",
+    "calendar": "On the calendar",
+    "report": "Report",
+    "log": "Records log"
+  },
+  "facilities": [
+    {
+      "id": "aroostook-county-jail",
+      "name": "Aroostook County Jail",
+      "town": "Houlton",
+      "system": "county",
+      "operator": "Aroostook County",
+      "in_maine": true,
+      "aliases": [
+        "Aroostook County Detention Center",
+        "Jail Department of the County of Aroostook",
+        "ACJ",
+        "Aroostook County Courthouse and Jail",
+        "AROOSME"
+      ],
+      "alias_note": "Labels as they appear in county audits, the 2024 federal assessment, the National Register and ICE records. See section 07 of the Aroostook report."
+    },
+    {
+      "id": "maine-correctional-center",
+      "name": "Maine Correctional Center",
+      "town": "Windham",
+      "system": "state",
+      "operator": "Maine Department of Corrections",
+      "in_maine": true,
+      "aliases": [
+        "Windham",
+        "South Windham",
+        "MCC"
+      ]
+    },
+    {
+      "id": "southern-maine-womens-reentry-center",
+      "name": "Southern Maine Women’s Re-entry Center",
+      "town": "Windham",
+      "system": "state",
+      "operator": "Maine Department of Corrections",
+      "in_maine": true,
+      "aliases": [],
+      "note": "On the Maine Correctional Center grounds since March 2017, after earlier sites in Bangor and Alfred."
+    },
+    {
+      "id": "fcc-petersburg",
+      "name": "FCC Petersburg",
+      "town": "Petersburg, Va.",
+      "system": "federal",
+      "operator": "Federal Bureau of Prisons",
+      "in_maine": false,
+      "aliases": [
+        "FCI Petersburg"
+      ],
+      "maine_tie": null
+    }
+  ],
+  "bills": [
+    {
+      "id": "132-1962",
+      "ld": 1962,
+      "legislature": 132,
+      "title": "An Act to Increase Legislative Access to Department of Corrections Facilities and to Direct the Commissioner to Establish Rules Regarding Legislator Access to Correctional and Detention Facilities",
+      "status": "Public Law 2025, chapter 765. Law without the Governor’s signature April 19, 2026; effective July 29, 2026.",
+      "url": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1962&snum=132"
+    },
+    {
+      "id": "132-2232",
+      "ld": 2232,
+      "legislature": 132,
+      "title": "An Act to Increase County Jail Funding",
+      "status": "Did not pass, according to Aroostook County’s 2026 budget memo.",
+      "url": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=2232&snum=132"
+    },
+    {
+      "id": "123-2080",
+      "ld": 2080,
+      "legislature": 123,
+      "title": "An Act To Better Coordinate and Reduce the Cost of the Delivery of State and County Correctional Services",
+      "status": "Signed April 18, 2008, according to DOCTalk.",
+      "url": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=2080&snum=123"
+    },
+    {
+      "id": "127-1447",
+      "ld": 1447,
+      "legislature": 127,
+      "title": "An Act To Authorize the Maine Governmental Facilities Authority To Issue Securities To Pay for Capital Repairs and Improvements to the Maine Correctional Center in South Windham and a Facility Owned by the Department of Corrections in Washington County",
+      "status": "Reported in DOCTalk, 2016.",
+      "url": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1447&snum=127"
+    }
+  ],
+  "items": [
+    {
+      "id": "aroostook-jail-sites",
+      "format": "entry",
+      "issue": 1,
+      "date": "2026-10-05",
+      "title": "Eight properties are in the running for the county’s next jail",
+      "url": "https://aroostook.me.us/pdfs/2026-09-16-caribou-agenda/",
+      "place": "Aroostook County",
+      "system": "county",
+      "facilities": [
+        "aroostook-county-jail"
+      ],
+      "bills": []
+    },
+    {
+      "id": "mdoc-procedure-o21",
+      "format": "entry",
+      "issue": 1,
+      "date": "2026-09-23",
+      "title": "Corrections keeps the rule allowing sanctions regardless of a hearing’s outcome",
+      "url": "https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/Summary%20of%20and%20Resp%20to%20Public%20Comments.pdf",
+      "place": "Statewide",
+      "system": "state",
+      "facilities": [],
+      "bills": []
+    },
+    {
+      "id": "mdoc-august-population",
+      "format": "entry",
+      "issue": 1,
+      "date": "2026-09-10",
+      "title": "State prisons held 2,100 people on an average day in August",
+      "url": "https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/August%202026%20Monthly%20Adult%20Data%20Report.pdf",
+      "place": "Statewide",
+      "system": "state",
+      "facilities": [],
+      "bills": []
+    },
+    {
+      "id": "ld1962-rules-due",
+      "format": "calendar",
+      "issue": 1,
+      "date": "2027-01-31",
+      "title": "Corrections’ rules on legislator access to facilities are due",
+      "url": "https://lldc.mainelegislature.org/Open/Laws/2025/2025_PL_c765.pdf",
+      "place": "State House",
+      "system": "state",
+      "facilities": [],
+      "bills": [
+        "132-1962"
+      ]
+    },
+    {
+      "id": "report-aroostook",
+      "format": "report",
+      "date": "2026-10-06",
+      "title": "Aroostook County Jail: perfect scores, unsafe building",
+      "url": "/story",
+      "place": "Aroostook County",
+      "system": "county",
+      "facilities": [
+        "aroostook-county-jail"
+      ],
+      "bills": [
+        "132-2232"
+      ]
+    },
+    {
+      "id": "report-petersburg",
+      "format": "report",
+      "date": "2026-10-06",
+      "title": "FCC Petersburg: transgender people in federal custody",
+      "url": "/petersburg",
+      "place": "Federal Bureau of Prisons",
+      "system": "federal",
+      "facilities": [
+        "fcc-petersburg"
+      ],
+      "bills": []
+    },
+    {
+      "id": "log-doctalk",
+      "format": "log",
+      "date": "2026-10-09",
+      "title": "DOCTalk archive log: Windham women and Aroostook County Jail",
+      "url": "/doctalk",
+      "place": "Maine Department of Corrections",
+      "system": "multiple",
+      "facilities": [
+        "maine-correctional-center",
+        "southern-maine-womens-reentry-center",
+        "aroostook-county-jail"
+      ],
+      "bills": [
+        "123-2080",
+        "127-1447"
+      ]
+    }
+  ]
+}
