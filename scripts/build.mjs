@@ -14,10 +14,11 @@ const errors = [];
 const warnings = [];
 const facilities = new Map(data.facilities.map(f => [f.id, f]));
 const bills = new Map(data.bills.map(b => [b.id, b]));
+const topics = new Map(data.topics.map(t => [t.id, t]));
 const norm = s => s.toLowerCase().replace(/[’']/g, '').replace(/\s+/g, ' ').trim();
 
 const seenIds = new Set();
-for (const list of [data.facilities, data.bills, data.items]) {
+for (const list of [data.topics, data.facilities, data.bills, data.items]) {
   for (const x of list) {
     if (seenIds.has(x.id)) errors.push(`duplicate id "${x.id}"`);
     seenIds.add(x.id);
@@ -46,11 +47,16 @@ for (const b of data.bills) {
 
 for (const it of data.items) {
   if (!data.formats[it.format]) errors.push(`item "${it.id}" has unknown format "${it.format}"`);
+  if (typeof it.topic !== 'string') errors.push(`item "${it.id}" needs exactly one topic`);
+  else if (!topics.has(it.topic)) errors.push(`item "${it.id}" has unknown topic "${it.topic}"`);
   if (!data.systems[it.system]) errors.push(`item "${it.id}" has unknown system "${it.system}"`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(it.date)) errors.push(`item "${it.id}" date must be YYYY-MM-DD`);
   for (const id of it.facilities) if (!facilities.has(id)) errors.push(`item "${it.id}" tags unknown facility "${id}"`);
   for (const id of it.bills) if (!bills.has(id)) errors.push(`item "${it.id}" tags unknown bill "${id}"`);
 }
+
+const flips = data.items.filter(it => it.topic_note && /coin flip/i.test(it.topic_note));
+if (flips.length * 7 > data.items.length) warnings.push(`${flips.length} of ${data.items.length} items are a coin flip between topics; time to redraw the topic list?`);
 
 for (const w of warnings) console.warn(`warning: ${w}`);
 if (errors.length) {
@@ -93,15 +99,16 @@ const billSchema = b => ({
   url: SITE + billPath(b),
 });
 const itemSchema = it => ({
-  '@type': it.format === 'report' ? 'Report' : 'CreativeWork',
+  '@type': it.format === 'investigation' ? 'Report' : 'CreativeWork',
   name: it.title,
   url: abs(it.url),
-  datePublished: it.format === 'calendar' ? undefined : it.date,
+  datePublished: it.due ? undefined : it.date,
+  about: topics.get(it.topic).name,
   genre: data.formats[it.format],
 });
 
 function page({ title, description, current, path, schema, body }) {
-  const nav = [['/', 'This week'], ['/archive', 'Archive'], ['/facilities', 'Facilities'], ['/about', 'About']]
+  const nav = [['/', 'This week'], ['/topics', 'Topics'], ['/facilities', 'Facilities'], ['/archive', 'Archive'], ['/about', 'About']]
     .map(([href, label]) => `<a${current === href ? " aria-current='page'" : ''} href='${href}'>${label}</a>`).join('');
   return `<!doctype html>
 <html lang="en">
@@ -142,7 +149,7 @@ ${body}
   </main>
 
   <footer>
-    <p><a href='/'>This week</a> · <a href='/archive'>Archive</a> · <a href='/facilities'>Facilities and bills</a></p>
+    <p><a href='/'>This week</a> · <a href='/archive'>Archive</a> · <a href='/topics'>Topics</a> · <a href='/facilities'>Facilities and bills</a></p>
   <p class="copy">© 2026 Whysice</p></footer>
 </div>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));</script>
@@ -154,16 +161,55 @@ ${body}
 
 const crumbs = (...trail) => `    <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/facilities">Facilities and bills</a>${trail.map(t => ` <span aria-hidden="true">/</span> <span>${esc(t)}</span>`).join('')}</nav>`;
 
-function itemList(items) {
+const topicPath = t => `/topic/${t.id}`;
+
+// One row per piece: date, title, then topic · format · system · place. data-* feed the filter chips.
+function itemList(items, { showTopic = true } = {}) {
   if (!items.length) return '    <p class="tag-empty">Nothing filed here yet.</p>';
   const rows = items.slice().sort(newestFirst).map(it => {
-    const fmt = data.formats[it.format] + (it.issue ? ` · Issue № ${it.issue}` : '');
-    const due = it.format === 'calendar' ? 'Due ' : '';
+    const t = topics.get(it.topic);
     const ext = it.url.startsWith('http');
-    return `      <li><span class="d mono">${due}${stamp(it.date)}</span><span class="tag-body"><a href="${esc(it.url)}"${ext ? ' rel="noopener"' : ''}>${esc(it.title)}${ext ? ' <span class="ext" aria-label="(record, opens on the publisher’s site)">↗</span>' : ''}</a><span class="tag-meta mono">${esc(fmt)} · ${esc(it.place)}</span></span></li>`;
+    const meta = [
+      showTopic ? `<a href="${topicPath(t)}">${esc(t.name)}</a>` : '',
+      esc(data.formats[it.format]) + (it.issue ? ` · Issue № ${it.issue}` : ''),
+      esc(data.systems[it.system]),
+      esc(it.place),
+    ].filter(Boolean).join(' · ');
+    return `      <li data-format="${it.format}" data-system="${it.system}"><span class="d mono">${it.due ? 'Due ' : ''}${stamp(it.date)}</span><span class="tag-body"><a href="${esc(it.url)}"${ext ? ' rel="noopener"' : ''}>${esc(it.title)}${ext ? ' <span class="ext" aria-label="(record, opens on the publisher’s site)">↗</span>' : ''}</a><span class="tag-meta mono">${meta}</span></span></li>`;
   });
-  return `    <ul class="tag-list">\n${rows.join('\n')}\n    </ul>`;
+  return `    <ul class="tag-list" data-filterable>\n${rows.join('\n')}\n    </ul>\n    <p class="tag-empty" data-filter-empty hidden>Nothing here matches those filters.</p>`;
 }
+
+// Filter chips for System and Format. Only values present in the list are offered; without JS every row shows.
+function filters(items) {
+  const group = (key, label, dict) => {
+    const present = Object.keys(dict).filter(k => items.some(it => it[key] === k));
+    if (present.length < 2) return '';
+    return `      <div class="filter-row" role="group" aria-label="${label}"><span class="mono">${label}</span><button type="button" class="chip" data-filter="${key}" data-value="" aria-pressed="true">All</button>${present.map(k => `<button type="button" class="chip" data-filter="${key}" data-value="${k}" aria-pressed="false">${esc(dict[k])} <span class="c">${items.filter(it => it[key] === k).length}</span></button>`).join('')}</div>`;
+  };
+  const rows = [group('system', 'System', data.systems), group('format', 'Format', data.formats)].filter(Boolean);
+  return rows.length ? `    <div class="filters" data-filters hidden>\n${rows.join('\n')}\n    </div>` : '';
+}
+
+const FILTER_JS = `<script>
+(function () {
+  var box = document.querySelector('[data-filters]'); if (!box) return;
+  var list = document.querySelector('[data-filterable]'), empty = document.querySelector('[data-filter-empty]');
+  var state = { system: '', format: '' };
+  box.hidden = false;
+  box.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-filter]'); if (!b) return;
+    var key = b.getAttribute('data-filter'); state[key] = b.getAttribute('data-value');
+    box.querySelectorAll('button[data-filter="' + key + '"]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    var shown = 0;
+    list.querySelectorAll('li').forEach(function (li) {
+      var ok = (!state.system || li.dataset.system === state.system) && (!state.format || li.dataset.format === state.format);
+      li.hidden = !ok; if (ok) shown++;
+    });
+    empty.hidden = shown > 0;
+  });
+})();
+</script>`;
 
 const facts = pairs => `<dl class="tag-facts">\n${pairs.map(([k, v]) => `        <div><dt class="mono">${k}</dt><dd>${v}</dd></div>`).join('\n')}\n      </dl>`;
 const chips = labels => `<ul class="alias-list">${labels.map(a => `<li>${esc(a)}</li>`).join('')}</ul>`;
@@ -287,8 +333,63 @@ for (const b of data.bills) {
   }));
 }
 
+for (const t of data.topics) {
+  const items = filedOn(it => it.topic === t.id);
+  const facs = [...new Set(items.flatMap(it => it.facilities))].map(id => facilities.get(id));
+  const body = [
+    `    <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/topics">Topics</a> <span aria-hidden="true">/</span> <span>${esc(t.name)}</span></nav>`,
+    `    <header class="tag-head">`,
+    `      <p class="kicker mono">Topic · ${plural(items.length, 'piece')}</p>`,
+    `      <h1>${esc(t.name)}</h1>`,
+    `      <p class="tag-lede">${esc(t.covers)}</p>`,
+    `    </header>`,
+    filters(items),
+    itemList(items, { showTopic: false }),
+    facs.length ? `    <h2 class="topic-facs">Facilities in this topic</h2>\n    <p>${facs.map(f => `<a href="${facilityPath(f)}">${esc(f.name)}</a>`).join(' · ')}</p>` : '',
+  ].filter(Boolean).join('\n');
+  out.set(`topic/${t.id}.html`, page({
+    title: t.name,
+    description: `Maine Ledger reporting on ${t.name.toLowerCase()} in Maine’s jails and prisons: ${t.covers}`,
+    current: '/topics',
+    path: topicPath(t),
+    schema: { '@type': 'CollectionPage', name: t.name, description: t.covers, url: SITE + topicPath(t), hasPart: items.map(itemSchema) },
+    body: body + '\n' + FILTER_JS,
+  }));
+}
+
+{
+  const cards = data.topics.map(t => {
+    const items = filedOn(it => it.topic === t.id).sort(newestFirst);
+    const latest = items[0];
+    return `        <li class="fac-card topic-card"><a href="${topicPath(t)}"><span class="fac-name">${esc(t.name)}</span><span class="fac-meta mono">${items.length ? plural(items.length, 'piece') : 'Nothing filed yet'}</span><span class="fac-aka">${esc(t.covers)}</span>${latest ? `<span class="topic-latest mono">Latest: ${esc(latest.title)}</span>` : ''}</a></li>`;
+  });
+  const body = [
+    `    <header class="tag-head">`,
+    `      <h1>Topics</h1>`,
+    `      <p class="tag-lede">Every entry, report and record is filed under one topic: what it is about. Filter by who holds the person or by kind of piece, or go by place on the <a href="/facilities">facilities page</a>.</p>`,
+    `    </header>`,
+    `    <section class="fac-group" aria-labelledby="topics-h">`,
+    `      <h2 id="topics-h">Seven topics</h2>`,
+    `      <ul class="fac-grid">\n${cards.join('\n')}\n      </ul>`,
+    `    </section>`,
+    `    <section class="fac-group" aria-labelledby="all-h">`,
+    `      <h2 id="all-h">All reporting <span class="count mono">${data.items.length}</span></h2>`,
+    filters(data.items),
+    itemList(data.items),
+    `    </section>`,
+  ].join('\n');
+  out.set('topics.html', page({
+    title: 'Topics',
+    description: 'Maine Ledger reporting on Maine’s jails and prisons by topic: conditions, health, daily operations and food, money, law, courts and reentry.',
+    current: '/topics',
+    path: '/topics',
+    schema: { '@type': 'CollectionPage', name: 'Topics', url: SITE + '/topics', mainEntity: { '@type': 'ItemList', itemListElement: data.topics.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.name, url: SITE + topicPath(t) })) } },
+    body: body + '\n' + FILTER_JS,
+  }));
+}
+
 // ---- Write or check. Stale generated pages (a removed facility or bill) are deleted.
-const generatedDirs = ['facility', 'bill'];
+const generatedDirs = ['facility', 'bill', 'topic'];
 const existing = new Set(generatedDirs.flatMap(dir => existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).map(f => `${dir}/${f}`) : []));
 let stale = 0;
 for (const [rel, html] of out) {
@@ -307,4 +408,4 @@ for (const rel of existing) {
   rmSync(join(ROOT, rel));
 }
 if (CHECK && stale) { console.error('Run: node scripts/build.mjs'); process.exit(1); }
-console.log(`${out.size} pages${CHECK ? ' up to date' : ` built (${stale} changed)`}: ${data.facilities.length} facilities, ${data.bills.length} bills.`);
+console.log(`${out.size} pages${CHECK ? ' up to date' : ` built (${stale} changed)`}: ${data.topics.length} topics, ${data.facilities.length} facilities, ${data.bills.length} bills.`);

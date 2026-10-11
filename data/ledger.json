@@ -4,7 +4,9 @@
     "Facility names: the official name is the tag. Local and record names go in aliases. Never add a second facility for a place already listed; add an alias instead. The build refuses an alias that matches another facility's name or alias.",
     "Bills: LD numbers restart every Legislature, so a bill's id is <legislature>-<LD>, e.g. 132-1962.",
     "System is who holds the person: county, state, federal, juvenile, supervision, or multiple when the piece is about the handoff between them.",
-    "Facilities outside Maine are listed only when a record shows people from Maine are held there. Put that record in maine_tie."
+    "Facilities outside Maine are listed only when a record shows people from Maine are held there. Put that record in maine_tie.",
+    "Topic answers what the story is about. Every item gets exactly one. If two topics fit, pick the one the headline is about; if that is a coin flip, note it in topic_note so the list can be redrawn.",
+    "Format answers what kind of piece it is: news, investigation, data, explainer or document."
   ],
   "systems": {
     "county": "County jail",
@@ -15,10 +17,11 @@
     "multiple": "More than one system"
   },
   "formats": {
-    "entry": "Weekly entry",
-    "calendar": "On the calendar",
-    "report": "Report",
-    "log": "Records log"
+    "news": "News",
+    "investigation": "Investigation",
+    "data": "Data",
+    "explainer": "Explainer",
+    "document": "Source document"
   },
   "facilities": [
     {
@@ -110,7 +113,9 @@
   "items": [
     {
       "id": "aroostook-jail-sites",
-      "format": "entry",
+      "format": "news",
+      "topic": "money-contracts",
+      "topic_note": "Coin flip with Conditions and Safety: the story is a new jail, filed under the bond and site cost.",
       "issue": 1,
       "date": "2026-10-05",
       "title": "Eight properties are in the running for the county’s next jail",
@@ -124,7 +129,8 @@
     },
     {
       "id": "mdoc-procedure-o21",
-      "format": "entry",
+      "format": "news",
+      "topic": "law-policy",
       "issue": 1,
       "date": "2026-09-23",
       "title": "Corrections keeps the rule allowing sanctions regardless of a hearing’s outcome",
@@ -136,7 +142,8 @@
     },
     {
       "id": "mdoc-august-population",
-      "format": "entry",
+      "format": "data",
+      "topic": "conditions-safety",
       "issue": 1,
       "date": "2026-09-10",
       "title": "State prisons held 2,100 people on an average day in August",
@@ -148,7 +155,8 @@
     },
     {
       "id": "ld1962-rules-due",
-      "format": "calendar",
+      "format": "news",
+      "topic": "law-policy",
       "issue": 1,
       "date": "2027-01-31",
       "title": "Corrections’ rules on legislator access to facilities are due",
@@ -158,11 +166,14 @@
       "facilities": [],
       "bills": [
         "132-1962"
-      ]
+      ],
+      "due": true
     },
     {
       "id": "report-aroostook",
-      "format": "report",
+      "format": "investigation",
+      "topic": "conditions-safety",
+      "topic_note": "Also covers money (deficit, design firm) and courts (pretrial waits).",
       "date": "2026-10-06",
       "title": "Aroostook County Jail: perfect scores, unsafe building",
       "url": "/story",
@@ -177,7 +188,9 @@
     },
     {
       "id": "report-petersburg",
-      "format": "report",
+      "format": "investigation",
+      "topic": "health-treatment",
+      "topic_note": "Coin flip with Conditions and Safety: deaths and inspections versus the care policy in the headline.",
       "date": "2026-10-06",
       "title": "FCC Petersburg: transgender people in federal custody",
       "url": "/petersburg",
@@ -190,7 +203,9 @@
     },
     {
       "id": "log-doctalk",
-      "format": "log",
+      "format": "document",
+      "topic": "conditions-safety",
+      "topic_note": "Coin flip with Law and Policy: incidents and audits versus jail oversight.",
       "date": "2026-10-09",
       "title": "DOCTalk archive log: Windham women and Aroostook County Jail",
       "url": "/doctalk",
@@ -205,6 +220,43 @@
         "123-2080",
         "127-1447"
       ]
+    }
+  ],
+  "topics": [
+    {
+      "id": "conditions-safety",
+      "name": "Conditions and Safety",
+      "covers": "Deaths in custody, use of force, segregation, staffing, crowding and the buildings themselves."
+    },
+    {
+      "id": "health-treatment",
+      "name": "Health and Treatment",
+      "covers": "Medical and mental health care, substance use treatment, pregnancy, and the policies that govern them."
+    },
+    {
+      "id": "operations-daily-life",
+      "name": "Operations and Daily Life",
+      "covers": "How a jail or prison is run day to day: food, commissary goods, phones, mail, visits, programs and work."
+    },
+    {
+      "id": "money-contracts",
+      "name": "Money and Contracts",
+      "covers": "Budgets, county jail funding, boarding rates, construction and bonds, vendors, and phone and commissary fees."
+    },
+    {
+      "id": "law-policy",
+      "name": "Law and Policy",
+      "covers": "Bills, rules, court rulings on policy, and oversight bodies."
+    },
+    {
+      "id": "courts-pretrial",
+      "name": "Courts and Pretrial",
+      "covers": "Bail, public defense and case delays, which decide who is in jail and for how long."
+    },
+    {
+      "id": "release-reentry",
+      "name": "Release and Reentry",
+      "covers": "Probation, community confinement, clemency and life after release."
     }
   ]
 }

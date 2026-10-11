@@ -195,7 +195,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; text-wrap: 
 .top .masthead { margin: 0; font-size: inherit; font-weight: inherit; }
 .top .name, .top .name:hover { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 12px; margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.1; color: var(--on-band); text-decoration: none; }
 .top .name small { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 14px; color: var(--on-band-soft); }
-.top .tools { display: flex; align-items: center; flex-wrap: wrap; gap: 0 22px; }
+.top .tools { display: flex; align-items: center; flex-wrap: wrap; gap: 0 18px; }
+/* The tagline sits under the name, so five nav links still fit on one row beside it. */
+.top .name, .top .name:hover { flex-direction: column; align-items: flex-start; gap: 1px; }
 .top .tools a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--on-band-soft); text-decoration: none; }
 .top .tools a:hover { color: var(--on-band); }
 .top .tools a[aria-current] { color: var(--on-band); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
@@ -477,3 +479,15 @@ footer .copy { margin-top: 14px; }
 .bill-title { font-weight: 600; line-height: 1.4; text-wrap: pretty; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .bill-meta { color: var(--ink-soft); white-space: nowrap; }
 @media (max-width: 720px) { .bill-list a { grid-template-columns: 1fr; } .bill-meta { white-space: normal; } }
+
+/* Topic pages: filter chips for System and Format */
+.filters { display: grid; gap: 10px; margin: 0 0 18px; padding: 14px 16px; background: var(--paper-sunk); border-radius: var(--radius-lg); }
+.filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-row > .mono { width: 64px; color: var(--ink-soft); text-transform: uppercase; }
+.filters .chip { min-height: 36px; padding: 0 12px; font-size: 13px; }
+.tag-list li[hidden] { display: none; }
+.tag-meta a { color: var(--ink-soft); }
+.tag-meta a:hover { color: var(--link); }
+.topic-latest { color: var(--ink-soft); font-weight: 500; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--hairline); }
+.tagpage .topic-facs { margin-top: 28px; }
+@media (max-width: 560px) { .filter-row > .mono { width: 100%; } }
