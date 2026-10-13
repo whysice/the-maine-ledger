@@ -524,3 +524,7 @@ footer .copy { margin-top: 14px; }
 
 /* Search page: Pagefind UI in the site's colors */
 .search-box { --pagefind-ui-scale: .9; --pagefind-ui-primary: var(--link); --pagefind-ui-text: var(--ink); --pagefind-ui-background: var(--paper-raised); --pagefind-ui-border: var(--hairline-strong); --pagefind-ui-tag: var(--paper-sunk); --pagefind-ui-font: var(--font-serif); }
+
+/* Links inside the dark signup band take the band's own text color, so they keep contrast in both themes. */
+.close.panel a { color: var(--on-band); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.close.panel a:hover { color: var(--accent); }
