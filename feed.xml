@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Maine Ledger</title>
+<link>https://maineledger.netlify.app/</link>
+<atom:link href="https://maineledger.netlify.app/feed.xml" rel="self" type="application/rss+xml" />
+<description>Jails, prisons and courts, by the record. An independent weekly brief on Maine’s county jails, state prisons and criminal courts.</description>
+<language>en-us</language>
+<lastBuildDate>Fri, 09 Oct 2026 12:00:00 GMT</lastBuildDate>
+<item>
+<title>DOCTalk archive log: Windham women and Aroostook County Jail</title>
+<link>https://maineledger.netlify.app/doctalk</link>
+<guid isPermaLink="true">https://maineledger.netlify.app/doctalk</guid>
+<pubDate>Fri, 09 Oct 2026 12:00:00 GMT</pubDate>
+<category>Conditions and Safety</category>
+<description>What the Department of Corrections’ staff newsletter recorded about the women held at Windham and about Aroostook County Jail, issue by issue, with the dates to cite in a records request.</description>
+</item>
+<item>
+<title>Aroostook County Jail: perfect scores, unsafe building</title>
+<link>https://maineledger.netlify.app/aroostook-jail</link>
+<guid isPermaLink="true">https://maineledger.netlify.app/aroostook-jail</guid>
+<pubDate>Tue, 06 Oct 2026 12:00:00 GMT</pubDate>
+<category>Conditions and Safety</category>
+<description>Five straight 100 percent state inspections. No fire suppression. A capacity that rose as the jail filled, a deficit that tripled, a death the record barely notes, and a design firm the county’s own interview team did not pick.</description>
+</item>
+<item>
+<title>FCC Petersburg: transgender people in federal custody</title>
+<link>https://maineledger.netlify.app/petersburg</link>
+<guid isPermaLink="true">https://maineledger.netlify.app/petersburg</guid>
+<pubDate>Tue, 06 Oct 2026 12:00:00 GMT</pubDate>
+<category>Health and Treatment</category>
+<description>Three people died at the complex in six weeks this spring, and the Bureau of Prisons has not said how. The only public count of transgender people held there, 61 in 2023, predates a care policy that has since been rewritten, blocked and rewritten again.</description>
+</item>
+<item>
+<title>Eight properties are in the running for the county’s next jail</title>
+<link>https://maineledger.netlify.app/issue/1#aroostook-jail-sites</link>
+<guid isPermaLink="true">https://maineledger.netlify.app/issue/1#aroostook-jail-sites</guid>
+<pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+<category>Money and Contracts</category>
+<description>Land proposals for Aroostook County’s next jail were due Sept. 28. Eight were submitted: three in Caribou, two in Houlton, and one each in Presque Isle, Limestone and Fort Fairfield. Record: https://aroostook.me.us/pdfs/2026-09-16-caribou-agenda/</description>
+</item>
+<item>
+<title>Corrections keeps the rule allowing sanctions regardless of a hearing’s outcome</title>
+<link>https://maineledger.netlify.app/issue/1#mdoc-procedure-o21</link>
+<guid isPermaLink="true">https://maineledger.netlify.app/issue/1#mdoc-procedure-o21</guid>
+<pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+<category>Law and Policy</category>
+<description>In its response to public comments on its adult resident discipline rule, the Maine Department of Corrections said Procedure O.21 “will not be removed.” Record: https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/Summary%20of%20and%20Resp%20to%20Public%20Comments.pdf</description>
+</item>
+<item>
+<title>State prisons held 2,100 people on an average day in August</title>
+<link>https://maineledger.netlify.app/issue/1#mdoc-august-population</link>
+<guid isPermaLink="true">https://maineledger.netlify.app/issue/1#mdoc-august-population</guid>
+<pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+<category>Conditions and Safety</category>
+<description>The Department of Corrections’ August report puts the average incarcerated population at 2,100: 1,884 men and 215 women. Record: https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/August%202026%20Monthly%20Adult%20Data%20Report.pdf</description>
+</item>
+</channel>
+</rss>

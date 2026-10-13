@@ -14,12 +14,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="copyright" content="© 2026 Whysice" />
 <meta name="description" content="Aroostook County Jail: five perfect inspections, no fire suppression, a tripling deficit and a design firm the county’s own team did not pick." />
-<link rel="canonical" href="https://maineledger.netlify.app/story" />
+<link rel="canonical" href="https://maineledger.netlify.app/aroostook-jail" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Maine Ledger" />
 <meta property="og:title" content="Aroostook County Jail: perfect scores, unsafe building" />
 <meta property="og:description" content="Aroostook County Jail: five perfect inspections, no fire suppression, a tripling deficit and a design firm the county’s own team did not pick." />
-<meta property="og:url" content="https://maineledger.netlify.app/story" />
+<meta property="og:url" content="https://maineledger.netlify.app/aroostook-jail" />
 <meta property="og:image" content="https://maineledger.netlify.app/assets/share-aroostook.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -27,7 +27,7 @@
 <meta property="article:published_time" content="2026-10-06" />
 <meta property="article:modified_time" content="2026-10-06" />
 <meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Aroostook County Jail: perfect scores, unsafe building", "description": "Aroostook County Jail: five perfect inspections, no fire suppression, a tripling deficit and a design firm the county’s own team did not pick.", "image": ["https://maineledger.netlify.app/assets/share-aroostook.png"], "datePublished": "2026-10-06", "dateModified": "2026-10-06", "author": [{"@type": "Organization", "name": "Maine Ledger", "url": "https://maineledger.netlify.app/"}], "publisher": {"@type": "NewsMediaOrganization", "name": "Maine Ledger", "url": "https://maineledger.netlify.app/", "logo": {"@type": "ImageObject", "url": "https://maineledger.netlify.app/assets/icon-512.png"}}, "mainEntityOfPage": "https://maineledger.netlify.app/story", "articleSection": "Special report", "isAccessibleForFree": true}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Aroostook County Jail: perfect scores, unsafe building", "description": "Aroostook County Jail: five perfect inspections, no fire suppression, a tripling deficit and a design firm the county’s own team did not pick.", "image": ["https://maineledger.netlify.app/assets/share-aroostook.png"], "datePublished": "2026-10-06", "dateModified": "2026-10-06", "author": [{"@type": "Organization", "name": "Maine Ledger", "url": "https://maineledger.netlify.app/"}], "publisher": {"@type": "NewsMediaOrganization", "name": "Maine Ledger", "url": "https://maineledger.netlify.app/", "logo": {"@type": "ImageObject", "url": "https://maineledger.netlify.app/assets/icon-512.png"}}, "mainEntityOfPage": "https://maineledger.netlify.app/aroostook-jail", "articleSection": "Special report", "isAccessibleForFree": true}</script>
 <meta name="theme-color" content="#16263a" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="assets/icon-192.png" type="image/png" />
@@ -37,6 +37,7 @@
 <meta name="apple-mobile-web-app-title" content="Maine Ledger" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="alternate" type="application/rss+xml" title="Maine Ledger" href="/feed.xml" />
 <title>Aroostook County Jail: Perfect Scores, Unsafe Building — Maine Ledger</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Public+Sans:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="ledger.css" />
@@ -140,13 +141,19 @@
 .summary ul { margin:0; padding-left:1.15em; font-size:16px; line-height:1.5; }
 .summary li { margin-bottom:.4em; }
 .summary p.note { margin:12px 0 0; font-size:13px; color:var(--ink2); }
+.toc-d > summary { list-style:none; cursor:pointer; }
+.toc-d > summary::-webkit-details-marker { display:none; }
+.toc-d > summary h4::before { content:"▾"; font-size:12px; color:var(--ink2); order:2; }
+.toc-d:not([open]) > summary h4::before { content:"▸"; }
+@media (max-width:980px){ .toc-d > summary { padding:10px 0; } .toc-d:not([open]) { border-bottom:1px solid var(--rule2); } }
+@media (max-width:760px){ .strip { display:none; } }
 /* Narrow screens: must follow the base .rail rule above, or position:sticky wins and the contents overlay the article. */
-@media (max-width:980px){ .story { grid-template-columns:minmax(0,1fr); gap:32px; } .rail { position:static; order:-1; } .rail .doc, .rail h4:nth-of-type(2), .facts { display:none; } .toc { margin-bottom:0; } }
+@media (max-width:980px){ .story { grid-template-columns:minmax(0,1fr); gap:20px; padding-top:16px; } .rail { position:static; order:-1; } .rail .doc, .rail > h4, .facts { display:none; } .toc { margin-bottom:0; } }
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap top-in"><a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
-    <nav class="tools" aria-label="Main"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button><a href="index.html">This week</a><a href="topics.html">Topics</a><a href="facilities.html">Facilities</a><a href="archive.html">Archive</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav></div></header>
+    <nav class="tools" aria-label="Main"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button><a href="index.html">This week</a><a href="topics.html">Topics</a><a href="facilities.html">Facilities</a><a href="archive.html">Archive</a><a href="/search">Search</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav></div></header>
 <div class="wrap">
   <div class="strip mono">
     <div><div class="k">ENTRY</div><div class="v">Special report</div></div>
@@ -156,11 +163,12 @@
   </div>
 
   <div class="story">
-    <main>
+    <main data-pagefind-body>
       <header class="hed">
         <h1>Aroostook County Jail: perfect scores, unsafe building</h1>
         <p class="dek">Five straight 100 percent state inspections. No fire suppression. A capacity that rose as the jail filled, a deficit that tripled, a death the record barely notes, and a design firm the county’s own interview team did not pick.</p>
         <p class="meta mono"><span>PUBLISHED <b>OCT 06 2026</b></span><span>READ <b>18 MIN</b></span><span>SOURCES <b>39</b>, ALL OPENED</span></p>
+        <!--filed:report-aroostook--><p class="filed mono"><span class="filed-k">Filed under</span> <a href="/topic/conditions-safety">Conditions and Safety</a> · <a href="/facility/aroostook-county-jail">Aroostook County Jail</a> · <a href="/bill/132-2232">LD 2232</a></p><!--/filed-->
         <div class="listen">
           <button type="button" data-play>Listen</button>
           <button type="button" data-stop hidden>Stop</button>
@@ -354,7 +362,7 @@
     </main>
 
     <aside class="rail">
-      <h4>In this report</h4>
+      <details class="toc-d" open><summary><h4>In this report</h4></summary>
       <ol class="toc">
         <li><a href="#s1"><span class="n mono">01</span>Perfect scores, unsafe building</a></li>
         <li><a href="#s2"><span class="n mono">02</span>A capacity number that kept moving</a></li>
@@ -365,6 +373,8 @@
         <li><a href="#s7"><span class="n mono">07</span>What the jail is called</a></li>
         <li><a href="#s8"><span class="n mono">08</span>Court record and open questions</a></li>
       </ol>
+      </details>
+      <script>/* Phones: start with the contents collapsed so the headline comes first. */ if (window.matchMedia && matchMedia('(max-width:980px)').matches) document.querySelectorAll('details.toc-d').forEach(function (d) { d.removeAttribute('open'); });</script>
       <h4>Key records</h4>
       <div class="doc"><div class="t mono">FEDERAL ASSESSMENT · PDF</div><a href="https://aroostook.me.us/pdfs/jail-justice-system-assessment-final-2024/">Jail and Justice System Assessment, NIC</a><div class="pg mono">JUL 23 2024</div></div>
       <div class="doc"><div class="t mono">NEEDS ASSESSMENT · PDF</div><a href="https://aroostook.me.us/pdfs/aroostook-county-jail-forecast-analysis-justice-planners/">Justice Planners report</a><div class="pg mono">JUN 2025</div></div>

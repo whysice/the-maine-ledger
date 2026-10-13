@@ -491,3 +491,40 @@ footer .copy { margin-top: 14px; }
 .topic-latest { color: var(--ink-soft); font-weight: 500; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--hairline); }
 .tagpage .topic-facs { margin-top: 28px; }
 @media (max-width: 560px) { .filter-row > .mono { width: 100%; } }
+
+/* Filed-under line on entries and reports: links back to topic, facility and bill pages */
+.filed { margin: 10px 0 0; color: var(--ink-soft); font-weight: 500; line-height: 1.6; }
+.filed .filed-k { text-transform: uppercase; letter-spacing: .08em; margin-right: 4px; }
+.filed a { color: var(--ink-soft); }
+.filed a:hover { color: var(--link); }
+.hed .filed { margin: -8px 0 22px; }
+
+/* Archived issue banner */
+.issue-note { margin: 18px 0 0; padding: 10px 14px; background: var(--tint); border-left: 3px solid var(--accent); border-radius: 6px; color: var(--ink); font-weight: 500; text-transform: none; letter-spacing: .02em; }
+
+/* Facility pages: key figures, next decision, who decides */
+.key-figures { margin: 0 0 26px; }
+.kf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 0; }
+.kf-grid > div { padding: 14px 16px; border: 1px solid var(--hairline); border-radius: var(--radius-lg); background: var(--paper-raised); }
+.kf-grid dt { color: var(--ink-soft); text-transform: uppercase; font-size: 11px; margin-bottom: 4px; }
+.kf-grid dd { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.kf-v { font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.15; color: var(--ink); }
+.kf-n { font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
+.kf-n a { color: var(--link); }
+.next-up { margin: 0 0 28px; padding: 14px 18px; background: var(--tint); border-left: 3px solid var(--accent); border-radius: 6px; }
+.next-up h2 { margin-bottom: 6px; }
+.next-up p { margin: 0; color: var(--ink); }
+.decides { margin: 0; display: grid; gap: 10px; }
+.decides dt { font-weight: 600; color: var(--ink); }
+.decides dd { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+/* Topics index: empty topics are shown but not linked */
+.topic-card.is-empty > div { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; padding: 16px 18px; border: 1px dashed var(--hairline-strong); border-radius: var(--radius-lg); color: var(--ink-soft); }
+.topic-card.is-empty .fac-name { text-decoration: none; color: var(--ink-soft); }
+
+/* Search page: Pagefind UI in the site's colors */
+.search-box { --pagefind-ui-scale: .9; --pagefind-ui-primary: var(--link); --pagefind-ui-text: var(--ink); --pagefind-ui-background: var(--paper-raised); --pagefind-ui-border: var(--hairline-strong); --pagefind-ui-tag: var(--paper-sunk); --pagefind-ui-font: var(--font-serif); }
+
+/* Links inside the dark signup band take the band's own text color, so they keep contrast in both themes. */
+.close.panel a { color: var(--on-band); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.close.panel a:hover { color: var(--accent); }
