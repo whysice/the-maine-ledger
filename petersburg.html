@@ -37,6 +37,7 @@
 <meta name="apple-mobile-web-app-title" content="Maine Ledger" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="alternate" type="application/rss+xml" title="Maine Ledger" href="/feed.xml" />
 <title>FCC Petersburg: Transgender People in Federal Custody — Maine Ledger</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Public+Sans:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="ledger.css" />
@@ -146,13 +147,19 @@
 .why h3 { font-family:var(--font-sans); font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px; color:var(--ink); }
 .why p { margin:0 0 10px; font-size:16px; }
 .why p:last-child { margin-bottom:0; }
+.toc-d > summary { list-style:none; cursor:pointer; }
+.toc-d > summary::-webkit-details-marker { display:none; }
+.toc-d > summary h4::before { content:"▾"; font-size:12px; color:var(--ink2); order:2; }
+.toc-d:not([open]) > summary h4::before { content:"▸"; }
+@media (max-width:980px){ .toc-d > summary { padding:10px 0; } .toc-d:not([open]) { border-bottom:1px solid var(--rule2); } }
+@media (max-width:760px){ .strip { display:none; } }
 /* Narrow screens: must follow the base .rail rule above, or position:sticky wins and the contents overlay the article. */
-@media (max-width:980px){ .story { grid-template-columns:minmax(0,1fr); gap:32px; } .rail { position:static; order:-1; } .rail .doc, .rail h4:nth-of-type(2), .facts { display:none; } .toc { margin-bottom:0; } }
+@media (max-width:980px){ .story { grid-template-columns:minmax(0,1fr); gap:20px; padding-top:16px; } .rail { position:static; order:-1; } .rail .doc, .rail > h4, .facts { display:none; } .toc { margin-bottom:0; } }
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap top-in"><a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
-    <nav class="tools" aria-label="Main"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button><a href="index.html">This week</a><a href="topics.html">Topics</a><a href="facilities.html">Facilities</a><a href="archive.html">Archive</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav></div></header>
+    <nav class="tools" aria-label="Main"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button><a href="index.html">This week</a><a href="topics.html">Topics</a><a href="facilities.html">Facilities</a><a href="archive.html">Archive</a><a href="/search">Search</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav></div></header>
 <div class="wrap">
   <div class="strip mono">
     <div><div class="k">ENTRY</div><div class="v">Special report · Federal</div></div>
@@ -162,12 +169,13 @@
   </div>
 
   <div class="story">
-    <main>
+    <main data-pagefind-body>
       <header class="hed">
         <h1>FCC Petersburg: transgender people in federal custody</h1>
         <p class="dek">Three people died at the complex in six weeks this spring, and the Bureau of Prisons has not said how. The only public count of transgender people held there, 61 in 2023, predates a care policy that has since been rewritten, blocked and rewritten again.</p>
         <p class="meta mono"><span>PUBLISHED <b>OCT 06 2026</b></span><span>BY <b>SAMANTHA CLAYTON</b></span><span>READ <b>16 MIN</b></span><span>SOURCES <b>45</b></span></p>
         <p class="updated mono"><span>UPDATED <b>OCT 11 2026</b></span><span>The plaintiffs answered the government’s Supreme Court application on Oct. 8 and the government replied Oct. 9. The court has not ruled. The text of the 2014 Arnold ruling has been added to section 03.</span></p>
+        <!--filed:report-petersburg--><p class="filed mono"><span class="filed-k">Filed under</span> <a href="/topic/health-treatment">Health and Treatment</a> · <a href="/facility/fcc-petersburg">FCC Petersburg</a></p><!--/filed-->
         <div class="listen">
           <button type="button" data-play>Listen</button>
           <button type="button" data-stop hidden>Stop</button>
@@ -309,7 +317,7 @@
     </main>
 
     <aside class="rail">
-      <h4>In this report</h4>
+      <details class="toc-d" open><summary><h4>In this report</h4></summary>
       <ol class="toc">
         <li><a href="#s1"><span class="n mono">01</span>A complex in the middle of a shutdown</a></li>
         <li><a href="#s2"><span class="n mono">02</span>Who is held at the Medium</a></li>
@@ -320,6 +328,8 @@
         <li><a href="#s7"><span class="n mono">07</span>What the government does not count</a></li>
         <li><a href="#s8"><span class="n mono">08</span>What could not be confirmed</a></li>
       </ol>
+      </details>
+      <script>/* Phones: start with the contents collapsed so the headline comes first. */ if (window.matchMedia && matchMedia('(max-width:980px)').matches) document.querySelectorAll('details.toc-d').forEach(function (d) { d.removeAttribute('open'); });</script>
       <h4>Key records</h4>
       <div class="doc"><div class="t mono">PREA AUDIT · PDF</div><a href="https://www.bop.gov/locations/institutions/pem/pem_prea.pdf">FCC Petersburg final audit report</a><div class="pg mono">DEC 18 2023 · 61 TRANSGENDER OR INTERSEX</div></div>
       <div class="doc"><div class="t mono">COURT OPINION · PDF</div><a href="https://assets.aclu.org/live/uploads/2025/03/2026-06-17-Dkt-216-Memorandum-Order-on-Updated-PI.pdf">Kingdom v. Trump, memorandum opinion</a><div class="pg mono">LAMBERTH · JUN 17 2026</div></div>

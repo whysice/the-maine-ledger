@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://maineledger.netlify.app/sitemap.xml

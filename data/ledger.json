@@ -6,7 +6,8 @@
     "System is who holds the person: county, state, federal, juvenile, supervision, or multiple when the piece is about the handoff between them.",
     "Facilities outside Maine are listed only when a record shows people from Maine are held there. Put that record in maine_tie.",
     "Topic answers what the story is about. Every item gets exactly one. If two topics fit, pick the one the headline is about; if that is a coin flip, note it in topic_note so the list can be redrawn.",
-    "Format answers what kind of piece it is: news, investigation, data, explainer or document."
+    "Format answers what kind of piece it is: news, investigation, data, explainer or document.",
+    "To publish issue N: copy src/issues/<N-1>.html to src/issues/N.html and edit it (entry ids, /issue/N permalinks, filed markers), add data.issues[N] with its publication date, and add each entry to items with issue N and url /issue/N#<id>. The build writes /issue/N and makes it the home page; earlier issues stay at their own addresses."
   ],
   "systems": {
     "county": "County jail",
@@ -38,7 +39,73 @@
         "Aroostook County Courthouse and Jail",
         "AROOSME"
       ],
-      "alias_note": "Labels as they appear in county audits, the 2024 federal assessment, the National Register and ICE records. See section 07 of the Aroostook report."
+      "alias_note": "Labels as they appear in county audits, the 2024 federal assessment, the National Register and ICE records. See section 07 of the Aroostook report.",
+      "facts": [
+        {
+          "label": "Rated capacity",
+          "value": "117",
+          "note": "2020 to 2023, as reported by The County; 72 in 2012",
+          "source": "/aroostook-jail#s2"
+        },
+        {
+          "label": "Functional capacity",
+          "value": "94",
+          "note": "Set by National Institute of Corrections consultants, 2024",
+          "source": "/aroostook-jail#s2"
+        },
+        {
+          "label": "Awaiting trial",
+          "value": "90 percent",
+          "note": "Then-county administrator, June 2024",
+          "source": "/aroostook-jail#s2"
+        },
+        {
+          "label": "State inspections",
+          "value": "100 percent, five in a row",
+          "note": "Then-sheriff, January 2023",
+          "source": "/aroostook-jail#s1"
+        },
+        {
+          "label": "Jail fund balance",
+          "value": "($590,134)",
+          "note": "Fiscal 2025 audit, dated June 23, 2026; in the red six of seven years",
+          "source": "/aroostook-jail#s6"
+        },
+        {
+          "label": "Proposed jail budget",
+          "value": "$7,013,171",
+          "note": "Fiscal 2027, April 28, 2026 work session",
+          "source": "/aroostook-jail#s6"
+        },
+        {
+          "label": "New jail estimate",
+          "value": "$91 million to $112 million",
+          "note": "Justice Planners, June 2025",
+          "source": "/aroostook-jail#s5"
+        }
+      ],
+      "next": {
+        "what": "SMRT, the county’s architect, evaluates up to five of the eight sites offered Sept. 28. A bond referendum could come as early as 2027.",
+        "source": "/aroostook-jail#s5"
+      },
+      "decides": [
+        {
+          "who": "Aroostook County Commissioners",
+          "what": "Budget, contracts and the choice of architect and site"
+        },
+        {
+          "who": "Aroostook County jail commission",
+          "what": "Advises the commissioners; its recommendations are not binding"
+        },
+        {
+          "who": "Aroostook County voters",
+          "what": "Any bond to build a new jail"
+        },
+        {
+          "who": "Maine Department of Corrections",
+          "what": "Inspects the jail against state standards and sets its rated capacity"
+        }
+      ]
     },
     {
       "id": "maine-correctional-center",
@@ -73,7 +140,47 @@
       "aliases": [
         "FCI Petersburg"
       ],
-      "maine_tie": null
+      "maine_tie": null,
+      "facts": [
+        {
+          "label": "Population, Medium",
+          "value": "1,629",
+          "note": "Bureau population report dated Oct. 1, 2026",
+          "source": "/petersburg#s1"
+        },
+        {
+          "label": "Population, camp",
+          "value": "204",
+          "note": "Same report; it has no line for the Low",
+          "source": "/petersburg#s1"
+        },
+        {
+          "label": "Transgender or intersex",
+          "value": "61 of 2,360",
+          "note": "Prison Rape Elimination Act audit, Oct. 31, 2023",
+          "source": "/petersburg#s2"
+        },
+        {
+          "label": "Deaths announced",
+          "value": "3 in six weeks",
+          "note": "May 15 to June 27, 2026; no cause given",
+          "source": "/petersburg#s7"
+        }
+      ],
+      "next": {
+        "what": "The Supreme Court is considering the government’s application to lift the order that keeps gender-affirming care in place (No. 26A416).",
+        "source": "/petersburg#s5"
+      },
+      "decides": [
+        {
+          "who": "Federal Bureau of Prisons",
+          "what": "Placement, care policy and the closure of the Low"
+        },
+        {
+          "who": "U.S. District Court, D.C. (Kingdom v. Trump)",
+          "what": "The order blocking the bureau’s 2026 care policy"
+        }
+      ]
     }
   ],
   "bills": [
@@ -110,6 +217,12 @@
       "url": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1447&snum=127"
     }
   ],
+  "issues": {
+    "1": {
+      "published": "2026-10-05",
+      "title": "Issue № 1"
+    }
+  },
   "items": [
     {
       "id": "aroostook-jail-sites",
@@ -119,13 +232,15 @@
       "issue": 1,
       "date": "2026-10-05",
       "title": "Eight properties are in the running for the county’s next jail",
-      "url": "https://aroostook.me.us/pdfs/2026-09-16-caribou-agenda/",
+      "url": "/issue/1#aroostook-jail-sites",
       "place": "Aroostook County",
       "system": "county",
       "facilities": [
         "aroostook-county-jail"
       ],
-      "bills": []
+      "bills": [],
+      "record": "https://aroostook.me.us/pdfs/2026-09-16-caribou-agenda/",
+      "summary": "Land proposals for Aroostook County’s next jail were due Sept. 28. Eight were submitted: three in Caribou, two in Houlton, and one each in Presque Isle, Limestone and Fort Fairfield."
     },
     {
       "id": "mdoc-procedure-o21",
@@ -134,11 +249,13 @@
       "issue": 1,
       "date": "2026-09-23",
       "title": "Corrections keeps the rule allowing sanctions regardless of a hearing’s outcome",
-      "url": "https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/Summary%20of%20and%20Resp%20to%20Public%20Comments.pdf",
+      "url": "/issue/1#mdoc-procedure-o21",
       "place": "Statewide",
       "system": "state",
       "facilities": [],
-      "bills": []
+      "bills": [],
+      "record": "https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/Summary%20of%20and%20Resp%20to%20Public%20Comments.pdf",
+      "summary": "In its response to public comments on its adult resident discipline rule, the Maine Department of Corrections said Procedure O.21 “will not be removed.”"
     },
     {
       "id": "mdoc-august-population",
@@ -147,11 +264,13 @@
       "issue": 1,
       "date": "2026-09-10",
       "title": "State prisons held 2,100 people on an average day in August",
-      "url": "https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/August%202026%20Monthly%20Adult%20Data%20Report.pdf",
+      "url": "/issue/1#mdoc-august-population",
       "place": "Statewide",
       "system": "state",
       "facilities": [],
-      "bills": []
+      "bills": [],
+      "record": "https://www.maine.gov/corrections/sites/maine.gov.corrections/files/inline-files/August%202026%20Monthly%20Adult%20Data%20Report.pdf",
+      "summary": "The Department of Corrections’ August report puts the average incarcerated population at 2,100: 1,884 men and 215 women."
     },
     {
       "id": "ld1962-rules-due",
@@ -160,14 +279,16 @@
       "issue": 1,
       "date": "2027-01-31",
       "title": "Corrections’ rules on legislator access to facilities are due",
-      "url": "https://lldc.mainelegislature.org/Open/Laws/2025/2025_PL_c765.pdf",
+      "url": "/issue/1#ld1962-rules-due",
       "place": "State House",
       "system": "state",
       "facilities": [],
       "bills": [
         "132-1962"
       ],
-      "due": true
+      "due": true,
+      "record": "https://lldc.mainelegislature.org/Open/Laws/2025/2025_PL_c765.pdf",
+      "summary": "LD 1962 requires the Corrections commissioner to adopt rules setting which areas legislators may enter, how they may speak with residents and staff, and when entry may be refused."
     },
     {
       "id": "report-aroostook",
@@ -176,7 +297,7 @@
       "topic_note": "Also covers money (deficit, design firm) and courts (pretrial waits).",
       "date": "2026-10-06",
       "title": "Aroostook County Jail: perfect scores, unsafe building",
-      "url": "/story",
+      "url": "/aroostook-jail",
       "place": "Aroostook County",
       "system": "county",
       "facilities": [
@@ -184,7 +305,8 @@
       ],
       "bills": [
         "132-2232"
-      ]
+      ],
+      "summary": "Five straight 100 percent state inspections. No fire suppression. A capacity that rose as the jail filled, a deficit that tripled, a death the record barely notes, and a design firm the county’s own interview team did not pick."
     },
     {
       "id": "report-petersburg",
@@ -199,7 +321,8 @@
       "facilities": [
         "fcc-petersburg"
       ],
-      "bills": []
+      "bills": [],
+      "summary": "Three people died at the complex in six weeks this spring, and the Bureau of Prisons has not said how. The only public count of transgender people held there, 61 in 2023, predates a care policy that has since been rewritten, blocked and rewritten again."
     },
     {
       "id": "log-doctalk",
@@ -219,7 +342,8 @@
       "bills": [
         "123-2080",
         "127-1447"
-      ]
+      ],
+      "summary": "What the Department of Corrections’ staff newsletter recorded about the women held at Windham and about Aroostook County Jail, issue by issue, with the dates to cite in a records request."
     }
   ],
   "topics": [

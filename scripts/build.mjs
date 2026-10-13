@@ -41,6 +41,11 @@ for (const f of data.facilities) {
   }
 }
 
+for (const f of data.facilities) {
+  for (const x of f.facts || []) if (!x.label || !x.value || !x.source) errors.push(`facility "${f.id}" has a fact without a label, value or source`);
+  if (f.next && !f.next.source) errors.push(`facility "${f.id}" next step needs a source`);
+}
+
 for (const b of data.bills) {
   if (b.id !== `${b.legislature}-${b.ld}`) errors.push(`bill id "${b.id}" must be "${b.legislature}-${b.ld}"`);
 }
@@ -52,7 +57,9 @@ for (const it of data.items) {
   if (!data.systems[it.system]) errors.push(`item "${it.id}" has unknown system "${it.system}"`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(it.date)) errors.push(`item "${it.id}" date must be YYYY-MM-DD`);
   for (const id of it.facilities) if (!facilities.has(id)) errors.push(`item "${it.id}" tags unknown facility "${id}"`);
+  if (it.issue && !data.issues?.[it.issue]) errors.push(`item "${it.id}" is in issue ${it.issue}, which data.issues does not list`);
   for (const id of it.bills) if (!bills.has(id)) errors.push(`item "${it.id}" tags unknown bill "${id}"`);
+  if (!it.summary) errors.push(`item "${it.id}" needs a summary (used in the RSS feed)`);
 }
 
 const flips = data.items.filter(it => it.topic_note && /coin flip/i.test(it.topic_note));
@@ -108,7 +115,7 @@ const itemSchema = it => ({
 });
 
 function page({ title, description, current, path, schema, body }) {
-  const nav = [['/', 'This week'], ['/topics', 'Topics'], ['/facilities', 'Facilities'], ['/archive', 'Archive'], ['/about', 'About']]
+  const nav = [['/', 'This week'], ['/topics', 'Topics'], ['/facilities', 'Facilities'], ['/archive', 'Archive'], ['/search', 'Search'], ['/about', 'About']]
     .map(([href, label]) => `<a${current === href ? " aria-current='page'" : ''} href='${href}'>${label}</a>`).join('');
   return `<!doctype html>
 <html lang="en">
@@ -128,6 +135,13 @@ function page({ title, description, current, path, schema, body }) {
 <meta name="description" content="${esc(description)}" />
 <meta name="theme-color" content="#16263a" />
 <link rel="canonical" href="${SITE}${path}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Maine Ledger" />
+<meta property="og:title" content="${esc(title)}" />
+<meta property="og:description" content="${esc(description)}" />
+<meta property="og:url" content="${SITE}${path}" />
+<meta property="og:image" content="${SITE}/assets/share-ledger.png" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="icon" href="/assets/icon-192.png" type="image/png" />
 <link rel="apple-touch-icon" href="/assets/icon-180.png" />
@@ -136,6 +150,7 @@ function page({ title, description, current, path, schema, body }) {
 <title>${esc(title)} — Maine Ledger</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Public+Sans:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="/ledger.css" />
+<link rel="alternate" type="application/rss+xml" title="Maine Ledger" href="/feed.xml" />
 ${ld({ '@context': 'https://schema.org', ...schema })}
 </head>
 <body>
@@ -144,7 +159,7 @@ ${ld({ '@context': 'https://schema.org', ...schema })}
     <nav class="tools" aria-label="Main"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>${nav}<a class='sub-btn' href='/#subscribe'>Subscribe</a></nav></div></header>
 <div class="wrap">
 
-  <main class="panel tagpage">
+  <main class="panel tagpage" data-pagefind-body>
 ${body}
   </main>
 
@@ -175,7 +190,7 @@ function itemList(items, { showTopic = true } = {}) {
       esc(data.systems[it.system]),
       esc(it.place),
     ].filter(Boolean).join(' · ');
-    return `      <li data-format="${it.format}" data-system="${it.system}"><span class="d mono">${it.due ? 'Due ' : ''}${stamp(it.date)}</span><span class="tag-body"><a href="${esc(it.url)}"${ext ? ' rel="noopener"' : ''}>${esc(it.title)}${ext ? ' <span class="ext" aria-label="(record, opens on the publisher’s site)">↗</span>' : ''}</a><span class="tag-meta mono">${meta}</span></span></li>`;
+    return `      <li data-format="${it.format}" data-system="${it.system}"><span class="d mono">${it.due ? 'Due ' : ''}${stamp(it.date)}</span><span class="tag-body"><a href="${esc(it.url)}"${ext ? ' rel="noopener"' : ''}>${esc(it.title)}${ext ? ' <span class="ext" aria-label="(opens on the publisher’s site)">↗</span>' : ''}</a><span class="tag-meta mono">${meta}${it.record ? ` · <a href="${esc(it.record)}" rel="noopener">Record ↗</a>` : ''}</span></span></li>`;
   });
   return `    <ul class="tag-list" data-filterable>\n${rows.join('\n')}\n    </ul>\n    <p class="tag-empty" data-filter-empty hidden>Nothing here matches those filters.</p>`;
 }
@@ -219,9 +234,18 @@ const out = new Map();
 for (const f of data.facilities) {
   const items = filedOn(it => it.facilities.includes(f.id));
   const linkedBills = [...new Set(items.flatMap(it => it.bills))].map(id => bills.get(id));
+  const keyFigures = f.facts?.length ? [
+    `    <section class="key-figures" aria-labelledby="kf-h">`,
+    `    <h2 id="kf-h">Key figures</h2>`,
+    `    <dl class="kf-grid">\n${f.facts.map(x => `      <div><dt class="mono">${esc(x.label)}</dt><dd><span class="kf-v">${esc(x.value)}</span><span class="kf-n">${esc(x.note)}. <a href="${esc(x.source)}">Source</a></span></dd></div>`).join('\n')}\n    </dl>`,
+    `    </section>`,
+  ].join('\n') : '';
+  const nextUp = f.next ? `    <section class="next-up" aria-labelledby="next-h"><h2 id="next-h">What happens next</h2><p>${esc(f.next.what)} <a href="${esc(f.next.source)}">Source</a></p></section>` : '';
+  const decides = f.decides?.length ? `      <h2>Who decides</h2>\n      <dl class="decides">${f.decides.map(x => `<div><dt>${esc(x.who)}</dt><dd>${esc(x.what)}</dd></div>`).join('')}</dl>` : '';
   const aside = [
     `      <h2>At a glance</h2>`,
     `      ${facts([['Town', esc(f.town)], ['System', esc(data.systems[f.system])], ['Run by', esc(f.operator)], ['Filed', plural(items.length, 'piece')]])}`,
+    decides,
     f.aliases?.length ? `      <h2>Also called</h2>\n      ${chips(f.aliases)}` : '',
     f.alias_note ? `      <p class="tag-note">${esc(f.alias_note)}</p>` : '',
     linkedBills.length ? `      <h2>Bills</h2>\n      <ul class="side-links">${linkedBills.map(b => `<li><a href="${billPath(b)}" title="${esc(b.title)}"><span class="mono">LD ${b.ld} · ${ordinal(b.legislature)}</span><span class="side-title">${esc(b.title)}</span></a></li>`).join('')}</ul>` : '',
@@ -234,6 +258,8 @@ for (const f of data.facilities) {
     f.note ? `      <p class="tag-lede">${esc(f.note)}</p>` : '',
     !f.in_maine ? `      <p class="tag-flag">Outside Maine. Listed because people from Maine are held here.${f.maine_tie ? ` Record: <a href="${esc(f.maine_tie.url)}" rel="noopener">${esc(f.maine_tie.title)}</a>.` : ' The record showing it is still to be added.'}</p>` : '',
     `    </header>`,
+    keyFigures,
+    nextUp,
     `    <div class="tag-cols">`,
     `    <section class="tag-main" aria-labelledby="filed-h">`,
     `    <h2 id="filed-h">Everything filed under this facility</h2>`,
@@ -358,9 +384,11 @@ for (const t of data.topics) {
 }
 
 {
-  const cards = data.topics.map(t => {
+  const byFilled = data.topics.slice().sort((a, b) => (filedOn(it => it.topic === b.id).length > 0) - (filedOn(it => it.topic === a.id).length > 0));
+  const cards = byFilled.map(t => {
     const items = filedOn(it => it.topic === t.id).sort(newestFirst);
     const latest = items[0];
+    if (!items.length) return `        <li class="fac-card topic-card is-empty"><div><span class="fac-name">${esc(t.name)}</span><span class="fac-meta mono">Nothing filed yet</span><span class="fac-aka">${esc(t.covers)}</span></div></li>`;
     return `        <li class="fac-card topic-card"><a href="${topicPath(t)}"><span class="fac-name">${esc(t.name)}</span><span class="fac-meta mono">${items.length ? plural(items.length, 'piece') : 'Nothing filed yet'}</span><span class="fac-aka">${esc(t.covers)}</span>${latest ? `<span class="topic-latest mono">Latest: ${esc(latest.title)}</span>` : ''}</a></li>`;
   });
   const body = [
@@ -388,8 +416,122 @@ for (const t of data.topics) {
   }));
 }
 
+// ---- Filed-under lines. Hand-written pages carry <!--filed:ITEM--><!--/filed--> markers; the build fills them
+// from data/ledger.json so links back to topic, facility and bill pages never drift from the tags.
+const itemsById = new Map(data.items.map(it => [it.id, it]));
+function filedLine(it) {
+  const t = topics.get(it.topic);
+  const links = [
+    `<a href="${topicPath(t)}">${esc(t.name)}</a>`,
+    ...it.facilities.map(id => facilities.get(id)).map(f => `<a href="${facilityPath(f)}">${esc(f.name)}</a>`),
+    ...it.bills.map(id => bills.get(id)).map(b => `<a href="${billPath(b)}">LD ${b.ld}</a>`),
+  ];
+  return `<p class="filed mono"><span class="filed-k">Filed under</span> ${links.join(' · ')}</p>`;
+}
+function fillFiled(html, where) {
+  return html.replace(/<!--filed:([a-z0-9-]+)-->[\s\S]*?<!--\/filed-->/g, (m, id) => {
+    const it = itemsById.get(id);
+    if (!it) { errors.push(`${where} has a filed marker for unknown item "${id}"`); return m; }
+    return `<!--filed:${id}-->${filedLine(it)}<!--/filed-->`;
+  });
+}
+for (const rel of ['aroostook-jail.html', 'petersburg.html', 'doctalk.html']) {
+  out.set(rel, fillFiled(readFileSync(join(ROOT, rel), 'utf8'), rel));
+}
+
+// ---- Issues. src/issues/N.html is the source; each gets a permanent page at /issue/N and the newest also
+// becomes the home page, so a shared entry link keeps pointing at the issue it came from.
+const issueSrc = existsSync(join(ROOT, 'src/issues')) ? readdirSync(join(ROOT, 'src/issues')).filter(f => /^\d+\.html$/.test(f)).map(f => +f.replace('.html', '')).sort((a, b) => a - b) : [];
+if (!issueSrc.length) errors.push('no issues in src/issues');
+const latest = issueSrc[issueSrc.length - 1];
+for (const n of issueSrc) {
+  const src = fillFiled(readFileSync(join(ROOT, `src/issues/${n}.html`), 'utf8').replace(/^<!--[^\n]*-->\n/, ''), `src/issues/${n}.html`);
+  const archived = src
+    .replaceAll('{{CANONICAL}}', `${SITE}/issue/${n}`)
+    .replace('{{NAV_THIS_WEEK}}', "<a href='/'>This week</a>")
+    .replace('{{PAGEFIND}}', ' data-pagefind-body')
+    .replace('{{ISSUE_NOTE}}', n === latest
+      ? `Issue № ${n}. This is its permanent address. The <a href="/">home page</a> always shows the latest issue.`
+      : `Issue № ${n}, as published. A newer issue is out: <a href="/">read the latest</a>.`)
+    .replace(/<!--\/?archive-only-->/g, '');
+  out.set(`issue/${n}.html`, archived);
+  if (n === latest) {
+    out.set('index.html', src
+      .replaceAll('{{CANONICAL}}', `${SITE}/`)
+      .replace('{{NAV_THIS_WEEK}}', '<a href="#ledger" aria-current="location">This week</a>')
+      .replace('{{PAGEFIND}}', '')
+      .replace(/[ \t]*<!--archive-only-->[\s\S]*?<!--\/archive-only-->\n?/g, ''));
+  }
+}
+
+// ---- Search page (Pagefind builds its index at deploy, after this script).
+{
+  const body = [
+    `    <header class="tag-head">`,
+    `      <h1>Search</h1>`,
+    `      <p class="tag-lede">Every issue, report, facility, bill and topic page, and the titles of every record in the document library.</p>`,
+    `    </header>`,
+    `    <div id="search" class="search-box"><noscript><p class="tag-empty">Search needs JavaScript. Browse by <a href="/topics">topic</a> or <a href="/facilities">facility</a> instead.</p></noscript></div>`,
+  ].join('\n');
+  const js = `<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  if (!window.PagefindUI) { document.getElementById('search').innerHTML = '<p class="tag-empty">The search index is built when the site deploys. Browse by <a href="/topics">topic</a> or <a href="/facilities">facility</a> meanwhile.</p>'; return; }
+  var ui = new PagefindUI({ element: '#search', showSubResults: true, showImages: false, resetStyles: false });
+  var q = new URLSearchParams(location.search).get('q'); if (q) ui.triggerSearch(q);
+});
+</script>`;
+  out.set('search.html', page({
+    title: 'Search', description: 'Search Maine Ledger: issues, reports, facilities, bills, topics and the document library.',
+    current: '/search', path: '/search', schema: { '@type': 'SearchResultsPage', name: 'Search', url: SITE + '/search' }, body: body + '\n' + js,
+  }).replace('<main class="panel tagpage" data-pagefind-body>', '<main class="panel tagpage">'));
+}
+
+// ---- RSS feed, newest first. Calendar items (future due dates) stay out of it.
+{
+  const rfc822 = iso => new Date(iso + 'T12:00:00Z').toUTCString();
+  const x = s => esc(s).replace(/'/g, '&apos;');
+  // An entry's own date is the date on its document; the feed dates it by the issue it ran in.
+  const published = it => (it.issue && data.issues?.[it.issue]?.published) || it.date;
+  const feedItems = data.items.filter(it => !it.due).sort((a, b) => published(b).localeCompare(published(a)) || b.date.localeCompare(a.date));
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Maine Ledger</title>
+<link>${SITE}/</link>
+<atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml" />
+<description>Jails, prisons and courts, by the record. An independent weekly brief on Maine’s county jails, state prisons and criminal courts.</description>
+<language>en-us</language>
+<lastBuildDate>${rfc822(published(feedItems[0]))}</lastBuildDate>
+${feedItems.map(it => `<item>
+<title>${x(it.title)}</title>
+<link>${abs(it.url)}</link>
+<guid isPermaLink="true">${abs(it.url)}</guid>
+<pubDate>${rfc822(published(it))}</pubDate>
+<category>${x(topics.get(it.topic).name)}</category>
+<description>${x(it.summary)}${it.record ? ` Record: ${x(it.record)}` : ''}</description>
+</item>`).join('\n')}
+</channel>
+</rss>
+`;
+  out.set('feed.xml', xml);
+}
+
+// ---- Sitemap: every generated page plus the hand-written ones.
+{
+  const pretty = rel => '/' + rel.replace(/(^|\/)index\.html$/, '').replace(/\.html$/, '');
+  const urls = [...new Set([...[...out.keys()].filter(r => r.endsWith('.html')).map(pretty), '/archive', '/about'])].sort();
+  out.set('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `<url><loc>${SITE}${u}</loc></url>`).join('\n')}
+</urlset>
+`);
+}
+if (errors.length) { for (const e of errors) console.error(`error: ${e}`); process.exit(1); }
+
 // ---- Write or check. Stale generated pages (a removed facility or bill) are deleted.
-const generatedDirs = ['facility', 'bill', 'topic'];
+const generatedDirs = ['facility', 'bill', 'topic', 'issue'];
 const existing = new Set(generatedDirs.flatMap(dir => existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).map(f => `${dir}/${f}`) : []));
 let stale = 0;
 for (const [rel, html] of out) {

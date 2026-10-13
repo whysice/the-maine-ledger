@@ -1,7 +1,7 @@
 [build]
   publish = "."
-  # Rebuilds the facility and bill pages from data/ledger.json; fails the deploy on a duplicate or unknown tag.
-  command = "node scripts/build.mjs"
+  # Rebuilds the generated pages from data/ledger.json and src/issues (fails on a bad tag), then builds the search index.
+  command = "node scripts/build.mjs && npx -y pagefind@1.1.1 --site ."
 
 
 [[headers]]
@@ -15,3 +15,33 @@
   to = "/404.html"
   status = 404
   force = true
+
+# Old addresses keep working.
+[[redirects]]
+  from = "/story"
+  to = "/aroostook-jail"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/story.html"
+  to = "/aroostook-jail"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/subscribe"
+  to = "/#subscribe"
+  status = 301
+
+# Issue sources are built into /issue/N and the home page; not served directly.
+[[redirects]]
+  from = "/src/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/feed.xml"
+  [headers.values]
+    Content-Type = "application/rss+xml; charset=utf-8"
