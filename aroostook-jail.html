@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
 <script>
-// Applies a previously chosen theme before first paint, so a reload never flashes the other theme first.
+// Applies saved display choices (theme, contrast, text size) before first paint, so a reload never flashes the other setting first.
 (function () {
   try {
-    var t = localStorage.getItem('ledger_theme');
-    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
-  } catch (err) { /* storage unavailable; prefers-color-scheme decides */ }
+    var d = document.documentElement, s = localStorage;
+    var t = s.getItem('ledger_theme'), c = s.getItem('ledger_contrast'), x = s.getItem('ledger_text');
+    if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+    if (c === 'more' || c === 'standard') d.setAttribute('data-contrast', c);
+    if (x === 'large' || x === 'larger') d.setAttribute('data-text', x);
+  } catch (err) { /* storage unavailable; the system settings decide */ }
 })();
 </script>
 <meta charset="utf-8" />
@@ -153,7 +156,7 @@
 </head>
 <body>
 <header class="top"><div class="wrap top-in"><a class="name" href="index.html">Maine Ledger<small>Jails, prisons and courts, by the record.</small></a>
-    <nav class="tools" aria-label="Main"><button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button><a href="index.html">This week</a><a href="topics.html">Topics</a><a href="facilities.html">Facilities</a><a href="archive.html">Archive</a><a href="/search">Search</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav></div></header>
+    <nav class="tools" aria-label="Main"><details class="display" id="display"><summary class="theme-toggle">Display</summary><form class="display-menu" aria-label="Display settings"><fieldset><legend>Theme</legend><label><input type="radio" name="theme" value="system" checked />System</label><label><input type="radio" name="theme" value="light" />Light</label><label><input type="radio" name="theme" value="dark" />Dark</label></fieldset><fieldset><legend>Contrast</legend><label><input type="radio" name="contrast" value="standard" checked />Standard</label><label><input type="radio" name="contrast" value="more" />More</label></fieldset><fieldset><legend>Text size</legend><label><input type="radio" name="text" value="standard" checked />Standard</label><label><input type="radio" name="text" value="large" />Large</label><label><input type="radio" name="text" value="larger" />Larger</label></fieldset></form></details><a href="index.html">This week</a><a href="topics.html">Topics</a><a href="facilities.html">Facilities</a><a href="archive.html">Archive</a><a href="/search">Search</a><a href="about.html">About</a><a class="sub-btn" href="index.html#subscribe">Subscribe</a></nav></div></header>
 <div class="wrap">
   <div class="strip mono">
     <div><div class="k">ENTRY</div><div class="v">Special report</div></div>
