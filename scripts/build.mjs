@@ -168,7 +168,7 @@ ${body}
 
   <footer>
     <p><a href='/'>This week</a> · <a href='/archive'>Archive</a> · <a href='/topics'>Topics</a> · <a href='/facilities'>Facilities and bills</a></p>
-  <p class="copy">© 2026 Whysice</p></footer>
+  <p class="copy">© 2026 <a href="https://whysice-hub.netlify.app/">Whysice</a> · Maine Ledger is an independent Whysice publication · <a href="https://whysice-hub.netlify.app/">More from Whysice</a></p></footer>
 </div>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));</script>
 <script src="/theme.js" defer></script>
