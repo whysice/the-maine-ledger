@@ -70,7 +70,7 @@ The row is the argument: claim on the left, document on the right, "check me" bu
 - **What:** the front page never named who edits it. "About the mark" opened an internal brand sheet. Corrections and tips went to a personal mailbox.
 - **Why it mattered:** the first question from a staffer deciding whether to forward this is "who is this". What gets forwarded has a named editor, a stated method and a corrections log.
 - **Fix proposed:** one About and Method page (editor, location, what counts as a record, how entries are chosen, funding, corrections policy), linked in nav and footer; a role address for corrections.
-- **Status: mostly fixed.** An About and method page now states what counts as a record, how entries are chosen, how to read an entry, the funding policy, the filing system and the corrections policy. It is linked from the nav and every footer, and the brand sheet is gone. Still open: a named editor and a role address for corrections.
+- **Status: mostly fixed.** An About and method page now states what counts as a record, how entries are chosen, how to read an entry, the funding policy, the filing system and the corrections policy. It is linked from the nav and every footer, and the brand sheet is gone. Corrections and tips now go to a role address on the publisher's domain. Still open: a named editor.
 
 ### P1. Phone readers lost the nav and the labels
 
