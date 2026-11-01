@@ -150,7 +150,7 @@ function page({ title, description, current, path, schema, body }) {
 <link rel="apple-touch-icon" href="/assets/icon-180.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<title>${esc(title)} — Maine Ledger</title>
+<title>${esc(title)} | Maine Ledger</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Public+Sans:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="/ledger.css" />
 <link rel="alternate" type="application/rss+xml" title="Maine Ledger" href="/feed.xml" />
