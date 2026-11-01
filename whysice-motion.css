@@ -1,0 +1,30 @@
+:root {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-dur: 0.7s;
+  --reveal-travel: 64px;
+}
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-travel));
+  transition:
+    opacity var(--reveal-dur) var(--ease-out-quint) var(--d, 0s),
+    transform var(--reveal-dur) var(--ease-out-quint) var(--d, 0s);
+  will-change: opacity, transform;
+}
+.js [data-reveal="down"] { transform: translateY(calc(var(--reveal-travel) * -1)); }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+.btn {
+  transition: transform 0.3s var(--ease-out-quint),
+              background-color 0.3s var(--ease-out-quint),
+              color 0.3s var(--ease-out-quint);
+}
+.btn:hover, .btn:focus-visible { transform: translateY(-5px); }
+.btn svg, .btn .arrow { transition: transform 0.3s var(--ease-out-quint); }
+.btn:hover svg, .btn:hover .arrow,
+.btn:focus-visible svg, .btn:focus-visible .arrow { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .btn, .btn svg, .btn .arrow { transition: none; }
+  .btn:hover, .btn:focus-visible,
+  .btn:hover svg, .btn:hover .arrow { transform: none; }
+}

@@ -153,6 +153,8 @@ function page({ title, description, current, path, schema, body }) {
 <title>${esc(title)} | Maine Ledger</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Public+Sans:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="/ledger.css" />
+<link rel="stylesheet" href="/whysice-motion.css" />
+<script src="/whysice-motion.js" defer></script>
 <link rel="alternate" type="application/rss+xml" title="Maine Ledger" href="/feed.xml" />
 ${ld({ '@context': 'https://schema.org', ...schema })}
 </head>
@@ -322,9 +324,9 @@ for (const b of data.bills) {
   const card = f => {
     const n = filedOn(it => it.facilities.includes(f.id)).length;
     const aka = shownAliases(f);
-    return `        <li class="fac-card"><a href="${facilityPath(f)}"><span class="fac-name">${esc(f.name)}</span><span class="fac-meta mono">${esc(f.town)} · ${plural(n, 'filed', 'filed')}</span>${aka.length ? `<span class="fac-aka">Also ${esc(aka.join(' · '))}</span>` : ''}</a></li>`;
+    return `        <li class="fac-card" data-reveal><a href="${facilityPath(f)}"><span class="fac-name">${esc(f.name)}</span><span class="fac-meta mono">${esc(f.town)} · ${plural(n, 'filed', 'filed')}</span>${aka.length ? `<span class="fac-aka">Also ${esc(aka.join(' · '))}</span>` : ''}</a></li>`;
   };
-  const group = (id, label, fs, note) => fs.length ? `    <section class="fac-group" aria-labelledby="${id}">\n      <h2 id="${id}">${esc(label)} <span class="count mono">${fs.length}</span></h2>${note ? `\n      <p class="tag-note">${note}</p>` : ''}\n      <ul class="fac-grid">\n${fs.map(card).join('\n')}\n      </ul>\n    </section>` : '';
+  const group = (id, label, fs, note) => fs.length ? `    <section class="fac-group" aria-labelledby="${id}">\n      <h2 id="${id}" data-reveal>${esc(label)} <span class="count mono">${fs.length}</span></h2>${note ? `\n      <p class="tag-note">${note}</p>` : ''}\n      <ul class="fac-grid">\n${fs.map(card).join('\n')}\n      </ul>\n    </section>` : '';
   const byName = (a, b) => a.name.localeCompare(b.name);
   const groups = Object.entries(data.systems).map(([key, label]) =>
     group(`sys-${key}`, label, data.facilities.filter(f => f.system === key && f.in_maine).sort(byName))).filter(Boolean);
@@ -344,9 +346,9 @@ for (const b of data.bills) {
     `    <h2 class="sr" id="facilities-h">Facilities</h2>`,
     ...groups,
     `    <section class="fac-group" aria-labelledby="bills">`,
-    `      <h2 id="bills">Bills, by LD number <span class="count mono">${data.bills.length}</span></h2>`,
+    `      <h2 id="bills" data-reveal>Bills, by LD number <span class="count mono">${data.bills.length}</span></h2>`,
     `      <p class="tag-note">LD numbers restart with each Legislature, so a bill is always named with its Legislature.</p>`,
-    `      <ul class="bill-list">\n${billRows.join('\n')}\n      </ul>`,
+    `      <ul class="bill-list" data-reveal>\n${billRows.join('\n')}\n      </ul>`,
     `    </section>`,
   ].join('\n');
   out.set('facilities.html', page({
@@ -391,8 +393,8 @@ for (const t of data.topics) {
   const cards = byFilled.map(t => {
     const items = filedOn(it => it.topic === t.id).sort(newestFirst);
     const latest = items[0];
-    if (!items.length) return `        <li class="fac-card topic-card is-empty"><div><span class="fac-name">${esc(t.name)}</span><span class="fac-meta mono">Nothing filed yet</span><span class="fac-aka">${esc(t.covers)}</span></div></li>`;
-    return `        <li class="fac-card topic-card"><a href="${topicPath(t)}"><span class="fac-name">${esc(t.name)}</span><span class="fac-meta mono">${items.length ? plural(items.length, 'piece') : 'Nothing filed yet'}</span><span class="fac-aka">${esc(t.covers)}</span>${latest ? `<span class="topic-latest mono">Latest: ${esc(latest.title)}</span>` : ''}</a></li>`;
+    if (!items.length) return `        <li class="fac-card topic-card is-empty" data-reveal><div><span class="fac-name">${esc(t.name)}</span><span class="fac-meta mono">Nothing filed yet</span><span class="fac-aka">${esc(t.covers)}</span></div></li>`;
+    return `        <li class="fac-card topic-card" data-reveal><a href="${topicPath(t)}"><span class="fac-name">${esc(t.name)}</span><span class="fac-meta mono">${items.length ? plural(items.length, 'piece') : 'Nothing filed yet'}</span><span class="fac-aka">${esc(t.covers)}</span>${latest ? `<span class="topic-latest mono">Latest: ${esc(latest.title)}</span>` : ''}</a></li>`;
   });
   const body = [
     `    <header class="tag-head">`,
@@ -400,11 +402,11 @@ for (const t of data.topics) {
     `      <p class="tag-lede">Every entry, report and record is filed under one topic: what it is about. Filter by who holds the person or by kind of piece, or go by place on the <a href="/facilities">facilities page</a>.</p>`,
     `    </header>`,
     `    <section class="fac-group" aria-labelledby="topics-h">`,
-    `      <h2 id="topics-h">Seven topics</h2>`,
+    `      <h2 id="topics-h" data-reveal>Seven topics</h2>`,
     `      <ul class="fac-grid">\n${cards.join('\n')}\n      </ul>`,
     `    </section>`,
     `    <section class="fac-group" aria-labelledby="all-h">`,
-    `      <h2 id="all-h">All reporting <span class="count mono">${data.items.length}</span></h2>`,
+    `      <h2 id="all-h" data-reveal>All reporting <span class="count mono">${data.items.length}</span></h2>`,
     filters(data.items),
     itemList(data.items),
     `    </section>`,
