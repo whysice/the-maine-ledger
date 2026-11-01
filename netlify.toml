@@ -1,7 +1,7 @@
 [build]
   publish = "."
   # Rebuilds the generated pages from data/ledger.json and src/issues (fails on a bad tag), then builds the search index.
-  command = "node scripts/build.mjs && npx -y pagefind@1.1.1 --site ."
+  command = "node scripts/build.mjs && npx -y pagefind@1.1.1 --site . && node scripts/version.mjs"
 
 
 [[headers]]
@@ -45,3 +45,11 @@
   for = "/feed.xml"
   [headers.values]
     Content-Type = "application/rss+xml; charset=utf-8"
+
+# version.json carries the date of the deployed commit, so the Whysice hub can show when this site last changed.
+[[headers]]
+  for = "/version.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "no-cache"
+    Content-Type = "application/json; charset=utf-8"
