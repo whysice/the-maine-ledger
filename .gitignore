@@ -2,3 +2,4 @@
 .DS_Store
 # Search index, built at deploy by Pagefind
 pagefind/
+version.json
